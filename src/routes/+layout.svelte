@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from '$app/state';
     let { children } = $props();
-    export const prerender = true
+    export const prerender = true;
 </script>
 <header id="eprase-header">
 	<i id="burger" class="fa fa-bars w3-xlarge w3-button w3-theme burger"></i>
