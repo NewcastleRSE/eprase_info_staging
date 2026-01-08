@@ -23,11 +23,11 @@
 </main>
 
 <footer class="row w3-center footer">
-	<div class='col'><img src='img/ncl_logo.png' alt='Newcastle University'></div>
+	<div class='col'><img class='floatleft' src='/img/ncl_logo.png' alt='Newcastle University'></div>
 	<div class='col'>
   		<p class="eprase-contact"><a href="mailto:nuth.eprase@nhs.net">Contact</a></p>
   	</div>
-  	<div class='col floatright'><img src='img/nhs_logo.png' alt='NHS England'></div>
+  	<div class='col floatright'><img src='/img/nhs_logo.png' alt='NHS England'></div>
 </footer>
 
 <style>
@@ -53,7 +53,7 @@
         background-image:linear-gradient(#bfc6ee, #3e53cc) !important;
     }
     .floatright{float:right!important;}
-
+    .floatleft {float:left!important;}
     #burger {display: none;}
     #eprase-header {
         background-image: url(/img/banner.jpg);

@@ -1,7 +1,7 @@
 <h1 class="eprase-h1 w3-animate-left">About ePRaSE</h1>
 <h2 class="eprase-h2">What is ePRaSE?</h2>
 <div class='accordion-text'>
-  <img class="eprase-image" src="img/e_molecule.jpg" alt="electronic medicine" />
+  <img class="eprase-image" src="/img/e_molecule.jpg" alt="electronic medicine" />
   <p>The Electronic Prescribing Risk and Safety Evaluation tool, known as ePRaSE, is an online NHS-sponsored self-assessment tool developed to help trusts learn about how well their electronic prescribing systems have been configured and maintained to mitigate against known prescribing risks to keep patients safe. The results will allow trusts to look at their individual performance immediately and learn from annually reported national benchmarking data. The national results will also be used by the ePRaSE team to build a Learning Lab toolkit to support users in taking the next steps in optimising their systems.</p>
 </div>
 <h2 class='eprase-h2'>Tool description</h2>

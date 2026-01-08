@@ -1,7 +1,7 @@
 <h1 class="eprase-h1">Frequently Asked Questions</h1>
   
 <div class="accordion-text">
-  <img class="eprase-image" src="img/advice.jpg" alt="advice"/>
+  <img class="eprase-image" src="/img/advice.jpg" alt="advice"/>
 		
    <p class='question'>Q: Can we have access to all the questions and the raw data?</p>
 
