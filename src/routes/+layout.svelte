@@ -6,7 +6,7 @@
 	<i id="burger" class="fa fa-bars w3-xlarge w3-button w3-theme burger"></i>
 </header>
 
-<nav class="w3-bar navbar">
+<nav class="navbar">
 	<a href="https://eprase.nhs.uk" class="go2button" title="ePRaSE tool">Sign up now</a>
 	<a href="/" aria-current={page.url.pathname === '/' } class="mynav">Home</a>
 	<a href="/about" aria-current={page.url.pathname === '/about' } class="mynav">About</a>
@@ -36,15 +36,15 @@
     :global(.eprase-image) {width: 40%; float: right; margin: 0 0 10px 10px; border: 2px solid #1e2a71;}
     :global(.eprase-h1) {font-size: 2.5em; color: #1e2a71; margin-left: 5%; position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
     :global(.eprase-h2) {font-size: 1.8em; color: #3e53cc; font-style: italic; margin-left: 15%}
-    a[aria-current="true"] {color: black; background-color: #ccc;}
+    .mynav:hover, a[aria-current="true"] {color: black; background-color: #9eb4e6;}
     .row {width: 100%; display: table; text-align: center;}
     .col {display: table-cell; width: 33.33%; float: left;}
     .w3-button{border:none;display:inline-block;padding:8px 16px;vertical-align:middle;overflow:hidden;text-decoration:none;color:inherit;background-color:inherit;text-align:center;cursor:pointer;white-space:nowrap; margin-bottom: 4px;}
     .w3-button{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}   
-    .w3-button:hover, .mynav:hover, .navbar-item-active {color:#000!important;background-color:#ccc!important}
+    .w3-button:hover {color:#000!important;background-color:#ccc!important}
     .w3-xlarge{font-size:24px!important}
     .w3-theme {color:#fff !important; background-color:#0D6D62 !important}
-    .navbar {display:inline-block; width: 100%;color:#fff !important; background-image:linear-gradient(#3e53cc,#151E51) !important;}
+    .navbar {padding: 0; display:inline-block; width: 100%;color:#fff !important; background-image:linear-gradient(#3e53cc,#151E51) !important;}
     .w3-center {text-align: center!important;}
     .footer {
         padding: 16px;
@@ -55,7 +55,7 @@
 
     #burger {display: none;}
     #eprase-header {
-        background-image: url("../img/banner.jpg");
+        background-image: url(/img/banner.jpg);
         background-size: cover;
         background-position: center;
         position: relative;
@@ -69,9 +69,11 @@
     }
     .burger {position: fixed; top: 10px; left: 10px; z-index: 99;}
     .mynav {
-        padding:8px 16px;
+        padding: 16px;
         width:auto;
         border:none;
+        height: 100%;
+        margin: 0;
         display:inline-block;
         outline:0;
         vertical-align:middle;
@@ -82,8 +84,6 @@
         text-align:center;
         cursor:pointer;
         white-space:nowrap;
-        padding-top:16px!important;
-        padding-bottom:16px!important;
         -webkit-touch-callout:none;
         -webkit-user-select:none;
         -khtml-user-select:none;
