@@ -2,7 +2,7 @@ import adapter from '@sveltejs/adapter-static';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import strict from 'node:assert/strict';
 
-/** @type {import('@sveltejs/kit').Config} */
+@type {import('@sveltejs/kit').Config}
 
 const config = {
 	// Consult https://svelte.dev/docs/kit/integrations
