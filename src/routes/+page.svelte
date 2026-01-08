@@ -52,6 +52,7 @@
 </div>
 <style>
     h3 {font-size: 1.5em; margin: 1em;}
+    a, a:visited {text-decoration: none; color: inherit;}
     #homecards {width: 95%; margin: auto; margin-top: 20px; margin-bottom: 40px;}
     #homecards:after {content:"";clear:both;}
     .eprase-icons {color:#fff!important;background-color:#7e8cdd!important;}
