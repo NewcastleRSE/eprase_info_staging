@@ -20,9 +20,9 @@ const config = {
 			precompress: false,
 			strict: true
 		}),
-		//paths: {
-			//base: '/eprase_info_svelte'
-		//}
+		paths: {
+			base: '/eprase_info_svelte'
+		}
 	}
 };
 
