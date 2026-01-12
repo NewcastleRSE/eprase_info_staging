@@ -21,10 +21,10 @@
 <style>
 	ul li {margin-bottom: 2em;}
 	@media (max-width:768px) {
-		.eprase-video iframe {width: 360px; height:202px;}
+		.eprase-video iframe {width: 306px; height:172px;}
 		ul {margin: 0; list-style-type: none;}
 		ul li {margin: 2em 0; list-style-type: none;}
-		video {width: 360px;}
+		video {width: 306px;}
 	}
     @media (min-width:769px){.eprase-video iframe {width: 480px; height: 360px;}}
 </style>
