@@ -93,10 +93,10 @@
     #burger { 
         display: inline-block; 
         position: absolute;
-        top: 50px; 
+        bottom: 15px; 
         right: 20px; 
         z-index: 100;
-        font-size: 32px!important;
+        font-size: 28px!important;
         color: #000;
         background-color: #89aadc;
         border: none;
@@ -110,7 +110,10 @@
         cursor: pointer;
         white-space: nowrap;
     }
-    #burger:hover {color:#000!important;background-color:#ccc!important}
+    #burger:hover {
+        color:#000!important;
+        background-color:#bccfec!important;
+    }
 
     /* Override for mobile links */
     .mobilenav {
@@ -160,7 +163,12 @@
         background-color: #9aa6e9;
         padding: 8px;
         border-radius: 12px;
-        color: #151E51;
+        color: #222e66;
+        text-decoration: none;
+    }
+    .go2button:hover {
+        background-color: #bccfec;
+        color: #000;
         text-decoration: none;
     }
     

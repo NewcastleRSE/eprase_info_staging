@@ -19,6 +19,6 @@
 	</div>
 
 <style>
-	@media (max-width:800px){.eprase-video iframe {width: 426px; height:240px;}}
-    @media (min-width:801px){.eprase-video iframe {width: 854px; height: 480px;}}
+	@media (max-width:768){.eprase-video iframe {width: 426px; height:240px;}}
+    @media (min-width:769){.eprase-video iframe {width: 854px; height: 480px;}}
 </style>
