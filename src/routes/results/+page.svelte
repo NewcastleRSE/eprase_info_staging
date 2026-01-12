@@ -69,5 +69,5 @@
     </div>
 
 <style>
-	@media (max-width:768){.eprase-video iframe {width: 420px; height:236px;}}
+	@media (max-width:768px){.eprase-video iframe {width: 420px; height:236px;}}
 </style>

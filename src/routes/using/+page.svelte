@@ -1,8 +1,8 @@
 <h1 class="eprase-h1">Using ePRaSE</h1>
 	<div class="accordion-text">
 		<!-- <img class="eprase-image" src="img/notes.jpg" alt="stock image" /> -->
-		<ul class="spacey">
-			<li>Step-by-step instructions for using the ePRaSE tool can be found
+		<ul>
+			<li>Step-by-step instructions for using the ePRaSE tool can be found 
 			in <a class="eprase-link" target="_blank" href="/pdf/EpraseUserGuide2025.pdf" title="User Guide PDF">this PDF file</a>.</li>
 			<li>A video walk-through of the ePRaSE system is available here:
 				<div class="eprase-video">
@@ -19,6 +19,12 @@
 	</div>
 
 <style>
-	@media (max-width:768){.eprase-video iframe {width: 426px; height:240px;}}
-    @media (min-width:769){.eprase-video iframe {width: 854px; height: 480px;}}
+	ul li {margin-bottom: 2em;}
+	@media (max-width:768px) {
+		.eprase-video iframe {width: 360px; height:202px;}
+		ul {margin: 0; list-style-type: none;}
+		ul li {margin: 2em 0; list-style-type: none;}
+		video {width: 360px;}
+	}
+    @media (min-width:769px){.eprase-video iframe {width: 480px; height: 360px;}}
 </style>
