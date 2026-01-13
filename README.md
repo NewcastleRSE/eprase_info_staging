@@ -1,58 +1,40 @@
-# Svelte library
+# ePRaSE Basic Info site
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+Sveltekit version of the basic ePRaSE info site, superseding previous version in the Eprase-Info-Site repo.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## About
 
-## Creating a project
+This is a public-facing site that explains what ePRaSE is and includes user guides and reports.
 
-If you're seeing this, you've probably already done this step. Congrats!
+### Project Team
 
-```sh
-# create a new project in the current directory
-npx sv create
+* Becky Osselton, Newcastle University  ([rebecca.osselton@newcastle.ac.uk](mailto:rebecca.osselton@newcastle.ac.uk))
+* John Schoneboom, Newcastle University  ([John.Schoneboom@newcastle.ac.uk](mailto:John.Schoneboom@newcastle.ac.uk))
+* Stephanie Klein, The Newcastle Hospitals NHS Foundation Trust  ([stephanie.klein@nhs.net](mailto:stephanie.klein@nhs.net))
+* Ellie Merrison, The Newcastle Hospitals NHS Foundation Trust  ([eleanor.merrison1@nhs.net](mailto:eleanor.merrison1@nhs.net))
 
-# create a new project in my-app
-npx sv create my-app
-```
+### RSE Contact
+Becky Osselton, RSE Team, Newcastle University
+John Schoneboom, RSE Team, Newcastle University
 
-## Developing
+### Built With
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+* Sveltekit - https://svelte.dev/
 
-```sh
-npm run dev
+## Local Development
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+See the Svelte documentation for full details of site structure, but basically I added a link to a Font Awesome stylesheet in app.html and everything else is in the routes directory. The main layout with header, footer, global and home page styles, and main Svelte imports is in +layout.svelte. Individual page content is in the various +page.svelte files: the home page at the top level of routes, and the others in their own directories (about, faq, lab, news, results, and using). Those contain basic HTML and any page-specific styles.
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+Easy peasy.
 
-## Building
+To view/test the site locally you can run 
 
-To build your library:
+`npm run dev`
 
-```sh
-npm pack
-```
+You don't need to build the site locally because that's handled by a GitHub action when you push master.
 
-To create a production version of your showcase app:
+## Deployment
 
-```sh
-npm run build
-```
+When you push to origin master, a GitHub action will build the site and place the output in a branch that it creates called gh-pages. That's the branch from which the web-ready code is deployed to the custom domain eprase.info.
 
-You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
