@@ -9,7 +9,7 @@ This is a public-facing site that explains what ePRaSE is and includes user guid
 ### Project Team
 
 * Becky Osselton, Newcastle University  ([rebecca.osselton@newcastle.ac.uk](mailto:rebecca.osselton@newcastle.ac.uk))
-* John Schoneboom, Newcastle University  ([John.Schoneboom@newcastle.ac.uk](mailto:John.Schoneboom@newcastle.ac.uk))
+* John Schoneboom, Newcastle University  ([John.Schoneboom@newcastle.ac.uk](mailto:john.schoneboom@newcastle.ac.uk))
 * Stephanie Klein, The Newcastle Hospitals NHS Foundation Trust  ([stephanie.klein@nhs.net](mailto:stephanie.klein@nhs.net))
 * Ellie Merrison, The Newcastle Hospitals NHS Foundation Trust  ([eleanor.merrison1@nhs.net](mailto:eleanor.merrison1@nhs.net))
 
