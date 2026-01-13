@@ -23,11 +23,21 @@ This is a public-facing site that explains what ePRaSE is and includes user guid
 
 ## Local Development
 
-This may be the simplest Sveltekit site ever built. Basically there's a link to a Font Awesome stylesheet in src/app.html and everything else that's us and not Svelte's internal business is in the src/routes directory. 
+This may be the simplest Sveltekit site ever built. Custom code is all in the **src/routes** directory, and assets like images are in the **static** directory. The only customization of **src/app.html** was the addition of a link to a Font Awesome stylesheet in the document head.
 
-The main layout with header, footer, global and home page styles, and main Svelte imports is in routes/+layout.svelte. Individual page content is in the various +page.svelte files: the home page at the top level of routes, and the others in their own directories (about, faq, lab, news, results, and using). Those each contain only basic HTML and (in a couple of cases) page-specific styles. None of them have their own scripts or import their own Svelte tricks.
+### Code 
+
+The main layout with header, footer, global and home page styles, and main Svelte imports is in **routes/+layout.svelte**. 
+
+Individual page content is in the various **+page.svelte** files: the home page at the top level of routes, and the others in their own directories (about, faq, lab, news, results, and using). Those each contain only basic HTML and (in a couple of cases) page-specific styles. None of them have their own scripts or import their own Svelte tricks.
 
 Easy peasy.
+
+### Assets
+
+There are three custom subdirectories within Svelte's **static** directory: img, pdf, and video. They hold images, pdfs, and video files, respectively. Svelte puts these directories at the top level on build, so they can be referenced with `/img`, `/pdf`, and `/video` in links.
+
+### Testing
 
 To view/test the site locally in a browser you can run 
 
@@ -35,8 +45,8 @@ To view/test the site locally in a browser you can run
 
 ## Deployment
 
-When you push master, a GitHub action will build the static site into a directory called 'build' and place its contents into a branch that it creates called gh-pages. That's the branch that feeds the custom domain eprase.info (and is set as such in Settings => Pages).
+When you push master, a GitHub action will build the site into a directory called **build** and place its contents into a branch that it creates called **gh-pages**. That's the branch that feeds the custom domain eprase.info (and is set as such in **Settings => Pages**).
 
-The build and deployment instructions are in .github/workflows/deploy.yml. Note that it specifies the "publish_dir", the directory where the built site resides, which (by Svelte default) is called 'build'. It also includes 'cname: eprase.info', specifying the custom domain.
+The build and deployment instructions are in **.github/workflows/deploy.yml**. Note that it specifies the "publish_dir" as "build", the directory where (by Svelte default) the built site resides. It also includes "cname: eprase.info", specifying the custom domain.
 
 That's about all there is to it.
