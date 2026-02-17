@@ -23,7 +23,7 @@
 
 {#if menuOpen}
     <nav class="navbar mobile-only" transition:slide={{ duration: 400, axis: 'y' }}>
-        <a href="https://eprase.nhs.uk" class="mynav mobilenav">Sign up now</a>
+        <a href="https://eprase.nhs.uk" class="mynav tool-open mobilenav">Sign up now</a>
         {#each navLinks as link}
             <a href={link.path} 
                aria-current={page.url.pathname === link.path} 
@@ -35,7 +35,7 @@
 {/if}
 
 <nav class="navbar desktop-only">
-    <a href="https://eprase.nhs.uk" class="go2button">Sign up now</a>
+    <a href="https://eprase.nhs.uk" class="go2button tool-open">Sign up now</a>
     {#each navLinks as link}
         <a href={link.path} 
            aria-current={page.url.pathname === link.path} 
@@ -65,7 +65,6 @@
     :global(.eprase-image) {width: 40%; float: right; margin: 0 0 10px 10px; border: 2px solid #1e2a71;}
     :global(.eprase-h1) {font-size: 2.5em; color: #1e2a71; margin-left: 5%; position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
     :global(.eprase-h2) {font-size: 1.8em; color: #3e53cc; font-style: italic; margin-left: 15%}
-    
     .navbar {
         padding: 0; 
         width: 100%;
@@ -121,6 +120,10 @@
         width: 100%;
         border-bottom: 1px solid rgba(255,255,255,0.1);
         box-sizing: border-box;
+    }
+
+    .tool-open {
+        display: none; /* change to inline-block while tool is open */
     }
 
     @media (max-width: 768px) {

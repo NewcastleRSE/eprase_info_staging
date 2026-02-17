@@ -29,7 +29,7 @@
 			<div class="w3-card w3-container" style="min-height:350px">
 				<h3>News</h3><br>
 				<i class="fa fa-newspaper-o w3-margin-bottom eprase-icons" style="font-size:120px"></i>
-				<p>New for 2025</p>
+				<p>New for 2026</p>
 			</div>
 		</div></a>
 

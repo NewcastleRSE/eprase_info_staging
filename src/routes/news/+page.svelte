@@ -1,4 +1,10 @@
 <h1 class="eprase-h1">New for 2026</h1>
+<h2 class="eprase-h2">ePRaSE tool closed</h2>
+  <div class="accordion-text">
+    <p>Tool is closed as of 17 February -- preliminary results will be issued in March at the 
+      Rewired Conference, then full results presented on 22nd April at the 
+      ePrescribing Masterclass.</p>
+  </div>
 <h2 class="eprase-h2">Learning Lab Launch</h2>
   <div class="accordion-text">
     <p>NHSE Electronic Prescribing Learning Lab -- This interactive learning resource, 
@@ -13,10 +19,7 @@
 <h2 class="eprase-h2">Do not miss the chance to test your EP system safety</h2>
   <div class="accordion-text">
         <p>Version 4 of the Electronic Prescribing Risk and Safety Evaluation (ePRaSE) tool went 
-          live on 30 October 2025 and runs until 31 January 2026!</p>
-
-        <p>You can register at <a href="http://eprase.nhs.uk">eprase.nhs.uk</a> and 
-          run through the assessment from the launch date (October 30).</p>
+          live on 30 October 2025 and ran through 16 February 2026.</p>
     </div>
     <h2 class="eprase-h2">What's new in this version?</h2>
       <div class="accordion-text">
