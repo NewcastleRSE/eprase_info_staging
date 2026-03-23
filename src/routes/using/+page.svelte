@@ -4,6 +4,13 @@
 		<ul>
 			<li>Step-by-step instructions for using the ePRaSE tool can be found 
 			in <a class="eprase-link" target="_blank" href="/pdf/EpraseUserGuide2025.pdf" title="User Guide PDF">this PDF file</a>.</li>
+			<li>Watch a user experience video from Newcastle Hospitals Andrew Head, 
+				Lead Pharmacist for Clinical Informatics, on how to interpret and 
+				respond to your ePRaSE assessment results.
+				<div class="eprase-video">
+	  				<iframe src="https://www.youtube.com/embed/xULluERejNk"></iframe>
+				</div>
+			</li>
 			<li>A video walk-through of the ePRaSE system is available here:
 				<div class="eprase-video">
       				<iframe src="https://www.youtube.com/embed/0bz-d0ZV0bA"></iframe>
