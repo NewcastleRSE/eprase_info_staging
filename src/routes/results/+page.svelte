@@ -50,8 +50,14 @@
 
         <p>This tab shows the results of a question on the description of Phenoxymethylpenicillin in user EP systems. Using the description Penicillin V may lead to the mis-selection of Penicillamine as an allergy status. Users can verify that they are using the correct dm+d description and compare data within their system type.</p>
     </div>
-    <h2 class="eprase-h2">Summary Video</h2>
+    <h2 class="eprase-h2">Summary Videos</h2>
     <div class="accordion-text">
+      <p>Watch a user experience video from Newcastle Hospitals Andrew Head, 
+				Lead Pharmacist for Clinical Informatics, on how to interpret and 
+				respond to your ePRaSE assessment results.</p>
+				<div class="eprase-video">
+	  				<iframe width="560" height="315" src="https://www.youtube.com/embed/xULluERejNk"></iframe>
+				</div>
       <p>The video below shows an online presentation summarizing key findings of the 
       ePRaSE 2024 rollout, recorded at the April 2025 ePrescribing Masterclass. The 
       ePRaSE section starts 35 minutes into the video.</p>

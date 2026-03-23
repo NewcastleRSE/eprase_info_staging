@@ -1,7 +1,8 @@
-<h1 class="eprase-h1">New for 2026</h1>
+<h1 class="eprase-h1">ePRaSE News</h1>
 <h2 class="eprase-h2">ePRaSE tool closed</h2>
   <div class="accordion-text">
-    <p>Tool is closed as of 17 February -- preliminary results will be issued in March at the 
+    <p>Version 4 of the Electronic Prescribing Risk and Safety Evaluation (ePRaSE) 
+      tool is closed as of 17 February -- preliminary results will be issued in March at the 
       Rewired Conference, then full results presented on 22nd April at the 
       ePrescribing Masterclass.</p>
   </div>
@@ -16,22 +17,30 @@
         for a link to the meeting and to learn more about how this resource was developed 
         and see a Lab demo.</p>
   </div>
-<h2 class="eprase-h2">Do not miss the chance to test your EP system safety</h2>
+<h2 class="eprase-h2">New Video: Interpreting Results</h2>
+  <div class="accordion-text">
+    <p>Watch a user experience video from Newcastle Hospitals Andrew Head, 
+        Lead Pharmacist for Clinical Informatics, on how to interpret and 
+        respond to your ePRaSE assessment results.</p>
+        <div class="eprase-video">
+    				<iframe width="560" height="315" src="https://www.youtube.com/embed/xULluERejNk"></iframe>
+        </div>
+  </div>
+<h2 class="eprase-h2">ePRaSE Version 4</h2>
   <div class="accordion-text">
         <p>Version 4 of the Electronic Prescribing Risk and Safety Evaluation (ePRaSE) tool went 
           live on 30 October 2025 and ran through 16 February 2026.</p>
     </div>
-    <h2 class="eprase-h2">What's new in this version?</h2>
+    <h2 class="eprase-h2">What's new in Version 4?</h2>
       <div class="accordion-text">
         <ul>
           <li>A new module to test paediatric prescribing safety</li>
           <li>The ability to test more than one EP system if used across a trust</li>
         </ul>
-        <p>Participation in this national programme is essential to ensure a consistent and robust assessment of electronic prescribing systems, helping us to collectively strengthen patient safety across the NHS.</p>
       </div>
     <h2 class="eprase-h2">What's involved?</h2>
       <div class='accordion-text'>
-        <p>Each trust will complete a self-assessment that reviews local system configurations, 
+        <p>Each trust completes a self-assessment that reviews local system configurations, 
           provides benchmarking against national data, and supports the case for investment in 
           improvements. We encourage pharmacy, informatics, and patient safety teams to work 
           together to register and complete the assessment within the timeframe.</p>
