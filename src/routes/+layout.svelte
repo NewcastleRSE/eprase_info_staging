@@ -1,182 +1,169 @@
 <script lang="ts">
     import { page } from '$app/state';
-    import { slide } from 'svelte/transition';
     let { children } = $props();
     export const prerender = true;
     let menuOpen = $state(false);
 
-    const navLinks = [
-        { name: 'Home', path: '/' },
+    const bottomLinks = [
         { name: 'About', path: '/about' },
         { name: 'Using ePRaSE', path: '/using' },
         { name: 'Results', path: '/results' },
-        { name: 'News', path: '/news' },
-        { name: 'Learning Lab', path: '/lab' },
-        { name: 'FAQ', path: '/faq' }
+        { name: 'Learning Lab', path: '/lab' }
     ];
+
+    const topLinks = [
+        { name: 'News', path: '/news' },
+        { name: 'FAQ', path: '/faq' },
+        { name: 'Contact', path: '/contact' }
+    ];
+
+    const allLinks = bottomLinks.concat(topLinks);
+
 </script>
-<header id="eprase-header">
-    <button title="burger button" id="burger" 
-    onclick={() => menuOpen = !menuOpen}
-    class="fa {menuOpen ? 'fa-times' : 'fa-bars'}"></button>
-</header>
-
-{#if menuOpen}
-    <nav class="navbar mobile-only" transition:slide={{ duration: 400, axis: 'y' }}>
-        <a href="https://eprase.nhs.uk" class="mynav tool-open mobilenav">Sign up now</a>
-        {#each navLinks as link}
-            <a href={link.path} 
-               aria-current={page.url.pathname === link.path} 
-               class="mynav mobilenav"
-               onclick={() => menuOpen = false}> {link.name}
-            </a>
-        {/each}
-    </nav>
-{/if}
-
-<nav class="navbar desktop-only">
-    <a href="https://eprase.nhs.uk" class="go2button tool-open">Sign up now</a>
-    {#each navLinks as link}
-        <a href={link.path} 
-           aria-current={page.url.pathname === link.path} 
-           class="mynav">
-           {link.name}
-        </a>
-    {/each}
+<nav id="topnav">
+    <div class="logo-area">
+        <a href="/"><img src="img/eprase_logo_color.png" alt="EPRASE Logo"></a>
+    </div>
+    <div class="nav-stack">
+        <div class="nav-row top-row desktop-only">
+            {#each topLinks as link}
+                <a href={link.path} 
+                aria-current={page.url.pathname === link.path ? 'page' : undefined} >
+                {link.name}
+                </a>
+            {/each}
+            </div>
+            <hr class="nav-divider">
+        <div class="nav-row bottom-row desktop-only">
+            {#each bottomLinks as link}
+                <a href={link.path} 
+                aria-current={page.url.pathname === link.path ? 'page' : undefined} >
+                {link.name}
+                </a>
+            {/each} 
+        </div>
+    </div>
 </nav>
-
 <main>
     {@render children()}
 </main>
 
-<footer class="row w3-center footer">
-	<div class='col col-4'><img class='floatleft' src='/img/ncl_logo.png' alt='Newcastle University'></div>
-	<div class='col col-4 footercenter'>
-  		<p class="eprase-contact"><a href="mailto:nuth.eprase@nhs.net">Contact</a></p>
-  	</div>
-  	<div class='col col-4 floatright'><img src='/img/nhs_logo.png' alt='NHS England'></div>
-</footer>
+<footer><img src="img/ncl_logo.png" alt="NCL Logo"><img src="img/nhs_logo.png" alt="NHS Logo"></footer>
 
 <style>
      /* --- SHARED STYLES --- */
-    :global(body) {margin: 0; font-family:Arial, Helvetica, sans-serif; line-height: 1.5;}
-    :global(h1,h2,h3,h4,h5,h6){font-family:"Segoe UI",Arial,sans-serif;font-weight:400;margin:10px 0;}
-    :global(.accordion-text) {width: 60%; margin: auto; font-size: 1.2em; line-height: 1.6; margin-bottom: 30px;}
-    :global(.eprase-image) {width: 40%; float: right; margin: 0 0 10px 10px; border: 2px solid #1e2a71;}
-    :global(.eprase-h1) {font-size: 2.5em; color: #1e2a71; margin-left: 5%; position:relative;animation:animateleft 0.4s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
-    :global(.eprase-h2) {font-size: 1.8em; color: #3e53cc; font-style: italic; margin-left: 15%}
-    .navbar {
-        padding: 0; 
-        width: 100%;
-        color: #fff !important; 
-        background-image: linear-gradient(#3e53cc,#151E51) !important;
+    @property --color1 { syntax: '<color>'; initial-value: #2C3E50; inherits: true; }
+    @property --color2 { syntax: '<color>'; initial-value: #BDC3C7; inherits: true; }
+    #topnav {
+        display: flex;
+        justify-content: space-between; /* Pushes logo left, nav right */
+        align-items: center;
+        padding: 0 40px;
+        height: 150px;
+        font-family: "Raleway", sans-serif;
     }
 
-    /* Links base style */
-    .mynav {
-        padding: 16px;
-        display: inline-block;
+    .nav-stack {
+        display: flex;
+        flex-direction: column; /* Stacks the two rows vertically */
+        align-items: flex-end;   /* Aligns the text to the right edge */
+        gap: 8px;               /* Space between rows and line */
+    }
+
+    .nav-row a {
         text-decoration: none;
-        color: white !important; /* Force color immediately */
-        text-align: center;
-        cursor: pointer;
-        transition: background 0.2s;
-    }
-
-    .mynav:hover, .mynav[aria-current="true"] {
-        color: black !important; 
-        background-color: #9eb4e6 !important;
-    }
-
-    /* --- MOBILE-SPECIFIC --- */
-    #burger { 
-        display: inline-block; 
-        position: absolute;
-        bottom: 15px; 
-        right: 20px; 
-        z-index: 100;
-        font-size: 28px!important;
-        color: #000;
-        background-color: #89aadc;
-        border: none;
-        margin-bottom: 4px;
-        border-radius: 4px;
-        padding: 8px 16px;
-        vertical-align: middle;
-        overflow: hidden;
-        text-decoration: none;
-        text-align: center;
-        cursor: pointer;
-        white-space: nowrap;
-    }
-    #burger:hover {
-        color:#000!important;
-        background-color:#bccfec!important;
-    }
-
-    /* Override for mobile links */
-    .mobilenav {
-        display: block;
-        width: 100%;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        box-sizing: border-box;
-    }
-
-    .tool-open {
-        display: none; /* change to inline-block while tool is open */
-    }
-
-    @media (max-width: 768px) {
-        #burger { display: block; }
-        .desktop-only { display: none !important; }
+        color: #171717;
+        font-size: 1.1rem;
         
-        .navbar.mobile-only {
-            display: block; /* Svelte handles visibility via {#if} */
-            text-align: center;
-        }
-
-        .go2button {
-            float: none;
-            display: block;
-            width: 80%;
-            margin: 15px auto;
-            text-align: center;
-        }
+        /* 1. Pre-apply the spacing so it never shifts */
+        padding: 4px 12px; 
+        border: 1px solid transparent; 
+        border-radius: 20px;
+        
+        /* 2. Smoothly transition everything */
+        transition: all 0.4s ease; 
+        display: inline-block; /* Ensures padding/height are respected */
     }
 
-    /* --- DESKTOP-SPECIFIC --- */
-    @media (min-width: 769px) {
-        .desktop-only { display: block; }
-        #burger { display: none; }
+    /* Bottom Row Hover */
+    .nav-row a:hover {
+        color: #3498DB; 
+        border-color: #3498DB; /* Just reveal the border color */
     }
 
-    /* --- BANNER & REST --- */
-    #eprase-header {
-        background-image: url(/img/banner.jpg);
-        background-size: cover;
-        background-position: center;
-        position: relative;
-        width: 100%;
-        padding-top: 20%;
+    /* Top Row Hover Override */
+    .top-row a:hover {
+        background: #3498DB;
+        border-color: #3498DB;
+        color: #fff;
     }
 
-    .go2button {
-        float: right; 
-        margin: 10px; 
-        background-color: #9aa6e9;
-        padding: 8px;
-        border-radius: 12px;
-        color: #222e66;
-        text-decoration: none;
+    /* Adjusting the top-row base size to match your design */
+    .top-row a {
+        font-size: 1rem;
+        opacity: 0.9;
     }
-    .go2button:hover {
-        background-color: #bccfec;
-        color: #000;
-        text-decoration: none;
+    .nav-row a[aria-current="true"] {
+        color: #3498DB; 
+        border-color: #3498DB;
+        font-weight: 500;
+        pointer-events: none;
+    }
+
+    .top-row a[aria-current="true"] {
+        background: #3498DB;
+        color: #fff;
+        opacity: 1;
+    }
+
+    .nav-divider {
+        width: 100%;            /* Line spans the width of the link stack */
+        border: 0;
+        border-top: 1px solid #666;
+        margin: 4px 0;
+    }
+    .logo-area img {
+        height: 80px;           /* Adjust logo size as needed */
+    }
+
+    footer {
+        /* The Magic Math */
+        height: calc(25vh - 150px); 
+        
+        /* Layout */
+        display: flex;
+        justify-content: center; /* Centers logos horizontally */
+        align-items: center;     /* Centers logos vertically */
+        gap: 100px;               /* Space between the two logos */
+        
+        background-color: #fff;
+        padding: 20px 0;
+        box-sizing: border-box;  /* Ensures padding doesn't add to height */
+    }
+
+    footer img {
+        height: 60px;            /* Consistent height for partner logos */
+        filter: grayscale(40%);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    footer img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    /** global styles */
+    :global(body) { 
+        margin: 0; 
+        padding: 0; 
+        background: #fff; 
+        overflow-x: hidden; 
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
     }
     
-    /* Global helpers for the footer/content */
-    .row {width: 100%; display: table; text-align: center;}
-    .col {display: table-cell; width: 33.33%; float: left;}
-    .footer { padding: 16px; background-image:linear-gradient(#bfc6ee, #3e53cc) !important; color: white; }
+
+
 </style>

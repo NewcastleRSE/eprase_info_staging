@@ -1,0 +1,510 @@
+<html>
+<head>
+  <title>ePRaSE Information</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+  <style>
+    @property --color1 { syntax: '<color>'; initial-value: #2C3E50; inherits: true; }
+    @property --color2 { syntax: '<color>'; initial-value: #BDC3C7; inherits: true; }
+
+    body { 
+        margin: 0; 
+        padding: 0; 
+        background: #fff; 
+        overflow-x: hidden; 
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    #topnav { height: 150px; display: flex; align-items: center; padding-left: 20px; }
+    #topnav-right { margin-left: auto; margin-right: 20px; }
+    #content {
+        font-size: 1.4rem;
+        font-family: "Raleway", Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        line-height: 1.7;
+        width: 60%;
+        color: #333;
+        max-width: 850px;
+        margin: 40px auto;
+        flex: 1;
+        justify-content: left; 
+        align-items: top;
+        box-sizing: border-box;
+        border-bottom: 1px solid #eee;
+        animation: fadeUp 1.2s ease-out forwards;
+    }
+    #content h2 {
+        color: #3498DB;
+        font-weight: 200;
+        margin-top: 40px;
+        animation: fadeUp 1s ease-out both;
+        animation-delay: 0.2s; /* Starts slightly after the H1 */
+    }
+
+    #content p {
+        animation: fadeUp 1s ease-out both;
+        animation-delay: 0.4s; /* The paragraphs arrive last */
+    }
+    
+    #dots {
+      position: relative;
+      width: 100%;
+      height: 75vh;
+      background-color: #eff3fb;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      box-shadow: inset 0 0 60px rgba(34, 61, 152, 0.05);
+      clear:both;
+    }
+
+    h1 {
+      position: relative;
+      width: 100%;
+      font-family: "Raleway", sans-serif;
+      font-weight: 200;
+      color: #474747;
+      margin: 0;
+      display: flex;
+      background-color: #eff3fb;
+      border-bottom: 1px solid #eee;
+      border-top: 1px solid #eee;
+      font-size: 3.5rem;
+      pointer-events: none;
+      padding-left: 5%;
+      height: 20vh;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+      overflow: hidden;
+      align-items: center;
+      box-shadow: inset 0 0 60px rgba(34, 61, 152, 0.05);
+      animation: fadeUp 0.8s ease-out forwards;
+    }
+    .banner-text {
+      font-family: "Raleway", sans-serif;
+      font-weight: 200;
+      color: #474747;
+      font-size: 4rem;
+      z-index: 10;
+      pointer-events: none;
+      padding-left: 5%;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+
+    .ball {
+      position: absolute;
+      /* Smoothly transition all physical and color properties */
+      transition: 
+        --color1 3s ease, 
+        --color2 3s ease, 
+        border-radius 3s ease, 
+        width 3s ease;
+      background: linear-gradient(90deg, var(--color1) 50%, var(--color2) 50%);
+      z-index: 5;
+      will-change: transform, opacity;
+      top: 0; left: 0;
+    }
+
+    /* The Scored Line: Permanent element that fades in/out */
+    .ball::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--color1);
+      mix-blend-mode: multiply;
+      opacity: 0;
+      transition: opacity 3s ease;
+      transform: translateY(-50%);
+    }
+
+    .ball.tablet::after { opacity: 0.4; }
+
+    #topnav {
+        display: flex;
+        justify-content: space-between; /* Pushes logo left, nav right */
+        align-items: center;
+        padding: 0 40px;
+        height: 150px;
+        font-family: "Raleway", sans-serif;
+    }
+
+    .nav-stack {
+        display: flex;
+        flex-direction: column; /* Stacks the two rows vertically */
+        align-items: flex-end;   /* Aligns the text to the right edge */
+        gap: 8px;               /* Space between rows and line */
+    }
+
+    .nav-row a {
+        text-decoration: none;
+        color: #171717;
+        font-size: 1.1rem;
+        
+        /* 1. Pre-apply the spacing so it never shifts */
+        padding: 4px 12px; 
+        border: 1px solid transparent; 
+        border-radius: 20px;
+        
+        /* 2. Smoothly transition everything */
+        transition: all 0.4s ease; 
+        display: inline-block; /* Ensures padding/height are respected */
+    }
+
+    /* Bottom Row Hover */
+    .nav-row a:hover {
+        color: #3498DB; 
+        border-color: #3498DB; /* Just reveal the border color */
+    }
+
+    /* Top Row Hover Override */
+    .top-row a:hover {
+        background: #3498DB;
+        border-color: #3498DB;
+        color: #fff;
+    }
+
+    /* Adjusting the top-row base size to match your design */
+    .top-row a {
+        font-size: 1rem;
+        opacity: 0.9;
+    }
+
+    .nav-divider {
+        width: 100%;            /* Line spans the width of the link stack */
+        border: 0;
+        border-top: 1px solid #666;
+        margin: 4px 0;
+    }
+
+    /* The "You Are Here" State */
+    .nav-row a.active {
+        color: #3498DB; 
+        border-color: #3498DB;
+        font-weight: 500; /* Subtle weight increase */
+        pointer-events: none; /* Optional: prevents clicking the page you're already on */
+    }
+
+    /* Top-row active variant (solid blue) */
+    .top-row a.active {
+        background: #3498DB;
+        color: #fff;
+        opacity: 1;
+    }
+
+    .logo-area img {
+        height: 80px;           /* Adjust logo size as needed */
+    }
+
+    footer {
+        /* The Magic Math */
+        height: 120px;
+        
+        /* Layout */
+        display: flex;
+        justify-content: center; /* Centers logos horizontally */
+        align-items: center;     /* Centers logos vertically */
+        gap: 100px;               /* Space between the two logos */
+        
+        background-color: #fff;
+        padding: 20px 0;
+        box-sizing: border-box;  /* Ensures padding doesn't add to height */
+    }
+
+    footer img {
+        height: 60px;            /* Consistent height for partner logos */
+        filter: grayscale(40%);
+        opacity: 0.8;
+        transition: all 0.3s ease;
+    }
+
+    footer img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+    @keyframes fadeUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px); /* Starts 20px lower */
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);    /* Ends at its natural spot */
+        }
+    }
+    @media (max-width: 768px) { .banner-text { font-size: 2.5rem; } }
+  </style>
+</head>
+<body>
+  <nav id="topnav">
+    <div class="logo-area">
+        <a href="/"><img src="eprase_logo_color.png" alt="EPRASE Logo"></a>
+    </div>
+
+    <div class="nav-stack">
+        <div class="nav-row top-row">
+        <a href="#">News</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contact</a>
+        </div>
+        
+        <hr class="nav-divider">
+
+        <div class="nav-row bottom-row">
+        <a href="#" class="active">About</a>
+        <a href="#">Using ePRaSE</a>
+        <a href="#">Results</a>
+        <a href="#">Learning Lab</a>
+        </div>
+    </div>
+  </nav>
+  <h1>About ePRaSE</h1>
+  <div id="content">
+    <p>The Electronic Prescribing Risk and Safety Evaluation tool, known as ePRaSE, 
+        is an online NHS-sponsored self-assessment tool developed to help trusts learn 
+        about how well their electronic prescribing systems have been configured and 
+        maintained to mitigate against known prescribing risks to keep patients safe. 
+        The results will allow trusts to look at their individual performance 
+        immediately and learn from annually reported national benchmarking data. 
+        The national results will also be used by the ePRaSE team to build a 
+        Learning Lab toolkit to support users in taking the next steps in optimising 
+        their systems.</p>
+
+    <h2>Tool description</h2>
+
+    <p>The tool provides a set of 15 fictional 'patients', which users set up in their live or test 
+    ePrescribing environments, and then provides a set of 45 prescribing test scenarios to challenge 
+    their system responses to risk. There are some additional direct configuration questions to 
+    assess basic safety features in the build of the user's ePrescribing system. The performance 
+    of the ePrescribing system to both the risk scenarios and configuration questions is provided 
+    in real time with a text-based report and accompanying visuals. The report is intended to 
+    guide and assist ePrescribing system users and new implementers in the optimisation of their systems.</p>
+
+    <p>From 2025 the tool has two types of assessment available, a main adult version suitable 
+    for all acute and mental health NHS trusts and a paediatric version that can be used for 
+    any NHS trust using or implementing ePrescribing within Children's Services.</p>
+
+    <p>Currently users must have access to the English Health and Social Care Network (HSCN) 
+    to access the tool using their nhs.uk or nhs.net email accounts. Up to four users per 
+    trust can register to set up and execute the assessment or to view the final reports. 
+    We are working on getting access to the tool for Home Nations sites.</p>
+
+    <p>The web-based ePRaSE application is compatible with all modern browsers: Google Chrome, 
+    Mozilla Firefox, Opera, Safari, and Edge.</p>
+    
+    <h2>Background</h2>
+
+    <p>ePrescribing is the utilisation of electronic systems to facilitate and enhance 
+        the safety and efficacy of prescribing medicines to patients, and to provide a 
+        robust audit trail for the entire medicines use process. Implementation of 
+        ePrescribing with clinical decision support (CDS) has been extensively researched; 
+        many studies have shown reductions in medication error rates and preventable adverse 
+        effects. Following implementation of ePrescribing with CDS, medication errors 
+        tend to decrease over time as system configuration is optimised for local use and 
+        users adapt to the system. Greater patient safety benefits are documented with 
+        experienced users rather than new implementers. However, upgrades and system 
+        modifications can also introduce new safety risks, such as incompatibilities with 
+        legacy software. Detecting and managing safety risks can be difficult due to the 
+        complex nature of potential errors relating to not only the system itself, but also 
+        the behaviours of users and characteristics specific to organisations.</p>
+
+    <p>In the UK, before ePRaSE there was no standard method of evaluating the effectiveness 
+        of ePrescribing systems in preventing medication errors or potential adverse drug 
+        events. NHS England has commissioned the continued development of ePRaSE to assist 
+        trusts in continuous improvement and optimisation of electronic prescribing systems.</p>
+    
+    <p>The programme started as a pilot in 2019 with the second iteration of the tool 
+        rolled out in 2022. The 2022 findings suggested that on average only 50% of 
+        potentially unsafe prescription orders were being mitigated appropriately by the 
+        EP systems tested. Further details can be found in the open access publication 
+        titled "A simulation study to quantitatively assess the performance of electronic 
+        prescribing systems in English NHS Hospital Trusts", accessible through this 
+        quick link <a href='https://rdcu.be/d6nGu'>https://rdcu.be/d6nGu</a>.</p>
+    
+    <p>The latest findings for the 2024 campaign can be viewed on <a href="/results">the 
+        results page of this website.</a></p>
+  </div>
+<footer><img src="ncl_logo.png" alt="NCL Logo"><img src="nhs_logo.png" alt="NHS Logo"></footer>
+
+<script>
+window.addEventListener('load', function() {
+  const container = document.querySelector("h1");
+  const colors = ["#2C3E50", "#3498DB", "#16A085", "#218C74"];
+  const capMap = {"#2C3E50":"#95a5a6", "#3498DB":"#D1D9E6", "#16A085":"#A3E4D7", "#218C74":"#BDC3C7"};
+  
+  // GLOBAL CONFIG
+  const minSize = 25;
+  const maxSize = 60;
+  const sizeRange = maxSize - minSize;
+  const midSize = (maxSize + minSize) / 2;
+  const amplitude = sizeRange / 2;
+  const minOp = 0.15;
+  const maxOp = 0.50;
+  const minBlur = 2;
+  const maxBlur = 10;
+  const rightWall = 50;
+  const horizontalEnergy = 0.2;
+  const verticalEnergy = 0.2;
+  const basePulseIntensity = 0.0015;
+  const rotationMultiplier = 0.2;
+  const maxRotationSpeed = 0.2;
+
+  let balls = [];
+  let animationId;
+
+  function setup() {
+    container.querySelectorAll('.ball').forEach(b => b.remove());
+    balls = [];
+    cancelAnimationFrame(animationId);
+
+    const cw = container.clientWidth;
+    const ch = container.clientHeight;
+    const isMobile = cw < 768;
+    const numBalls = isMobile ? 2 : 4;
+    const leftWall = cw * (isMobile ? 0.50 : 0.7);
+    
+
+    for (let i = 0; i < numBalls; i++) {
+      const ball = document.createElement("div");
+      ball.classList.add("ball");
+      
+      const startPhase = (i / numBalls) * Math.PI * 2;
+      const baseSize = midSize; 
+      const isTablet = Math.random() > 0.7;
+      
+      // Initial visuals
+      let currentWidth = isTablet ? baseSize : baseSize * 2.2;
+      if (isTablet) ball.classList.add("tablet");
+      
+      const pillColor = colors[Math.floor(Math.random() * colors.length)];
+      ball.style.setProperty('--color1', pillColor);
+      ball.style.setProperty('--color2', isTablet ? pillColor : (capMap[pillColor] || "#BDC3C7"));
+      
+      ball.style.width = `${currentWidth}px`;
+      ball.style.height = `${baseSize}px`;
+      ball.style.borderRadius = isTablet ? "50%" : "100px";
+
+      // Spawn inside the "Safe Zone"
+      // Note: We only care about the X position of the LEFT edge
+      const rightLimit = cw - rightWall; 
+      const startX = leftWall + Math.random() * (rightLimit - leftWall);
+      const startY = Math.random() * (ch - baseSize);
+      
+      container.appendChild(ball);
+
+      balls.push({
+        el: ball,
+        x: startX, y: startY,
+        baseSize: baseSize,
+        h: baseSize,
+        baseVx: (Math.random() - 0.5) * horizontalEnergy,
+        baseVy: (Math.random() - 0.5) * verticalEnergy,
+        phase: startPhase,
+        pulseSpeed: 0.001 + Math.random() * basePulseIntensity,
+        colorIndex: colors.indexOf(pillColor),
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * rotationMultiplier
+      });
+    }
+    move();
+  }
+
+  function move() {
+    const cw = container.clientWidth;
+    const ch = container.clientHeight;
+    const leftWall = cw * (cw < 768 ? 0.50 : 0.7);
+    const rightLimit = cw - rightWall; // The invisible "Right Wall" for the anchor point
+    const speedController = .5; // Global speed multiplier
+    balls.forEach(b => {
+      let hit = false;
+
+      // --- SIMPLIFIED HORIZONTAL HIT ---
+      // We only check the Top-Left corner (b.x). Width changes don't affect this!
+      if (b.x >= rightLimit) {
+        b.x = rightLimit;
+        b.baseVx *= -1;
+        hit = true;
+      } else if (b.x <= leftWall) {
+        b.x = leftWall;
+        b.baseVx *= -1;
+        hit = true;
+      }
+
+      // --- VERTICAL HIT ---
+      if (b.y + b.h >= ch) {
+        b.y = ch - b.h;
+        b.baseVy *= -1;
+        hit = true;
+      } else if (b.y <= 0) {
+        b.y = 0;
+        b.baseVy *= -1;
+        hit = true;
+      }
+
+      if (hit) {
+        b.colorIndex = (b.colorIndex + 1) % colors.length;
+        const newColor = colors[b.colorIndex];
+        
+        // Random Morph Chance
+        if (Math.random() < 0.35) {
+          b.el.classList.toggle('tablet');
+        }
+
+        const isTablet = b.el.classList.contains('tablet');
+        // Visual width update (Transitioned via CSS)
+        const targetWidth = isTablet ? b.baseSize : b.baseSize * 2.2;
+
+        //change rotation speed
+        // Add a little "jolt" to the spin on impact
+        b.rotationSpeed += (Math.random() - 0.5) * 0.1;
+
+        // Keep it from spinning too fast
+        b.rotationSpeed = Math.max(Math.min(b.rotationSpeed, -maxRotationSpeed), maxRotationSpeed);
+        
+        b.el.style.width = `${targetWidth}px`;
+        b.el.style.borderRadius = isTablet ? "50%" : "100px";
+        b.el.style.setProperty('--color1', newColor);
+        b.el.style.setProperty('--color2', isTablet ? newColor : (capMap[newColor] || "#BDC3C7"));
+      }
+
+      // Pulse Math
+      b.phase += b.pulseSpeed;
+      const effectiveSize = midSize + Math.sin(b.phase) * amplitude;
+      const currentScale = effectiveSize / b.baseSize;
+      
+      const speedMult = (effectiveSize / maxSize) * 0.6 + speedController;
+      b.x += b.baseVx * speedMult;
+      b.y += b.baseVy * speedMult;
+      b.rotation += b.rotationSpeed;
+
+      // Visual Depth
+      let blurVal = ((maxSize - effectiveSize) / sizeRange) * (maxBlur - minBlur) + minBlur;
+      if (b.el.classList.contains('tablet')) blurVal *= 0.85;
+      const dynamicOpacity = ((effectiveSize - minSize) / sizeRange) * (maxOp - minOp) + minOp;
+
+      // Final Transformation
+      b.el.style.opacity = dynamicOpacity;
+      b.el.style.filter = `blur(${blurVal}px)`;
+      b.el.style.transform = `translate(${b.x}px, ${b.y}px) scale(${currentScale}) rotate(${b.rotation}deg)`;
+    });
+
+    animationId = requestAnimationFrame(move);
+  }
+
+  // Handle Resizes
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(setup, 200);
+  });
+
+  setup();
+});
+</script>
+</body>
+</html>
