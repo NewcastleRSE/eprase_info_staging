@@ -6,13 +6,23 @@
         height = "75vh",
         count = 12, 
         speed = 1.5, 
-        horizontalEnergy = 0.4
+        horizontalEnergy = 0.4,
+        verticalEnergy = 0.4,
+        pulseSpeed = 0.003,
+        pulseRange = 0.12,
+        minSize = 35,
+        maxSize = 90,
+        minBlur = 2.5,
+        maxBlur = 7,
+        minOpacity = 0.15,
+        maxOpacity = 0.45,
+        maxSpin = 0.1
     } = $props();
 
     // 2. State & Bindings
     let container: HTMLElement;
-    let w = $state(0); // This was missing!
-    let h = $state(0); // This was missing!
+    let w = $state(0); //div width
+    let h = $state(0); //div height
     let balls = $state([]); 
 
     const colors = ["#2C3E50", "#3498DB", "#16A085", "#218C74"];
@@ -29,13 +39,13 @@
             balls = Array.from({ length: count }, () => {
                 const pillColor = colors[Math.floor(Math.random() * colors.length)];
                 const isTablet = Math.random() > 0.7;
-                const size = 40 + Math.random() * 40;
+                const size = minSize + Math.random() * (maxSize - minSize);
                 
                 return {
                     x: leftWall + (Math.random() * spawnWidth),
                     y: Math.random() * (h - 80),
                     vx: (Math.random() - 0.5) * horizontalEnergy,
-                    vy: (Math.random() - 0.5) * 0.4,
+                    vy: (Math.random() - 0.5) * verticalEnergy,
                     size: size,
                     phase: Math.random() * Math.PI * 2,
                     rotation: Math.random() * 360,
@@ -44,6 +54,7 @@
                     color2: isTablet ? pillColor : (capMap[pillColor] || "#BDC3C7"),
                     isTablet,
                     scale: 1,
+                    baseScale: 1,
                     opacity: 0.3
                 };
             });
@@ -67,55 +78,50 @@
                 b.x += b.vx * speed;
                 b.y += b.vy * speed;
 
-                const maxWidth = b.size * 2.2;
-                const currentWidth = b.isTablet ? b.size : b.size * 2.2;
+                // Use a conservative "Safe Width" (The max a pill can ever be)
+                const safeWidth = b.size * 2.2; 
+                const leftWall = w < 768 ? w * 0.20 : w * 0.33;
+                const rightWallLimit = w - safeWidth;
+                const floorLimit = h - b.size;
+
                 let hit = false;
 
-                // Bounce logic: horizontal
+                // --- HORIZONTAL BOUNCE ---
                 if (b.x <= leftWall) { 
                     b.x = leftWall; 
                     b.vx = Math.abs(b.vx); 
                     hit = true;
-                } else if (b.x >= rightWall) { 
-                    b.x = rightWall; 
+                } else if (b.x >= rightWallLimit) { 
+                    b.x = rightWallLimit; 
                     b.vx = -Math.abs(b.vx); 
                     hit = true;
                 }
                 
-                // Bounce logic: vertical
+                // --- VERTICAL BOUNCE ---
                 if (b.y <= 0) { 
                     b.y = 0; 
                     b.vy = Math.abs(b.vy); 
                     hit = true;
-                } else if (b.y >= h - b.size) { 
-                    b.y = h - b.size; 
+                } else if (b.y >= floorLimit) { 
+                    b.y = floorLimit; 
                     b.vy = -Math.abs(b.vy); 
                     hit = true;
                 }
 
-                // --- IMPACT EFFECTS --- 
                 if (hit) {
-                    //color shift
                     const newColor = colors[Math.floor(Math.random() * colors.length)];
                     b.color1 = newColor;
-
-                    //shape shift
-                    if(Math.random() < 0.3) {
-                        b.isTablet = !b.isTablet;                        
-                    }
-
-                    //cap color based on new shape/color
+                    if (Math.random() < 0.3) b.isTablet = !b.isTablet;
                     b.color2 = b.isTablet ? newColor : (capMap[newColor] || "#BDC3C7");
-                    b.rotationSpeed += (Math.random() - 0.5) * 0.05; 
-                    // set a max rotation speed
-                    b.rotationSpeed = Math.max(Math.min(b.rotationSpeed, 0.2), -0.2);
-                    
+                    b.rotationSpeed = Math.max(Math.min(b.rotationSpeed + (Math.random() - 0.5) * 0.05, maxSpin), -maxSpin);
                 }
+
                 b.rotation += b.rotationSpeed * speed;
-                b.phase += 0.005;
-                b.scale = 1 + (Math.sin(b.phase) * 0.2);
-                b.blur = 10 - (b.scale * 6.5);
-                b.opacity = 0.2 + (b.scale * 0.25);
+                b.phase += pulseSpeed;
+                b.scale = 1 + (Math.sin(b.phase) * pulseRange);// Reduced scale range for calmness
+                const progress = (b.scale - (1 - pulseRange)) / (pulseRange * 2);
+                b.blur = maxBlur - (progress * (maxBlur - minBlur));
+                b.opacity = minOpacity + (progress * (maxOpacity - minOpacity));
             });
 
             // Re-assign to trigger Svelte 5 reactivity
@@ -174,9 +180,8 @@
       background: linear-gradient(90deg, var(--color1) 50%, var(--color2) 50%);
       z-index: 5;
       will-change: transform, opacity, width, border-radius, filter;
-      top: 0; left: 0;
       pointer-events: none;
-
+      transform-origin: center center;
       height: var(--size);
       width: calc(var(--size) * 2.2);
       border-radius: 100px;
