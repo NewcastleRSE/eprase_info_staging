@@ -2,23 +2,50 @@
     import PillContainer from '$lib/components/PillContainer.svelte';
 </script>
 
-<PillContainer height="75vh" count={12} speed={1.5}>
+<div class="home-banner">
+<PillContainer height="74vh" count={12} speed={1.5} spawnDelay={150}>
     <div class="banner-text">
         Configuring e-prescribing<br>
         systems to keep<br>
         patients safe
     </div>
 </PillContainer>
+</div>
 
 <style>
 	.banner-text {
 		font-family: "Raleway", sans-serif;
 		font-weight: 200;
 		color: #474747;
-		font-size: 4rem;
+		font-size: clamp(2.5rem, 5vw, 4rem);
 		z-index: 10;
 		pointer-events: none;
-		padding-left: 5%;
+		padding-left: clamp(5%, 10vw, 7%);
 		text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+		animation: fadeUp 0.8s ease-out forwards;
 	}
+
+	.home-banner {
+		position: relative;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		border-bottom: 1px solid #eee;
+		border-top: 1px solid #eee;
+		overflow: hidden;
+	}
+	
+	.home-banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* This sits on top of the pills */
+        box-shadow: inset 0 60px 60px -60px rgba(34, 61, 152, 0.2),
+					inset 0 -60px 60px -60px rgba(34, 61, 152, 0.2); 
+        pointer-events: none; /* Crucial: clicks pass through to the content */
+        z-index: 2; 
+    }
 </style>

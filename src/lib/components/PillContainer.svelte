@@ -1,14 +1,17 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+    import { onMount } from 'svelte';
 
-    // 1. Props
     let { 
         height = "75vh",
         count = 12, 
+        leftWallPercent = 0.33,
+        minLargeCount = 6,
+        heroSizeMin = 70,
         speed = 1.5, 
         horizontalEnergy = 0.4,
         verticalEnergy = 0.4,
-        pulseSpeed = 0.003,
+        minPulseSpeed = 0.001,
+        maxPulseSpeed = 0.005,
         pulseRange = 0.12,
         minSize = 35,
         maxSize = 90,
@@ -16,97 +19,37 @@
         maxBlur = 7,
         minOpacity = 0.15,
         maxOpacity = 0.45,
-        maxSpin = 0.1
+        maxSpin = 0.1,
+        spawnDelay = 300
     } = $props();
 
-    // 2. State & Bindings
-    let container: HTMLElement;
-    let w = $state(0); //div width
-    let h = $state(0); //div height
+    let w = $state(0);
+    let h = $state(0);
     let balls = $state([]); 
+    let stageReady = $derived(w > 0 && h > 0);
 
     const colors = ["#2C3E50", "#3498DB", "#16A085", "#218C74"];
     const capMap = {"#2C3E50":"#95a5a6", "#3498DB":"#D1D9E6", "#16A085":"#A3E4D7", "#218C74":"#BDC3C7"};
 
-    onMount(() => {
-            
-        // Use a small timeout to ensure the browser has calculated 'w' and 'h'
-        setTimeout(() => {
-            const leftWall = w < 768 ? w * 0.20 : w * 0.33;
-            const spawnWidth = w - leftWall - 150; // Total available space on the right
-            
-            // Initialize the balls using the current width/height
-            balls = Array.from({ length: count }, () => {
-                const pillColor = colors[Math.floor(Math.random() * colors.length)];
-                const isTablet = Math.random() > 0.7;
-                const size = minSize + Math.random() * (maxSize - minSize);
-                
-                return {
-                    x: leftWall + (Math.random() * spawnWidth),
-                    y: Math.random() * (h - 80),
-                    vx: (Math.random() - 0.5) * horizontalEnergy,
-                    vy: (Math.random() - 0.5) * verticalEnergy,
-                    size: size,
-                    phase: Math.random() * Math.PI * 2,
-                    rotation: Math.random() * 360,
-                    rotationSpeed: (Math.random() - 0.5) * 0.2,
-                    color1: pillColor,
-                    color2: isTablet ? pillColor : (capMap[pillColor] || "#BDC3C7"),
-                    isTablet,
-                    scale: 1,
-                    baseScale: 1,
-                    opacity: 0.3
-                };
-            });
+    let safeWidth = $derived(maxSize * 2.2);
+    let leftWall = $derived(w < 768 ? w * 0.20 : w * leftWallPercent);
+    let rightWallLimit = $derived(w - safeWidth);
 
-            loop();
-        }, 100);
+    let frame: number;
 
-        let frame: number;
-        function loop() {
-            // Skip if dimensions aren't ready
-            if (w === 0 || h === 0) {
-                frame = requestAnimationFrame(loop);
-                return;
-            }
-
-            // Define the Left Wall: 33% of width on desktop, 20% on mobile
-            const leftWall = w < 768 ? w * 0.20 : w * 0.33;
-            const rightWall = w - 60; // The invisible "Right Wall" for the anchor point
-            // Update every ball in the state
+    function loop() {
+        if (stageReady && balls.length > 0) {
             balls.forEach(b => {
                 b.x += b.vx * speed;
                 b.y += b.vy * speed;
-
-                // Use a conservative "Safe Width" (The max a pill can ever be)
-                const safeWidth = b.size * 2.2; 
-                const leftWall = w < 768 ? w * 0.20 : w * 0.33;
-                const rightWallLimit = w - safeWidth;
                 const floorLimit = h - b.size;
-
                 let hit = false;
-
-                // --- HORIZONTAL BOUNCE ---
-                if (b.x <= leftWall) { 
-                    b.x = leftWall; 
-                    b.vx = Math.abs(b.vx); 
-                    hit = true;
-                } else if (b.x >= rightWallLimit) { 
-                    b.x = rightWallLimit; 
-                    b.vx = -Math.abs(b.vx); 
-                    hit = true;
-                }
                 
-                // --- VERTICAL BOUNCE ---
-                if (b.y <= 0) { 
-                    b.y = 0; 
-                    b.vy = Math.abs(b.vy); 
-                    hit = true;
-                } else if (b.y >= floorLimit) { 
-                    b.y = floorLimit; 
-                    b.vy = -Math.abs(b.vy); 
-                    hit = true;
-                }
+                if (b.x <= leftWall) { b.x = leftWall; b.vx = Math.abs(b.vx); hit = true; }
+                else if (b.x >= rightWallLimit) { b.x = rightWallLimit; b.vx = -Math.abs(b.vx); hit = true; }
+                
+                if (b.y <= 0) { b.y = 0; b.vy = Math.abs(b.vy); hit = true; }
+                else if (b.y >= floorLimit) { b.y = floorLimit; b.vy = -Math.abs(b.vy); hit = true; }
 
                 if (hit) {
                     const newColor = colors[Math.floor(Math.random() * colors.length)];
@@ -117,26 +60,79 @@
                 }
 
                 b.rotation += b.rotationSpeed * speed;
-                b.phase += pulseSpeed;
-                b.scale = 1 + (Math.sin(b.phase) * pulseRange);// Reduced scale range for calmness
-                const progress = (b.scale - (1 - pulseRange)) / (pulseRange * 2);
+                b.phase += b.myPulseSpeed;
+                b.scale = 1 + (Math.sin(b.phase) * pulseRange);
+                const progress = (Math.sin(b.phase) + 1) / 2;
                 b.blur = maxBlur - (progress * (maxBlur - minBlur));
                 b.opacity = minOpacity + (progress * (maxOpacity - minOpacity));
             });
-
-            // Re-assign to trigger Svelte 5 reactivity
-            balls = balls; 
-            frame = requestAnimationFrame(loop);
         }
+        frame = requestAnimationFrame(loop);
+    }
 
-        return () => cancelAnimationFrame(frame);
+    onMount(() => {
+        let spawned = 0;
+        let interval: ReturnType<typeof setInterval>;
+
+        // CRITICAL FIX: The Waiting Room
+        // We don't start the 'spawnDelay' interval until w and h are real numbers
+        const checkDims = setInterval(() => {
+            if (w > 0 && h > 0) {
+                clearInterval(checkDims);
+                
+                interval = setInterval(() => {
+                    if (spawned >= count) {
+                        clearInterval(interval);
+                        return;
+                    } 
+
+                    const progress = count > 1 ? spawned / (count - 1) : 0;
+                    
+                    // We now use the 'real' w and h which are guaranteed to be > 0
+                    const startX = leftWall + (progress * (w - leftWall - safeWidth)); 
+                    const startY = (h * 0.1) + (progress * (h * 0.6)); 
+                    
+                    const startColor = colors[Math.floor(Math.random() * colors.length)];
+                    let finalSize = (spawned < minLargeCount) 
+                        ? heroSizeMin + Math.random() * (maxSize - heroSizeMin)
+                        : minSize + Math.random() * (maxSize - minSize);
+
+                    const newPill = {
+                        x: startX,
+                        y: startY,
+                        vx: (0.1 + Math.random() * 0.5) * horizontalEnergy,
+                        vy: (0.1 + Math.random() * 0.5) * verticalEnergy,
+                        size: finalSize,
+                        phase: Math.random() * Math.PI * 2,
+                        rotation: Math.random() * 360,
+                        rotationSpeed: (Math.random() - 0.5) * maxSpin,
+                        color1: startColor,
+                        color2: capMap[startColor] || "#BDC3C7",
+                        isTablet: Math.random() > 0.7,
+                        scale: 1,
+                        opacity: maxOpacity,
+                        myPulseSpeed: minPulseSpeed + Math.random() * (maxPulseSpeed - minPulseSpeed),
+                    };
+                    
+                    balls = [...balls, newPill];
+                    spawned++;
+                }, spawnDelay);
+            }
+        }, 30); // Check every 30ms for dimensions
+
+        loop();
+
+        return () => {
+            clearInterval(checkDims);
+            if (interval) clearInterval(interval);
+            cancelAnimationFrame(frame);
+        };
     });
 </script>
 
 <div 
     class="pill-stage" 
     style="height: {height};" 
-    bind:this={container}
     bind:clientWidth={w}
     bind:clientHeight={h}
 >
@@ -144,13 +140,17 @@
         <div 
             class="ball" 
             class:tablet={b.isTablet}
-            style:transform="translate({b.x}px, {b.y}px) scale({b.scale}) rotate({b.rotation}deg)"
-            style:opacity={b.opacity}
+            style:transform="scale({b.scale}) rotate({b.rotation}deg)"
+            style:left="{b.x}px"
+            style:top="{b.y}px"
+            style:opacity="{b.opacity}"
             style:filter="blur({b.blur}px)"
             style:--size="{b.size}px"
-            style:--color1={b.color1}
-            style:--color2={b.color2}
-        ></div>
+            style:--color1="{b.color1}"
+            style:--color2="{b.color2}"
+        >
+            <div class="cap"></div>
+        </div>
     {/each}
     <div class="content-overlay">
         <slot />
@@ -158,6 +158,15 @@
 </div>
 
 <style>
+    @keyframes pill-entrance {
+    from { 
+        opacity: 0; 
+        transform: scale(0.5) rotate(-20deg); 
+    }
+    to { 
+        /* The inline styles from the loop will take over from here */
+    }
+}
     .pill-stage {
         position: relative;
         width: 100%;
@@ -177,7 +186,7 @@
 
     .ball {
       position: absolute;
-      background: linear-gradient(90deg, var(--color1) 50%, var(--color2) 50%);
+      background-color: var(--color2);
       z-index: 5;
       will-change: transform, opacity, width, border-radius, filter;
       pointer-events: none;
@@ -185,14 +194,25 @@
       height: var(--size);
       width: calc(var(--size) * 2.2);
       border-radius: 100px;
+      overflow: hidden;
 
       transition:
         width 2s cubic-bezier(0.4, 0, 0.2, 1),
         border-radius 3s cubic-bezier(0.4, 0, 0.2, 1),
-        --color1 3s ease,
-        --color2 3s ease;
+        background-color 2s ease;
+
+      animation: pill-entrance 0.8s cubic-bezier(0.2, 0, 0.2, 1) forwards;
     }
 
+    .cap {
+        position: absolute;
+        top: 0; left: 0;
+        height: 100%;
+        /* The cap color (Left Side) */
+        width: 50%; 
+        background-color: var(--color1);
+        transition: width 2s cubic-bezier(0.4, 0, 0.2, 1), background-color 2s ease;
+    }
     .ball::after {
       content: '';
       position: absolute;
@@ -203,8 +223,12 @@
       opacity: 0;
       transform: translateY(-50%);
       transition: opacity 0.3s ease;
+      z-index: 2;
     }
     .ball.tablet::after { opacity: 0.4; transition: opacity 2s ease 1s;}
-    .ball.tablet { border-radius: 50%; width: var(--size); }
+    .ball.tablet { border-radius: 50%; width: var(--size); background-color: var(--color1);}
     .ball:not(.tablet) { border-radius: 100px; }
+    .ball.tablet .cap {
+        width: 100%; /* Cap expands to fill the circle */
+    }
 </style>

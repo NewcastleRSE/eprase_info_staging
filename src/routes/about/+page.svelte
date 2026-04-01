@@ -1,10 +1,9 @@
-<h1 class="eprase-h1 w3-animate-left">About ePRaSE</h1>
-<h2 class="eprase-h2">What is ePRaSE?</h2>
+<div class="subpage">
+<h2>What is ePRaSE?</h2>
 <div class='accordion-text'>
-  <img class="eprase-image" src="/img/e_molecule.jpg" alt="electronic medicine" />
   <p>The Electronic Prescribing Risk and Safety Evaluation tool, known as ePRaSE, is an online NHS-sponsored self-assessment tool developed to help trusts learn about how well their electronic prescribing systems have been configured and maintained to mitigate against known prescribing risks to keep patients safe. The results will allow trusts to look at their individual performance immediately and learn from annually reported national benchmarking data. The national results will also be used by the ePRaSE team to build a Learning Lab toolkit to support users in taking the next steps in optimising their systems.</p>
 </div>
-<h2 class='eprase-h2'>Tool description</h2>
+<h2>Tool description</h2>
 <div class="accordion-text">
 <p>The tool provides a set of 15 fictional 'patients', which users set up in their live or test 
   ePrescribing environments, and then provides a set of 45 prescribing test scenarios to challenge 
@@ -26,7 +25,7 @@
 <p>The web-based ePRaSE application is compatible with all modern browsers: Google Chrome, 
   Mozilla Firefox, Opera, Safari, and Edge.</p>
 </div>
-<h2 class="eprase-h2">Background</h2>
+<h2>Background</h2>
 <div class='accordion-text'>
   <p>ePrescribing is the utilisation of electronic systems to facilitate and enhance the safety and efficacy of prescribing medicines to patients, and to provide a robust audit trail for the entire medicines use process. Implementation of ePrescribing with clinical decision support (CDS) has been extensively researched; many studies have shown reductions in medication error rates and preventable adverse effects. Following implementation of ePrescribing with CDS, medication errors tend to decrease over time as system configuration is optimised for local use and users adapt to the system. Greater patient safety benefits are documented with experienced users rather than new implementers. However, upgrades and system modifications can also introduce new safety risks, such as incompatibilities with legacy software. Detecting and managing safety risks can be difficult due to the complex nature of potential errors relating to not only the system itself, but also the behaviours of users and characteristics specific to organisations.</p>
 
@@ -36,4 +35,5 @@
   
   <p>The latest findings for the 2024 campaign can be viewed on <a href="/results">the results page of this website.</a></p>
 
+</div>
 </div>
