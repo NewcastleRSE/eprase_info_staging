@@ -70,10 +70,8 @@
         display: flex;
         justify-content: space-between; /* Pushes logo left, nav right */
         align-items: center;
-        /*height: clamp(80px, 9vh, 150px);*/
-        height: 150px;
-        /*min-height: clamp(80px, 12vh, 150px);*/
-        padding: clamp(10px, 2vh, 20px) clamp(20px, 5%, 60px);
+        height: clamp(80px, 15vmin, 150px);
+        padding: clamp(10px, 4vh, 40px) clamp(20px, 5%, 60px);
         font-family: "Raleway", sans-serif;
         position: relative;
         background: white;
@@ -157,7 +155,7 @@
     }
 
     .logo-area img {
-        height: clamp(60px, 8vw, 100px);
+        height: clamp(80px, 8vw, 100px);
         width: auto; /* Keeps the proportions perfect */
         transition: filter 0.3s ease; /* Bonus: for a clean hover effect */
     }

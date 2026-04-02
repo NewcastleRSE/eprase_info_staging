@@ -15,7 +15,7 @@
         pulseRange = 0.12,
         minSize = 35,
         maxSize = 90,
-        minBlur = 2.5,
+        minBlur = 2,
         maxBlur = 7,
         minOpacity = 0.15,
         maxOpacity = 0.45,
@@ -26,13 +26,17 @@
     let w = $state(0);
     let h = $state(0);
     let balls = $state([]); 
-    let stageReady = $derived(w > 0 && h > 0);
+    let activeMinSize = $derived(w > 0 && w <= 768 ? 25 : minSize);
+    let activeMaxSize = $derived(w > 0 && w <= 768 ? 60 : maxSize);
+    let activeHeroSizeMin = $derived(w > 0 && w <= 768 ? 50 : heroSizeMin);
 
+    let stageReady = $derived(w > 0 && h > 0);
+    
     const colors = ["#2C3E50", "#3498DB", "#16A085", "#218C74"];
     const capMap = {"#2C3E50":"#95a5a6", "#3498DB":"#D1D9E6", "#16A085":"#A3E4D7", "#218C74":"#BDC3C7"};
 
-    let safeWidth = $derived(maxSize * 2.2);
-    let leftWall = $derived(w < 768 ? w * 0.20 : w * leftWallPercent);
+    let safeWidth = $derived(activeMaxSize * 2.2);
+    let leftWall = $derived(w <= 768 ? w * 0.40 : w * leftWallPercent);
     let rightWallLimit = $derived(w - safeWidth);
 
     let frame: number;
@@ -52,7 +56,8 @@
                 else if (b.y >= floorLimit) { b.y = floorLimit; b.vy = -Math.abs(b.vy); hit = true; }
 
                 if (hit) {
-                    const newColor = colors[Math.floor(Math.random() * colors.length)];
+                    const otherColors = colors.filter(c => c !== b.color1);
+                    const newColor = otherColors.length > 0 ? otherColors[Math.floor(Math.random() * otherColors.length)] : b.color1;
                     b.color1 = newColor;
                     if (Math.random() < 0.3) b.isTablet = !b.isTablet;
                     b.color2 = b.isTablet ? newColor : (capMap[newColor] || "#BDC3C7");
@@ -62,9 +67,11 @@
                 b.rotation += b.rotationSpeed * speed;
                 b.phase += b.myPulseSpeed;
                 b.scale = 1 + (Math.sin(b.phase) * pulseRange);
-                const progress = (Math.sin(b.phase) + 1) / 2;
-                b.blur = maxBlur - (progress * (maxBlur - minBlur));
-                b.opacity = minOpacity + (progress * (maxOpacity - minOpacity));
+                const physicalSize = b.size * b.scale;
+                const progress = Math.max(0, Math.min(1, (physicalSize - minSize) / (maxSize - minSize)));
+                const curvedProgress = Math.pow(progress, 2); //won't get too blurry too fast
+                b.blur = maxBlur - (curvedProgress * (maxBlur - minBlur));
+                b.opacity = minOpacity + (curvedProgress * (maxOpacity - minOpacity));
             });
         }
         frame = requestAnimationFrame(loop);
@@ -94,8 +101,8 @@
                     
                     const startColor = colors[Math.floor(Math.random() * colors.length)];
                     let finalSize = (spawned < minLargeCount) 
-                        ? heroSizeMin + Math.random() * (maxSize - heroSizeMin)
-                        : minSize + Math.random() * (maxSize - minSize);
+                        ? activeHeroSizeMin + Math.random() * (activeMaxSize - activeHeroSizeMin)
+                        : activeMinSize + Math.random() * (activeMaxSize - activeMinSize);
 
                     const newPill = {
                         x: startX,

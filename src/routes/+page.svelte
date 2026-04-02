@@ -3,7 +3,7 @@
 </script>
 
 <div class="home-banner">
-<PillContainer height="74vh" count={12} speed={1.5} spawnDelay={150}>
+<PillContainer height="100%" verticalEnergy={0.4} horizontalEnergy={0.6} count={12} speed={1.5} spawnDelay={150}>
     <div class="banner-text">
         Configuring e-prescribing<br>
         systems to keep<br>
@@ -27,6 +27,9 @@
 
 	.home-banner {
 		position: relative;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
 		width: 100%;
 		padding: 0;
 		margin: 0;
@@ -35,6 +38,11 @@
 		overflow: hidden;
 	}
 	
+	.home-banner :global(.pill-stage) {
+		flex: 1;
+		height: 100%;
+		width: 100%;
+	}
 	.home-banner::after {
         content: '';
         position: absolute;
@@ -43,8 +51,8 @@
         width: 100%;
         height: 100%;
         /* This sits on top of the pills */
-        box-shadow: inset 0 60px 60px -60px rgba(34, 61, 152, 0.2),
-					inset 0 -60px 60px -60px rgba(34, 61, 152, 0.2); 
+        box-shadow: inset 0 60px 60px -60px rgba(34, 61, 152, 0.15),
+					inset 0 -60px 60px -60px rgba(34, 61, 152, 0.15); 
         pointer-events: none; /* Crucial: clicks pass through to the content */
         z-index: 2; 
     }

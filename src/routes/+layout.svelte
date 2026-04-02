@@ -32,6 +32,7 @@
     
     <meta name="description" content="Electronic Prescribing Risk Assessment Safety Evaluation" />
 </svelte:head>
+<div class="app-container">
 <Navigation />
 
 {#if displayTitle()}
@@ -45,3 +46,19 @@
 </main>
 
 <Footer transparent={isHome} />
+</div>
+
+<style>
+    .app-container {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        width: 100%;
+    }
+
+    main {
+        flex: 1; /* This pushes the footer down and pulls the banner open */
+        display: flex;
+        flex-direction: column;
+    }
+</style>

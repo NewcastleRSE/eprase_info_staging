@@ -7,7 +7,7 @@
 <style>
 
     footer {
-        /*min-height: clamp(60px, 10vh, 100px);*/
+        min-height: clamp(60px, 10vh, 100px);
         display: flex;
         justify-content: center; /* Centers logos horizontally */
         align-items: center;     /* Centers logos vertically */
@@ -29,7 +29,7 @@
     }
 
     footer img {
-        height: 60px;            /* Consistent height for partner logos */
+        height: clamp(40px, 6vh, 60px);            /* Consistent height for partner logos */
         filter: grayscale(40%);
         opacity: 0.8;
         transition: all 0.3s ease;
