@@ -4,15 +4,27 @@
     let myCount = Math.random() < 0.33 ? 3 : 4; // Randomly choose between 3 and 4 pills for some variety
 </script>
 
+<div class="subpage-wrapper">
 <header class="subpage-header">
-    <PillContainer height="20vh" count={myCount} speed={0.4} spawnDelay={400} leftWallPercent={0.75} verticalEnergy={0.5}>
+    <PillContainer height="100%" count={myCount} speed={0.4} spawnDelay={400} leftWallPercent={0.75} verticalEnergy={0.5}>
         <div class="header-content">
             <h1>{title}</h1>
         </div>
     </PillContainer>
 </header>
+</div>
 
 <style>
+    .subpage-wrapper {
+        width: 100%;
+        display: flex;
+        height: clamp(10vh, 25vh, 20vh);
+    }
+
+    .subpage-wrapper :global(.pill-stage) {
+		height: 100%;
+		width: 100%;
+	}
     .subpage-header {
         position: relative;
         width: 100%;
@@ -48,7 +60,7 @@
         font-weight: 200;
         color: #474747;
         margin: 0;
-        font-size: 3.5rem;
+        font-size: clamp(2rem, 5vw, 3.5rem);
         pointer-events: none;
         text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
         animation: fadeUp 0.8s ease-out forwards;

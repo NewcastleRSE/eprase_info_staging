@@ -79,6 +79,15 @@ body, html {
       height: auto;
       aspect-ratio: 16 / 9;
     }
+
+    .subpage {
+        width: 90%;
+        font-size: 1.2rem;
+    }
+
+    .subpage h2, .subpage h3 {
+        margin-left: 0;
+    }
 }
 
   .report-container {
