@@ -1,5 +1,8 @@
 node_modules
 
+# File Types
+*.pxd
+
 # Output
 .output
 .vercel
