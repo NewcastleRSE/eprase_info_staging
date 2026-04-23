@@ -16,7 +16,7 @@
 	.banner-text {
 		font-family: "Raleway", sans-serif;
 		font-weight: 200;
-		color: #474747;
+		color: var(--nhs-blue);
 		font-size: clamp(2.5rem, 5vw, 4rem);
 		z-index: 10;
 		pointer-events: none;
@@ -26,6 +26,7 @@
 	}
 
 	.home-banner {
+		view-transition-name: pill-box;
 		position: relative;
 		display: flex;
 		flex: 1;

@@ -10,6 +10,19 @@
     --pill-light-green: #00FCA3;
 }
 
+::view-transition-old(pill-box),
+::view-transition-new(pill-box) {
+    /* This ensures the height change doesn't look 'stuttery' */
+    height: 100%;
+    overflow: hidden;
+}
+::view-transition-old(pill-box) {
+    animation: 0.2s linear both fade-out; /* Fade out quickly */
+}
+
+@keyframes fade-out {
+    to { opacity: 0; }
+}
 body, html { 
     margin: 0; 
     padding: 0;

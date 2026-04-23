@@ -4,6 +4,19 @@
     import PageHeader from '$lib/components/PageHeader.svelte';
     import Navigation from '$lib/components/Navigation.svelte';
     import Footer from '$lib/components/Footer.svelte';
+    import { onNavigate } from '$app/navigation';
+
+    onNavigate((navigation) => {
+        // This is the magic line
+        if (!document.startViewTransition) return;
+
+        return new Promise((resolve) => {
+            document.startViewTransition(async () => {
+                resolve();
+                await navigation.complete;
+            });
+        });
+    });
 
     let { children } = $props();
     let isHome = $derived(page.url.pathname === '/');

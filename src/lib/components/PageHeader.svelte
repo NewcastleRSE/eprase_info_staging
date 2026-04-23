@@ -16,10 +16,11 @@
 
 <style>
     .subpage-wrapper {
+        view-transition-name: pill-box;
         display: flex;
         width: 100%;
         height: clamp(80px, 15vmin, 150px);
-        background-color: #FFF;
+        background: linear-gradient(to bottom right, #fff, #eff3fb);
     }
 
     .subpage-wrapper :global(.pill-stage) {
@@ -61,7 +62,7 @@
         font-weight: 200;
         color: #474747;
         margin: 0;
-        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-size: clamp(1.8rem, 3vw, 3.5rem);
         pointer-events: none;
         animation: fadeUp 0.8s ease-out forwards;
     }

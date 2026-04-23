@@ -175,7 +175,7 @@
     }
 
     .logo-area img {
-        height: clamp(80px, 8vw, 100px);
+        height: clamp(60px, 5vw, 90px);
         width: auto; /* Keeps the proportions perfect */
         transition: filter 0.3s ease; /* Bonus: for a clean hover effect */
     }
