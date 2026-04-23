@@ -16,6 +16,7 @@
     height: 100%;
     overflow: hidden;
 }
+
 ::view-transition-old(pill-box) {
     animation: 0.2s linear both fade-out; /* Fade out quickly */
 }

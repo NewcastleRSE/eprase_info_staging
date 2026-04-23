@@ -20,7 +20,9 @@
         display: flex;
         width: 100%;
         height: clamp(80px, 15vmin, 150px);
-        background: linear-gradient(to bottom right, #fff, #eff3fb);
+        /*background: linear-gradient(to bottom right, #fff, #eff3fb);*/
+        background-color: #eff3fb;
+        box-shadow: inset 0 0 20px rgba(34, 61, 152, 0.1);
     }
 
     .subpage-wrapper :global(.pill-stage) {
@@ -60,10 +62,11 @@
     h1 {
         font-family: "Raleway", sans-serif;
         font-weight: 200;
-        color: #474747;
+        color: var(--nhs-dark-blue);
         margin: 0;
         font-size: clamp(1.8rem, 3vw, 3.5rem);
         pointer-events: none;
         animation: fadeUp 0.8s ease-out forwards;
+        text-shadow: 0 2px 10px rgba(65, 182, 230, 0.4);
     }
 </style>
