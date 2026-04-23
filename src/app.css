@@ -2,6 +2,14 @@
     box-sizing: border-box;
 }
 
+:root {
+    --nhs-blue: #005EB8;
+    --nhs-dark-blue: #00396F;
+    --nhs-light-blue: #3498DB;
+    --pill-dark-green: #009460;
+    --pill-light-green: #00FCA3;
+}
+
 body, html { 
     margin: 0; 
     padding: 0;
@@ -56,6 +64,7 @@ body, html {
     margin-left: -4rem;
     animation: fadeUp 1s ease-out both;
     animation-delay: 0.2s; /* Starts slightly after the H1 */
+    background-color: #FFF;
 }
 
 .subpage h3 {

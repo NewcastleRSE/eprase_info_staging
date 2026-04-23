@@ -16,20 +16,22 @@
 
 <style>
     .subpage-wrapper {
-        width: 100%;
         display: flex;
-        height: clamp(10vh, 25vh, 20vh);
+        width: 100%;
+        height: clamp(80px, 15vmin, 150px);
+        background-color: #FFF;
     }
 
     .subpage-wrapper :global(.pill-stage) {
 		height: 100%;
 		width: 100%;
+        background: transparent !important;
 	}
     .subpage-header {
         position: relative;
+        flex: 1;
         width: 100%;
         border-bottom: 1px solid #eee;
-        border-top: 1px solid #eee;
         overflow: hidden;
     }
 
@@ -41,18 +43,17 @@
         width: 100%;
         height: 100%;
         /* This sits on top of the pills */
-        box-shadow: inset 0 0 60px rgba(34, 61, 152, 0.15); 
         pointer-events: none; /* Crucial: clicks pass through to the content */
-        z-index: 2; 
+        z-index: 6; 
     }
 
     .header-content {
         height: 100%;
         width: 100%;
-        z-index: 3;
         display: flex;
         align-items: center;
-        padding-left: 5%; 
+        padding-left: 5%;
+        background: transparent;
     }
 
     h1 {
@@ -62,7 +63,6 @@
         margin: 0;
         font-size: clamp(2rem, 5vw, 3.5rem);
         pointer-events: none;
-        text-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
         animation: fadeUp 0.8s ease-out forwards;
     }
 </style>

@@ -36,6 +36,7 @@
 		border-bottom: 1px solid #eee;
 		border-top: 1px solid #eee;
 		overflow: hidden;
+		background-color: #eff3fb;
 	}
 	
 	.home-banner :global(.pill-stage) {

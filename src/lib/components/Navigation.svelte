@@ -22,9 +22,12 @@
 </script>
 <nav id="topnav">
     <div class="logo-area">
-        <a href="/"><img src="/img/eprase_logo_color.png" alt="EPRASE Logo"></a>
+        <a href="/"><img src="/img/classic_logo.png" alt="EPRASE Logo"></a>
     </div>
     <div class="nav-stack">
+        <div class="logo-row">
+            <img src="/img/nhs.png" class="nhs" alt="NHS"/>
+        </div>
         <div class="nav-row top-row desktop-only">
             {#each topLinks as link}
                 <a 
@@ -70,12 +73,28 @@
         display: flex;
         justify-content: space-between; /* Pushes logo left, nav right */
         align-items: center;
-        height: clamp(80px, 15vmin, 150px);
+        height: clamp(80px, 25vmin, 250px);
         padding: clamp(10px, 4vh, 40px) clamp(20px, 5%, 60px);
         font-family: "Raleway", sans-serif;
         position: relative;
-        background: white;
+        background: linear-gradient(to bottom right, var(--nhs-blue), var(--nhs-dark-blue));
         z-index: 2000;
+        opacity: 0.95;
+        border-bottom: 1px solid #d1d9e6;
+        box-shadow: inset 0 0 20px rgba(34, 61, 152, 0.2);
+    }
+
+    .logo-row {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        padding-bottom: 4px; /* Tiny bit of separation from the links */
+    }
+
+    .nhs {
+        height: clamp(20px, 3vmin, 40px);
+        width: auto;
+        display: block;
     }
 
     .nav-stack {
@@ -83,11 +102,12 @@
         flex-direction: column; /* Stacks the two rows vertically */
         align-items: flex-end;   /* Aligns the text to the right edge */
         gap: 8px;               /* Space between rows and line */
+        color: #FFFFFF;
     }
 
     .nav-row a {
         text-decoration: none;
-        color: #171717;
+        color: #FFFFFF;
         font-size: 1.1rem;
         
         /* 1. Pre-apply the spacing so it never shifts */
@@ -176,7 +196,7 @@
             border: none;
             cursor: pointer;
         }
-        .burger span { width: 30px; height: 3px; background: #2C3E50; transition: 0.3s; }
+        .burger span { width: 30px; height: 3px; background: #EEE; transition: 0.3s; }
         .burger span.open:nth-child(1) { transform: translateY(9px) rotate(45deg); }
         .burger span.open:nth-child(2) { opacity: 0; }
         .burger span.open:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
@@ -209,5 +229,8 @@
             font-size: 1.2rem;
         }
         .mobile-menu a.active { color: #3498DB; font-weight: bold; }
+        .nav-stack {
+            flex-direction: column
+        }
     }
 </style>

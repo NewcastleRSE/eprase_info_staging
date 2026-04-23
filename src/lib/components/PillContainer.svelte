@@ -20,7 +20,8 @@
         minOpacity = 0.15,
         maxOpacity = 0.45,
         maxSpin = 0.1,
-        spawnDelay = 300
+        spawnDelay = 300,
+        children
     } = $props();
 
     let w = $state(0);
@@ -31,10 +32,14 @@
     let activeHeroSizeMin = $derived(w > 0 && w <= 768 ? 50 : heroSizeMin);
 
     let stageReady = $derived(w > 0 && h > 0);
-    
-    const colors = ["#2C3E50", "#3498DB", "#16A085", "#218C74"];
-    const capMap = {"#2C3E50":"#95a5a6", "#3498DB":"#D1D9E6", "#16A085":"#A3E4D7", "#218C74":"#BDC3C7"};
 
+    const colors = ["#009460", "#00BC7A", "#00396F", "#3498DB"];
+    const capMap = {
+        "#009460": "#CDE6DB", // Deepened Sage
+        "#00BC7A": "#C5EDDC", // Deepened Mint
+        "#00396F": "#CFD9E1", // Deepened Steel Blue
+        "#3498DB": "#D1E6F3"  // Deepened Sky Blue
+    };
     let safeWidth = $derived(activeMaxSize * 2.2);
     let leftWall = $derived(w <= 768 ? w * 0.40 : w * leftWallPercent);
     let rightWallLimit = $derived(w - safeWidth);
@@ -139,7 +144,7 @@
 
 <div 
     class="pill-stage" 
-    style="height: {height};" 
+    style="height: {height}; background: transparent;" 
     bind:clientWidth={w}
     bind:clientHeight={h}
 >
@@ -160,7 +165,7 @@
         </div>
     {/each}
     <div class="content-overlay">
-        <slot />
+        {@render children()}
     </div>
 </div>
 
@@ -178,7 +183,7 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-        background-color: #eff3fb;
+        background: transparent;
     }
     .content-overlay {
         position: absolute; /* Absolute so it sits precisely over the animation */
@@ -238,4 +243,5 @@
     .ball.tablet .cap {
         width: 100%; /* Cap expands to fill the circle */
     }
+    
 </style>

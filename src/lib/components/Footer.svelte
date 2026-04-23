@@ -13,7 +13,7 @@
         align-items: center;     /* Centers logos vertically */
         gap: 100px;               /* Space between the two logos */
         width: 100%;
-        background-color: #eff3fb; /* That clinical light blue/grey */
+        background-color: linear-gradient(to bottom #eff3fb var(--nhs-light-blue)); /* That clinical light blue/grey */
         border-top: 1px solid #d1d9e6;
         box-shadow: inset 0 0 20px rgba(34, 61, 152, 0.2);
         padding: 20px 0 10px 0;
