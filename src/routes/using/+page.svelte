@@ -44,7 +44,7 @@
 				<div class="eprase-video">
 					<div class="iframe-aspect-wrapper">
 						<video controls>
-							<source src="/video/liverpool_user.mp4" type="video/mp4">
+							<source src={link("/video/liverpool_user.mp4")} type="video/mp4">
 							Your browser does not support the video tag.
 						</video>
 					</div>
