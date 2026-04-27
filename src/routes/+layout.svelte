@@ -1,6 +1,7 @@
 <script lang="ts">
     import '../app.css'; 
     import { page } from '$app/state'; 
+    import { base } from '$app/paths';
     import PageHeader from '$lib/components/PageHeader.svelte';
     import Navigation from '$lib/components/Navigation.svelte';
     import Footer from '$lib/components/Footer.svelte';
@@ -18,8 +19,13 @@
         });
     });
 
+    let internalPath = $derived(
+        page.url.pathname.startsWith(base) 
+            ? page.url.pathname.slice(base.length) || '/' 
+            : page.url.pathname
+    );
     let { children } = $props();
-    let isHome = $derived(page.url.pathname === '/');
+    let isHome = $derived(internalPath === '/' || internalPath === '');
     let pathKey = $derived(page.url.pathname);
 
     const titles = {
@@ -34,9 +40,9 @@
     };
 
     let displayTitle = $derived(() => {
-        const path = page.url.pathname.replace(/\/$/, ''); // Clean trailing slash
+        const path = internalPath.replace(/\/$/, ''); 
         const lookup = path === '' ? '/' : path;
-        return titles[lookup] || null; // Return null if no title is defined for the path
+        return titles[lookup] || null;
     });
 
 </script>
