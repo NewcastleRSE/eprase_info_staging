@@ -1,3 +1,7 @@
+<script>
+    import { resolve } from '$app/paths';
+    const link = (path) => resolve(path);
+</script>
 <div class="subpage">
 <h2>ePRaSE tool closed</h2>
   <div class="accordion-text">
@@ -10,7 +14,7 @@
   <div class="accordion-text">
     <p>NHSE Electronic Prescribing Learning Lab -- This interactive learning resource, 
        developed to support digital and pharmacy teams to optimise their electronic 
-       prescribing systems, is now <a href="/lab">available to access</a>.</p>
+       prescribing systems, is now <a href={link("/lab")}>available to access</a>.</p>
     <p>We will formally launch the Learning Lab at the NHSE ePrescribing Masterclass 
         on Wednesday 25th February 2026. Please contact 
         <a href="mailto:england.digitalmedicines@nhs.net">england.digitalmedicines@nhs.net</a> 
@@ -67,6 +71,6 @@
           <li>All information and data are held securely by the ePRaSE team.</li>
       </ul>
 
-      <p>Please see <a href="/faq">the FAQ page</a> for other useful information.</p>
+      <p>Please see <a href={link("/faq")}>the FAQ page</a> for other useful information.</p>
 </div>
 </div>

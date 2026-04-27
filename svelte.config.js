@@ -18,10 +18,11 @@ const config = {
 			assets: 'build',
 			fallback: null,
 			precompress: false,
-			strict: true
+			strict: true,
+			fallback: '404.html'
 		}),
 		paths: {
-			base: '',
+			base: process.env.NODE_ENV === 'production' ? '/eprase_info_staging' : '',
 		}
 	}
 };

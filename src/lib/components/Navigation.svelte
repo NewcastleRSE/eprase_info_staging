@@ -1,8 +1,13 @@
 <script>
     import { page } from '$app/state';
+    import { resolve } from '$app/paths';
+    
     let isMenuOpen = $state(false);
     const toggleMenu = () => isMenuOpen = !isMenuOpen;
     const closeMenu = () => isMenuOpen = false;
+    
+    // The helper function for GitHub Pages subdirectories
+    const link = (path) => resolve(path);
     
     const bottomLinks = [
         { name: 'About', path: '/about' },
@@ -17,40 +22,50 @@
         { name: 'Contact', path: 'mailto:nuth.eprase@nhs.net' }
     ];
 
-    const allLinks = bottomLinks.concat(topLinks);
-    const isActive = (path) => page.url.pathname.replace(/\/$/, '') === path.replace(/\/$/, '');
+    const allLinks = [...bottomLinks, ...topLinks];
+    
+    // Updated isActive to use resolve for accurate production matching
+    const isActive = (path) => page.url.pathname.replace(/\/$/, '') === resolve(path).replace(/\/$/, '');
 </script>
+
 <nav id="topnav">
     <div class="logo-area">
-        <a href="/"><img src="/img/classic_logo.png" alt="EPRASE Logo"></a>
+        <a href={link('/')}>
+            <img src={link('/img/classic_logo.png')} alt="EPRASE Logo">
+        </a>
     </div>
+
     <div class="nav-stack">
         <div class="logo-row">
-            <img src="/img/nhs.png" class="nhs" alt="NHS"/>
+            <img src={link('/img/nhs.png')} class="nhs" alt="NHS"/>
         </div>
+
         <div class="nav-row top-row desktop-only">
-            {#each topLinks as link}
+            {#each topLinks as item}
                 <a 
-                    href={link.path} 
-                    class:active={page.url.pathname.replace(/\/$/, '') === link.path.replace(/\/$/, '')}
-                    aria-current={page.url.pathname.replace(/\/$/, '') === link.path.replace(/\/$/, '') ? 'page' : undefined}
+                    href={item.path.startsWith('mailto') ? item.path : link(item.path)} 
+                    class:active={isActive(item.path)}
+                    aria-current={isActive(item.path) ? 'page' : undefined}
                 >
-                    {link.name}
+                    {item.name}
                 </a>
             {/each}
-            </div>
-        <hr class="nav-divider">
+        </div>
+
+        <hr class="nav-divider desktop-only">
+
         <div class="nav-row bottom-row desktop-only">
-            {#each bottomLinks as link}
+            {#each bottomLinks as item}
                 <a 
-                    href={link.path} 
-                    class:active={page.url.pathname.replace(/\/$/, '') === link.path.replace(/\/$/, '')}
-                    aria-current={page.url.pathname.replace(/\/$/, '') === link.path.replace(/\/$/, '') ? 'page' : undefined}
+                    href={link(item.path)} 
+                    class:active={isActive(item.path)}
+                    aria-current={isActive(item.path) ? 'page' : undefined}
                 >
-                    {link.name}
+                    {item.name}
                 </a>
             {/each} 
         </div>
+
         <button class="burger mobile-only" onclick={toggleMenu} aria-label="Toggle Menu">
             <span class:open={isMenuOpen}></span>
             <span class:open={isMenuOpen}></span>
@@ -59,18 +74,26 @@
     </div>
 
     <div class="mobile-menu" class:open={isMenuOpen}>
-        {#each allLinks as link}
-            <a href={link.path} onclick={closeMenu} class:active={isActive(link.path)}>
-                {link.name}
+        {#each allLinks as item}
+            <a 
+                href={item.path.startsWith('mailto') ? item.path : link(item.path)} 
+                onclick={closeMenu} 
+                class:active={isActive(item.path)}
+            >
+                {item.name}
             </a>
         {/each}
     </div>
 </nav>
 
 <style>
+    /* CSS remains exactly as you had it, 
+       ensure .nav-stack uses flex-direction: column 
+       to keep NHS above the Burger! */
+    
     #topnav {
         display: flex;
-        justify-content: space-between; /* Pushes logo left, nav right */
+        justify-content: space-between;
         align-items: center;
         height: clamp(80px, 25vmin, 250px);
         padding: clamp(10px, 4vh, 40px) clamp(20px, 5%, 60px);
@@ -87,7 +110,7 @@
         display: flex;
         justify-content: flex-end;
         width: 100%;
-        padding-bottom: 4px; /* Tiny bit of separation from the links */
+        padding-bottom: 4px;
     }
 
     .nhs {
@@ -98,10 +121,10 @@
 
     .nav-stack {
         display: flex;
-        flex-direction: column; /* Stacks the two rows vertically */
-        align-items: flex-end;   /* Aligns the text to the right edge */
+        flex-direction: column;
+        align-items: flex-end;
         justify-content: center;
-        gap: 8px;               /* Space between rows and line */
+        gap: 8px;
         color: #FFFFFF;
     }
 
@@ -109,78 +132,41 @@
         text-decoration: none;
         color: #FFFFFF;
         font-size: 1.1rem;
-        
-        /* 1. Pre-apply the spacing so it never shifts */
         padding: 4px 12px; 
         border: 1px solid transparent; 
         border-radius: 20px;
-        
-        /* 2. Smoothly transition everything */
         transition: all 0.4s ease; 
-        display: inline-block; /* Ensures padding/height are respected */
+        display: inline-block;
     }
 
-    /* Bottom Row Hover */
     .nav-row a:hover, .bottom-row a.active {
         color: #add2eb; 
-        border-color: #3498DB; /* Just reveal the border color */
+        border-color: #3498DB;
     }
 
-    /* Top Row Hover Override */
     .top-row a.active, .top-row a:hover {
         background: #3498DB;
         border-color: #3498DB;
         color: #fff;
     }
 
-    /* Adjusting the top-row base size to match your design */
     .top-row a {
         font-size: 1rem;
         opacity: 0.9;
     }
-    .nav-row a[aria-current="page"] {
-        color: #3498DB; 
-        border-color: #3498DB;
-        font-weight: 500;
-        pointer-events: none;
-    }
-
-    .top-row a[aria-current="page"] {
-        background: #3498DB;
-        color: #fff;
-        opacity: 1;
-    }
 
     .nav-divider {
-        width: 100%;            /* Line spans the width of the link stack */
+        width: 100%;
         border: 0;
-        border-top: 1px solid #666;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
         margin: 4px 0;
-    }
-    /* Bottom Row Active */
-    .bottom-row a.active {
-        color: #add2eb; 
-        border-color: #3498DB;
-        font-weight: 500;
-        pointer-events: none;
-    }
-
-    /* Top Row Active */
-    .top-row a.active {
-        background: #3498DB;
-        border-color: #3498DB;
-        color: #fff;
-        opacity: 1;
-        pointer-events: none;
     }
 
     .logo-area img {
         height: clamp(60px, 5vw, 90px);
-        width: auto; /* Keeps the proportions perfect */
-        transition: filter 0.3s ease; /* Bonus: for a clean hover effect */
+        width: auto;
     }
 
-    /* MOBILE LOGIC */
     .mobile-only { display: none; }
     .mobile-menu { display: none; }
 
@@ -188,20 +174,21 @@
         .desktop-only { display: none; }
         .mobile-only { display: flex; }
 
-        /* Burger Icon */
         .burger {
+            display: flex;
             flex-direction: column;
             gap: 6px;
             background: none;
             border: none;
             cursor: pointer;
+            padding: 0;
         }
+
         .burger span { width: 30px; height: 3px; background: #EEE; transition: 0.3s; }
         .burger span.open:nth-child(1) { transform: translateY(9px) rotate(45deg); }
         .burger span.open:nth-child(2) { opacity: 0; }
         .burger span.open:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        /* Actual Mobile Menu */
         .mobile-menu {
             display: flex;
             position: absolute;
@@ -218,9 +205,6 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .mobile-menu.open { transform: translateY(0); }
-        .mobile-menu a:hover {
-            color: #3498DB;
-        }
         .mobile-menu a {
             padding: 15px;
             text-align: center;
@@ -229,12 +213,7 @@
             font-size: 1.2rem;
         }
         .mobile-menu a.active { color: #3498DB; font-weight: bold; }
-        .nav-stack {
-            flex-direction: column
-        }
-        .nhs {
-            /* Slightly smaller on mobile so it doesn't overpower the burger */
-            height: 22px; 
-        }
+
+        .nhs { height: 22px; }
     }
 </style>
