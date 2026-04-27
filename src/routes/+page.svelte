@@ -1,75 +1,61 @@
-<div id="homecards">
-<div class="row">
-		<a href="/about"><div class="col col-4 clickable">
-  			<div class="w3-card w3-container" style="min-height:350px">
-  			<h3>About</h3><br>
-  			<i class="fa fa-medkit w3-margin-bottom eprase-icons" style="font-size:120px"></i>
-  			<p>What is ePRaSE?</p>
-  			</div>
-		</div></a>
+<script>
+    import PillContainer from '$lib/components/PillContainer.svelte';
+</script>
 
-		<a href="/using"><div class="col col-4 clickable">
-  			<div class="w3-card w3-container" style="min-height:350px">
- 			<h3>Using ePRaSE</h3><br>
-  			<i class="fa fa-book  w3-margin-bottom eprase-icons" style="font-size:120px"></i>
-  			<p>Step-by-step guide</p>
-  			</div>
-		</div></a>
-
-		<a href="/results"><div class="col col-4 clickable">
-			<div class="w3-card w3-container" style="min-height:350px">
-		   <h3>Results</h3><br>
-			<i class="fa fa-line-chart  w3-margin-bottom eprase-icons" style="font-size:120px"></i>
-			<p>Report from the 2024 ePRaSE Assessment Exercise</p>
-			</div>
-	  	</div></a>
+<div class="home-banner">
+<PillContainer height="100%" verticalEnergy={0.4} horizontalEnergy={0.6} count={12} speed={1.5} spawnDelay={150}>
+    <div class="banner-text">
+        Configuring e-prescribing<br>
+        systems to keep<br>
+        patients safe
+    </div>
+</PillContainer>
 </div>
-<div class="row">
-		<a href="/news"><div class="col col-4 clickable">
-			<div class="w3-card w3-container" style="min-height:350px">
-				<h3>News</h3><br>
-				<i class="fa fa-newspaper-o w3-margin-bottom eprase-icons" style="font-size:120px"></i>
-				<p>New for 2026</p>
-			</div>
-		</div></a>
 
-		<a href="/lab"><div class="col col-4 clickable">
-			<div class="w3-card w3-container" style="min-height:350px">
-		   <h3>Learning Lab</h3><br>
-			<i class="fa fa-mortar-board  w3-margin-bottom eprase-icons" style="font-size:120px"></i>
-			<p>Optimise your EP system</p>
-			</div>
-	  	</div></a>
-
-		<a href="/faq"><div class="col col-4 clickable">
-  			<div class="w3-card w3-container" style="min-height:350px">
-  			<h3>FAQ</h3><br>
-  			<i class="fa fa-question-circle w3-margin-bottom eprase-icons" style="font-size:120px"></i>
-  			<p>Frequently Asked Questions</p>
-  			</div>
-		</div></a>
-	</div>
-</div>
 <style>
-    h3 {font-size: 1.5em; margin: 1em;}
-    a, a:visited {text-decoration: none; color: inherit;}
-    #homecards {width: 95%; margin: auto; margin-top: 20px; margin-bottom: 40px;}
-    #homecards:after {content:"";clear:both;}
-    .eprase-icons {color:#fff!important;background-color:#7e8cdd!important;}
-    .eprase-icons:hover {background-color: #3e53cc!important;}
-    .clickable {cursor: pointer;}
-    .clickable:hover {box-shadow:0 8px 16px 0 rgba(0,0,0,0.2);}
-    .w3-card {border: 1px solid #eee; box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)}
-    .row {width: 100%; display: table; text-align: center;}
-    .col {display: table-cell;}
-    .col-4 {width: 33.33%;}
+	.banner-text {
+		font-family: "Raleway", sans-serif;
+		font-weight: 200;
+		color: var(--nhs-blue);
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		z-index: 10;
+		pointer-events: none;
+		padding-left: clamp(5%, 10vw, 7%);
+		text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+		animation: fadeUp 0.8s ease-out forwards;
+	}
 
-    [class*="col-"] {
-        float: left;
-    }
-    @media screen and (max-width: 768px) {
-    .col {
+	.home-banner {
+		view-transition-name: pill-box;
+		position: relative;
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		border-bottom: 1px solid #eee;
+		border-top: 1px solid #eee;
+		overflow: hidden;
+		background-color: #eff3fb;
+	}
+	
+	.home-banner :global(.pill-stage) {
+		flex: 1;
+		height: 100%;
+		width: 100%;
+	}
+	.home-banner::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-    }
+        height: 100%;
+        /* This sits on top of the pills */
+        box-shadow: inset 0 60px 60px -60px rgba(34, 61, 152, 0.15),
+					inset 0 -60px 60px -60px rgba(34, 61, 152, 0.15); 
+        pointer-events: none; /* Crucial: clicks pass through to the content */
+        z-index: 2; 
     }
 </style>

@@ -1,4 +1,4 @@
-<h1 class="eprase-h1">Results 2024</h1>
+<div class="subpage">
   <div class="accordion-text">
     <p>The 2024 results suggest that people have already done some work with their EP systems, but there are further opportunities to improve and optimise systems to enhance patient safety.</p>
 
@@ -9,9 +9,13 @@
     <p>Good mitigation in the ePRaSE tool is defined as where an EP system correctly identifies a risk of error, providing an appropriate response when a medicine is prescribed.</p>
 
     <p>Please find below the results chart a summary of contents and explanatory notes.</p>
-  <iframe title="ePRaSE Results Charts - Anonymous for publishing" width="1024" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiZmJjYjI3ZmItMDY1Zi00NGI2LTk3OWMtY2VhM2E2NzYzZjY3IiwidCI6IjljNTAxMmM5LWI2MTYtNDRjMi1hOTE3LTY2ODE0ZmJlM2U4NyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+    <div class="report-container animate-fade-up">
+      <div class="iframe-aspect-wrapper">
+        <iframe title="ePRaSE Results Charts - Anonymous for publishing" src="https://app.powerbi.com/view?r=eyJrIjoiZmJjYjI3ZmItMDY1Zi00NGI2LTk3OWMtY2VhM2E2NzYzZjY3IiwidCI6IjljNTAxMmM5LWI2MTYtNDRjMi1hOTE3LTY2ODE0ZmJlM2U4NyIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+      </div> 
+    </div>
   </div>
-  <h2 class="eprase-h2">Explanatory Notes</h2>
+  <h2>Explanatory Notes</h2>
     <div class="accordion-text">
       <h3>Tab 1: Good Mitigation Score - NHS Trusts</h3>
 
@@ -50,14 +54,27 @@
 
         <p>This tab shows the results of a question on the description of Phenoxymethylpenicillin in user EP systems. Using the description Penicillin V may lead to the mis-selection of Penicillamine as an allergy status. Users can verify that they are using the correct dm+d description and compare data within their system type.</p>
     </div>
-    <h2 class="eprase-h2">Summary Videos</h2>
+    <h2>Summary Videos</h2>
+    <h3>Newcastle Hospitals User Experience</h3>
     <div class="accordion-text">
       <p>Watch a user experience video from Newcastle Hospitals Andrew Head, 
 				Lead Pharmacist for Clinical Informatics, on how to interpret and 
 				respond to your ePRaSE assessment results.</p>
 				<div class="eprase-video">
-	  				<iframe width="560" height="315" src="https://www.youtube.com/embed/xULluERejNk"></iframe>
-				</div>
+          <div class="iframe-aspect-wrapper">
+              <iframe 
+                  src="https://www.youtube.com/embed/xULluERejNk" 
+                  title="YouTube video player" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" 
+                  allowfullscreen>
+              </iframe>
+          </div>
+        </div>
+      </div>
+      <h3>Online Presentation: ePRaSE 2024 Rollout</h3>
+      <div class="accordion-text">
       <p>The video below shows an online presentation summarizing key findings of the 
       ePRaSE 2024 rollout, recorded at the April 2025 ePrescribing Masterclass. The 
       ePRaSE section starts 35 minutes into the video.</p>
@@ -70,10 +87,16 @@
       clinical outcomes, and service user experience. The events will be of interest 
       to Pharmacy teams, Implementation teams, IT teams, CCIOs, CMIOs and suppliers.</p>
       <div class="eprase-video">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fsZRF-xW28Y?si=VbTTvFEmqHsjIaX-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
+          <div class="iframe-aspect-wrapper">
+              <iframe 
+                  src="https://www.youtube.com/embed/fsZRF-xW28Y" 
+                  title="YouTube video player" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  referrerpolicy="strict-origin-when-cross-origin" 
+                  allowfullscreen>
+              </iframe>
+          </div>
+        </div>
     </div>
-
-<style>
-	@media (max-width:768px){.eprase-video iframe {width: 315px; height:200px;}}
-</style>
+</div>
