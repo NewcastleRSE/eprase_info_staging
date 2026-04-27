@@ -1,3 +1,7 @@
+<script>
+  import { resolve } from '$app/paths';
+  const link = (path) => resolve(path);
+</script>
 <div class="subpage">
 <h2>What is ePRaSE?</h2>
 <div class='accordion-text'>
@@ -33,7 +37,7 @@
   
   <p>The programme started as a pilot in 2019 with the second iteration of the tool rolled out in 2022. The 2022 findings suggested that on average only 50% of potentially unsafe prescription orders were being mitigated appropriately by the EP systems tested. Further details can be found in the open access publication titled "A simulation study to quantitatively assess the performance of electronic prescribing systems in English NHS Hospital Trusts", accessible through this quick link <a href='https://rdcu.be/d6nGu'>https://rdcu.be/d6nGu</a>.</p>
   
-  <p>The latest findings for the 2024 campaign can be viewed on <a href="/results">the results page of this website.</a></p>
+  <p>The latest findings for the 2024 campaign can be viewed on <a href={link("/results")}>the results page of this website.</a></p>
 
 </div>
 </div>
