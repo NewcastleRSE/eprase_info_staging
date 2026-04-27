@@ -1,4 +1,8 @@
-<div class="subpage">
+<script>
+    import { resolve } from '$app/paths';
+    const link = (path) => resolve(path);
+
+</script><div class="subpage">
 <div class="accordion-text">
    <p class='question'>Q: Can we have access to all the questions and the raw data?</p>
 
@@ -12,7 +16,7 @@
 
     <p class='question'>Q: Will you share any learning from this version rollout with users?</p>
 
-    <p class='answer'>A: Anonymised user result summaries are published on this (<a href="http://eprase.info">eprase.info</a>) site at the end of each cycle as soon as the team have processed the data (typically March/April). Thematic findings will be shared through the ePrescribing Masterclasses, publications, and other events. Masterclasses can be accessed by signing up via <a href="mailto:england.digitalmedicines@nhs.net" title="mailto:england.digitalmedicines@nhs.net">england.digitalmedicines@nhs.net</a>. National results have also enabled the team to build a <a href="/lab">Learning Lab toolkit</a> to support users in optimising their systems.</p>
+    <p class='answer'>A: Anonymised user result summaries are published on this (<a href="http://eprase.info">eprase.info</a>) site at the end of each cycle as soon as the team have processed the data (typically March/April). Thematic findings will be shared through the ePrescribing Masterclasses, publications, and other events. Masterclasses can be accessed by signing up via <a href="mailto:england.digitalmedicines@nhs.net" title="mailto:england.digitalmedicines@nhs.net">england.digitalmedicines@nhs.net</a>. National results have also enabled the team to build a <a href={link("/lab")}>Learning Lab toolkit</a> to support users in optimising their systems.</p>
 
     <p class='question'>Q: Is the tool designed for acute trust scenarios only?</p>
 
