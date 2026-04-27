@@ -70,8 +70,7 @@ body, html {
 .subpage h2 {
     color: #3498DB;
     font-weight: 400;
-    margin-top: 40px;
-    margin-left: -4rem;
+    margin: 0 0 0 -4rem;
     animation: fadeUp 1s ease-out both;
     animation-delay: 0.2s; /* Starts slightly after the H1 */
     background-color: #FFF;
