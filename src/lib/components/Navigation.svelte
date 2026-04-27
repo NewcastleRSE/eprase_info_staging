@@ -51,13 +51,12 @@
                 </a>
             {/each} 
         </div>
+        <button class="burger mobile-only" onclick={toggleMenu} aria-label="Toggle Menu">
+            <span class:open={isMenuOpen}></span>
+            <span class:open={isMenuOpen}></span>
+            <span class:open={isMenuOpen}></span>
+        </button>
     </div>
-
-    <button class="burger mobile-only" onclick={toggleMenu} aria-label="Toggle Menu">
-        <span class:open={isMenuOpen}></span>
-        <span class:open={isMenuOpen}></span>
-        <span class:open={isMenuOpen}></span>
-    </button>
 
     <div class="mobile-menu" class:open={isMenuOpen}>
         {#each allLinks as link}
@@ -101,6 +100,7 @@
         display: flex;
         flex-direction: column; /* Stacks the two rows vertically */
         align-items: flex-end;   /* Aligns the text to the right edge */
+        justify-content: center;
         gap: 8px;               /* Space between rows and line */
         color: #FFFFFF;
     }
@@ -122,7 +122,7 @@
 
     /* Bottom Row Hover */
     .nav-row a:hover, .bottom-row a.active {
-        color: #3498DB; 
+        color: #add2eb; 
         border-color: #3498DB; /* Just reveal the border color */
     }
 
@@ -159,7 +159,7 @@
     }
     /* Bottom Row Active */
     .bottom-row a.active {
-        color: #3498DB; 
+        color: #add2eb; 
         border-color: #3498DB;
         font-weight: 500;
         pointer-events: none;
@@ -231,6 +231,10 @@
         .mobile-menu a.active { color: #3498DB; font-weight: bold; }
         .nav-stack {
             flex-direction: column
+        }
+        .nhs {
+            /* Slightly smaller on mobile so it doesn't overpower the burger */
+            height: 22px; 
         }
     }
 </style>
