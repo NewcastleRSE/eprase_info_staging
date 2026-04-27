@@ -1,9 +1,13 @@
+<script>
+  import { resolve } from '$app/paths';
+  const link = (path) => resolve(path);
+</script>
 <div class="subpage">
 	<div class="accordion-text">
 		<!-- <img class="eprase-image" src="img/notes.jpg" alt="stock image" /> -->
 		<ul>
 			<li>Step-by-step instructions for using the ePRaSE tool can be found 
-			in <a class="eprase-link" target="_blank" href="/pdf/EpraseUserGuide2025.pdf" title="User Guide PDF">this PDF file</a>.</li>
+			in <a class="eprase-link" target="_blank" href={link("/pdf/EpraseUserGuide2025.pdf")} title="User Guide PDF">this PDF file</a>.</li>
 			<li>Watch a user experience video from Newcastle Hospitals Andrew Head, 
 				Lead Pharmacist for Clinical Informatics, on how to interpret and 
 				respond to your ePRaSE assessment results.
