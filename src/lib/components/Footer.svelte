@@ -1,8 +1,10 @@
 <script>
     let { transparent = false } = $props();
+    import { resolve } from '$app/paths';
+    const link = (path) => resolve(path);
 </script>
 
-<footer class:home-style={transparent}><img src="/img/ncl_logo.png" alt="NCL Logo"><img src="/img/nhs_logo.png" alt="NHS Logo"></footer>
+<footer class:home-style={transparent}><img src={link("/img/ncl_logo.png")} alt="NCL Logo"><img src={link("/img/nhs_logo.png")} alt="NHS Logo"></footer>
 
 <style>
 
