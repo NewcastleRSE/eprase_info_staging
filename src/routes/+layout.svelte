@@ -18,7 +18,7 @@
             });
         });
     });
-
+ 
     let internalPath = $derived(
         page.url.pathname.startsWith(base) 
             ? page.url.pathname.slice(base.length) || '/' 
@@ -52,7 +52,7 @@
 
 {#if displayTitle}
     {#key pathKey}
-        <PageHeader title={displayTitle()} />
+        <PageHeader title={displayTitle} />
     {/key}
 {/if}
 
