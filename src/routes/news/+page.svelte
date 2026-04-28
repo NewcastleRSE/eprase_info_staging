@@ -8,7 +8,7 @@
   <p>To support interpretation and response to your ePRaSE results, we recommend the following resources:</p>
 
   <ul>
-    <li>User experience video: <a href={link("/using")}>Responding to ePRaSE, Andrew Heed</a></li>
+    <li><a href={link("/using")}>User experience video</a>: Responding to ePRaSE, Andrew Heed</li>
     <li><a href={link("/lab")}>Electronic Prescribing Learning Lab</a>: An interactive resource designed to help digital and pharmacy teams optimise their electronic prescribing systems.</li>
   </ul>
 
