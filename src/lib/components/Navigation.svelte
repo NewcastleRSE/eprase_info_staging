@@ -12,7 +12,7 @@
     const bottomLinks = [
         { name: 'About', path: '/about' },
         { name: 'Using ePRaSE', path: '/using' },
-        { name: 'Results', path: '/results' },
+        { name: 'Results', path: '/results/2025' },
         { name: 'Learning Lab', path: '/lab' }
     ];
 
