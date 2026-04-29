@@ -1,4 +1,7 @@
 <script>
+  import { resolve } from '$app/paths';
+  const link = (path) => resolve(path);
+
   let adultCode = '';
   let pedCode = '';
 </script>
@@ -22,10 +25,10 @@
     </p>
     <ul>
       <li>
-        <a href="/using">User experience video</a>: Responding to ePRaSE, Andrew Heed
+        <a href={link("/using")}>User experience video</a>: Responding to ePRaSE, Andrew Heed
       </li>
       <li>
-        <a href="/lab">Electronic Prescribing Learning Lab</a>: An interactive resource designed to help digital and pharmacy teams optimise their electronic prescribing systems.
+        <a href={link("/lab")}>Electronic Prescribing Learning Lab</a>: An interactive resource designed to help digital and pharmacy teams optimise their electronic prescribing systems.
       </li>
     </ul>
   </div>
@@ -57,7 +60,7 @@
 
     <p>More recent updates correlate with marginally better mitigation, stressing the value of consistent update cycles.</p>
 
-    <p>The data suggests an optimal update cycle of 15–20 months, acknowledging that there are many different types of updates.</p>
+    <p>The data suggests an optimal update cycle of 15-20 months, acknowledging that there are many different types of updates.</p>
 
     <p>Sustaining good mitigation requires combining periodic updates with ongoing oversight and review activities.</p>
 
