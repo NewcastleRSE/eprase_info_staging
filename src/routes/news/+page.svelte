@@ -3,7 +3,7 @@
     const link = (path) => resolve(path);
 </script>
 <div class="subpage">
-  <p>Results from Version 4 (2025) of the Electronic Prescribing Risk and Safety Evaluation (ePRaSE) tool are now available as interactive, anonymised Power BI reports on the <a href={link("/results")}>Results 2025 page</a> of the ePRaSE website. Trusts that completed the 2025 assessment have been emailed unique identification numbers, enabling benchmarking against other trusts using the same electronic prescribing (EP) system. Explanatory notes are provided to support interpretation of the data.</p>
+  <p>Results from Version 4 (2025) of the Electronic Prescribing Risk and Safety Evaluation (ePRaSE) tool are now available as interactive, anonymised Power BI reports on the <a href={link("/results/2025")}>Results 2025 page</a> of the ePRaSE website. Trusts that completed the 2025 assessment have been emailed unique identification numbers, enabling benchmarking against other trusts using the same electronic prescribing (EP) system. Explanatory notes are provided to support interpretation of the data.</p>
 
   <p>To support interpretation and response to your ePRaSE results, we recommend the following resources:</p>
 
