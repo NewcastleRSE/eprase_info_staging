@@ -2,8 +2,9 @@
   import { resolve } from '$app/paths';
   const link = (path) => resolve(path);
 
-  let adultCode = '';
-  let pedCode = '';
+  let adultCode = 'eyJrIjoiMDlkMTQxZjItY2UwZS00ZDdlLTk5OWItNzkwM2JmMmVlNmE2IiwidCI6IjljNTAxMmM5LWI2MTYtNDRjMi1hOTE3LTY2ODE0ZmJlM2U4NyIsImMiOjh9';
+  let pedCode = 'eyJrIjoiYWEzMDg0ZDMtYjdjNy00Mzk5LWI1MjEtNjVkZDcwZjdiODk0IiwidCI6IjljNTAxMmM5LWI2MTYtNDRjMi1hOTE3LTY2ODE0ZmJlM2U4NyIsImMiOjh9';
+
 </script>
 
 <div class="subpage">
@@ -35,7 +36,7 @@
 
 <h2 class="eprase-h2">Adult Patients Report</h2>
 <div class="accordion-text">
-    <iframe title="Anonymized ePRaSE Adult Results Charts" width="1024" height="612" src={"https://app.powerbi.com/view?r=" + adultCode} allowFullScreen="true" style="border: 1px solid #999;"></iframe>
+    <iframe title="Anonymized ePRaSE Adult Results Charts" width="600" height="373.5" src={"https://app.powerbi.com/view?r=" + adultCode} allowFullScreen="true" style="border: 1px solid #999;"></iframe>
 
     <h3>Explanatory Notes</h3>
     <p class='highlight'>Page 1: EP System Performance Adults V4 2025</p>
@@ -81,7 +82,7 @@
 
 <h2 class="eprase-h2">Paediatric Patients Report</h2>
 <div class="accordion-text">
-    <iframe title="Anonymized ePRaSE Paediatric Results Charts" width="1024" height="612" src={"https://app.powerbi.com/view?r=" + pedCode} allowFullScreen="true" style="border: 1px solid #999;"></iframe>
+    <iframe title="Anonymized ePRaSE Paediatric Results Charts" width="600" height="373.5" src={"https://app.powerbi.com/view?r=" + pedCode} allowFullScreen="true" style="border: 1px solid #999;"></iframe>
 
 
     <h3>Explanatory Notes</h3>
