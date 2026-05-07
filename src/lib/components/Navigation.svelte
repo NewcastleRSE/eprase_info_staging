@@ -55,15 +55,19 @@
         <hr class="nav-divider desktop-only">
 
         <div class="nav-row bottom-row desktop-only">
-            {#each bottomLinks as item}
+            {#each bottomLinks as item (item.path)}
+                {@const currentSection = page.url.pathname.split('/')[1]} 
+                {@const linkSection = item.path.split('/')[1]}
+                {@const isActive = currentSection === linkSection}
+
                 <a 
                     href={link(item.path)} 
-                    class:active={isActive(item.path)}
-                    aria-current={isActive(item.path) ? 'page' : undefined}
+                    class:active={isActive}
+                    aria-current={isActive ? 'page' : undefined}
                 >
                     {item.name}
                 </a>
-            {/each} 
+            {/each}
         </div>
 
         <button class="burger mobile-only" onclick={toggleMenu} aria-label="Toggle Menu">
