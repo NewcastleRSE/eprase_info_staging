@@ -34,8 +34,17 @@
         '/contact': 'Get in Touch'
     };
 
-    let displayTitle = $derived(titles[page.url.pathname.replace(/\/$/, '') || '/'] || null);
-    console.log(displayTitle);
+    // Ensure we always look up a clean, non-trailing-slash path (unless it's just '/')
+    let cleanPath = $derived(
+        page.url.pathname === '/' 
+            ? '/' 
+            : page.url.pathname.endsWith('/') 
+                ? page.url.pathname.slice(0, -1) 
+                : page.url.pathname
+    );
+
+    let displayTitle = $derived(titles[cleanPath] || null);
+
 </script>
 <svelte:head>
     <title>{displayTitle}</title>
