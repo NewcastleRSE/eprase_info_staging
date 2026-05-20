@@ -1,7 +1,6 @@
 <script lang="ts">
     import '../app.css'; 
     import { page } from '$app/state'; 
-    import { base } from '$app/paths';
     import PageHeader from '$lib/components/PageHeader.svelte';
     import Navigation from '$lib/components/Navigation.svelte';
     import Footer from '$lib/components/Footer.svelte';
@@ -18,14 +17,9 @@
             });
         });
     });
- 
-    let internalPath = $derived(
-        page.url.pathname.startsWith(base) 
-            ? page.url.pathname.slice(base.length) || '/' 
-            : page.url.pathname
-    );
+
     let { children } = $props();
-    let isHome = $derived(internalPath === '/' || internalPath === '');
+    let isHome = $derived(page.url.pathname === '/');
     let pathKey = $derived(page.url.pathname);
 
     const titles = {
@@ -40,7 +34,7 @@
         '/contact': 'Get in Touch'
     };
 
-    let displayTitle = $derived(titles[internalPath.replace(/\/$/, '') || '/'] || null);
+    let displayTitle = $derived(titles[page.url.pathname.replace(/\/$/, '') || '/'] || null);
 
 </script>
 <svelte:head>

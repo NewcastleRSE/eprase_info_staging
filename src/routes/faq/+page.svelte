@@ -1,7 +1,5 @@
 <script>
     import { resolve } from '$app/paths';
-    const link = (path) => resolve(path);
-
 </script><div class="subpage">
 <div class="accordion-text">
    <p class='question'>Q: Can we have access to all the questions and the raw data?</p>
@@ -16,7 +14,7 @@
 
     <p class='question'>Q: Will you share any learning from this version rollout with users?</p>
 
-    <p class='answer'>A: Anonymised user result summaries are published on this (<a href="http://eprase.info">eprase.info</a>) site at the end of each cycle as soon as the team have processed the data (typically March/April). Thematic findings will be shared through the ePrescribing Masterclasses, publications, and other events. Masterclasses can be accessed by signing up via <a href="mailto:england.digitalmedicines@nhs.net" title="mailto:england.digitalmedicines@nhs.net">england.digitalmedicines@nhs.net</a>. National results have also enabled the team to build a <a href={link("/lab")}>Learning Lab toolkit</a> to support users in optimising their systems.</p>
+    <p class='answer'>A: Anonymised user result summaries are published on <a class="linelink" href={resolve("/results/2025")}>this site</a> at the end of each cycle as soon as the team have processed the data (typically March/April). Thematic findings will be shared through the ePrescribing Masterclasses, publications, and other events. Masterclasses can be accessed by signing up via <a class="linelink" href="mailto:england.digitalmedicines@nhs.net" title="mailto:england.digitalmedicines@nhs.net">england.digitalmedicines@nhs.net</a>. National results have also enabled the team to build a <a class="linelink" href={resolve("/lab")}>Learning Lab toolkit</a> to support users in optimising their systems.</p>
 
     <p class='question'>Q: Is the tool designed for acute trust scenarios only?</p>
 
@@ -36,11 +34,11 @@
 
     <p class='question'>Q: Can we amend a response that has been incorrectly added?</p>
 
-    <p class='answer'>A: Once you have submitted a response for a test scenario you cannot go back and amend the response. Please contact us at <a href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a> if you require further support.</p>
+    <p class='answer'>A: Once you have submitted a response for a test scenario you cannot go back and amend the response. Please contact us at <a class="linelink" href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a> if you require further support.</p>
 
     <p class='question'>Q: What can we do if we missed important information in our patient build and the tool seems to have lost the information we added?</p>
 
-    <p class='answer'>A: If you have missed important information in your patient build you can go back and view the patient build again. However, please contact us at <a href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a> if you need further assistance or your tests reset.</p>
+    <p class='answer'>A: If you have missed important information in your patient build you can go back and view the patient build again. However, please contact us at <a class="linelink" href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a> if you need further assistance or your tests reset.</p>
 
     <p class='question'>Q: We use more than one electronic prescribing system in our organisation. Can you amend the tool to include these changes?</p>
 
@@ -52,7 +50,7 @@
 
     <p class='question'>Q: Do we have to admit in Patient Administration System (PAS)? Or can we admit manually in the EPMA system directly as this is easier for us to manage locally?</p>
 
-    <p class='answer'>A: We recommend following your normal operating procedure. If patient information is drawn from PAS into the electronic prescribing system normally, we would recommend that you do that. Some patients require additional clinical or general information such as GP name  to be added for the scenarios/test to work correctly. Please use whatever standard dummy information you would normally use to test your systems. We estimate it takes 1-2 hours to set up the fictional patients and similar time to run the test part and record observations. You can log in and out of the patient build sections without losing your place so that it can be completed over several different sessions if that is easier.</p>
+    <p class='answer'>A: We recommend following your normal operating procedure. If patient information is drawn from PAS into the electronic prescribing system normally, we would recommend that you do that. Some patients require additional clinical or general information such as GP name to be added for the scenarios/test to work correctly. Please use whatever standard dummy information you would normally use to test your systems. We estimate it takes 1-2 hours to set up the fictional patients and similar time to run the test part and record observations. You can log in and out of the patient build sections without losing your place so that it can be completed over several different sessions if that is easier.</p>
 
     <p class='question'>Q: Can anyone outside the ePRaSE project team view the identifiable data via this tool?</p>
 
@@ -64,7 +62,7 @@
 
     <p class='question'>Q: I have completed the tool assessment. However, I do not understand the report I have been provided. Is there support to help with the results?</p>
 
-    <p class='answer'>A: If you have any queries with your report, please refer to the user guide or contact <a href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a> for support.</p>
+    <p class='answer'>A: If you have any queries with your report, please refer to the user guide or contact <a class="linelink" href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a> for support.</p>
 
     <p class='question'>Q: I have used ePRaSE before, do I have to sign up again?</p>
 
@@ -76,11 +74,11 @@
 
     <p class='question'>Q: I need technical support, when can I get in touch?</p>
 
-    <p class='answer'>A: Please contact us by email at <a href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a>. Office times are 9am-5pm. Response times are from 48 hours to 72 hours.</p>
+    <p class='answer'>A: Please contact us by email at <a class="linelink" href="mailto:nuth.eprase@nhs.net">nuth.eprase@nhs.net</a>. Office times are 9am-5pm. Response times are from 48 hours to 72 hours.</p>
 
     <p class='question'>Q: Is it possible to access the tool and carry out a test run before completing the proper assessment?</p>
 
-    <p class='answer'>A: The ePRaSE assessment is an annual test that can only be completed by an individual Trust once. It is not possible to go in and have a look and do multiple runs. Please refer to the explainer videos and user guide to prepare ahead of the self-assessment, both available at <a href="https://eprase.info">https://eprase.info</a>.</p>
+    <p class='answer'>A: The ePRaSE assessment is an annual test that can only be completed by an individual Trust once. It is not possible to go in and have a look and do multiple runs. Please refer to the explainer videos and user guide to prepare ahead of the self-assessment, both available here at <a class="linelink" href={resolve("/using")}>eprase.info</a>.</p>
 
     <p class='question'>Q: How many times can we test our systems?</p>
 

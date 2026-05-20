@@ -3,11 +3,15 @@
 }
 
 :root {
-    --nhs-blue: #005EB8;
-    --nhs-dark-blue: #00396F;
-    --nhs-light-blue: #3498DB;
-    --pill-dark-green: #009460;
-    --pill-light-green: #00FCA3;
+    --nhs-blue:         #005EB8;
+    --nhs-dark-blue:    #003087;
+    --nhs-light-blue:   #41B6E6;
+    --pill-dark-green:  #006747;
+    --pill-green:       #009639;
+    --pill-light-green: #78BE20;
+    --nhs-orange:       #ED8B00;
+    --nhs-light-orange: #FFB81C;
+    --nhs-yellow:       #FAE100;
 }
 
 ::view-transition-old(pill-box),
@@ -70,7 +74,8 @@ body, html {
 .subpage h2 {
     color: #3498DB;
     font-weight: 400;
-    margin: 0 0 0 -4rem;
+    margin-top: 40px;
+    margin-left: -4rem;
     animation: fadeUp 1s ease-out both;
     animation-delay: 0.2s; /* Starts slightly after the H1 */
     background-color: #FFF;
@@ -89,6 +94,35 @@ body, html {
     margin: 2rem 0;
     display: flex;
     justify-content: center;
+}
+
+.linelink {
+    position: relative;
+    text-decoration: none;
+    color: var(--nhs-blue);
+    font-weight: 600;
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+}
+
+.linelink:hover {
+    opacity: 1;
+}
+
+.linelink::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--nhs-dark-blue);
+    transition: width 0.4s ease;
+}
+
+.linelink:hover::after {
+    width: 100%;
 }
 
 @media (max-width:768px) {
