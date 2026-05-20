@@ -15,7 +15,7 @@
 
   <p>The ePRaSE team are already working on the next version of the tool, planned for release early Autumn 2026. If you have not previously had the chance to participate and would like to next time, please register to receive email updates via the QR code below.</p>
 
-  <img class='qrCode' src="/img/eprase_qr.png" alt="qr code" />
+  <img class='qrCode' src={resolve("/img/eprase_qr.png")} alt="qr code" />
 </div>
 <style>
   .qrCode {
