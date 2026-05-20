@@ -35,7 +35,7 @@
     };
 
     let displayTitle = $derived(titles[page.url.pathname.replace(/\/$/, '') || '/'] || null);
-
+    console.log(displayTitle);
 </script>
 <svelte:head>
     <title>{displayTitle}</title>
