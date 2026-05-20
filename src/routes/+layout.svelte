@@ -7,7 +7,6 @@
     import { onNavigate } from '$app/navigation';
 
     onNavigate((navigation) => {
-        // This is the magic line
         if (!document.startViewTransition) return;
 
         return new Promise((resolve) => {
@@ -19,7 +18,6 @@
     });
 
     let { children } = $props();
-    let isHome = $derived(page.url.pathname === '/');
     let pathKey = $derived(page.url.pathname);
 
     const titles = {
@@ -34,37 +32,31 @@
         '/contact': 'Get in Touch'
     };
 
-    // Ensure we always look up a clean, non-trailing-slash path (unless it's just '/')
-    let cleanPath = $derived(
-        page.url.pathname === '/' 
-            ? '/' 
-            : page.url.pathname.endsWith('/') 
-                ? page.url.pathname.slice(0, -1) 
-                : page.url.pathname
-    );
-
-    let displayTitle = $derived(titles[cleanPath] || null);
+    // Safely reads the structure of your routes folder, ignoring subdirectories
+    let displayTitle = $derived(titles[page.route.id || '/'] || null);
+    let isHome = $derived(page.route.id === '/');
 
 </script>
+
 <svelte:head>
-    <title>{displayTitle}</title>
-    
+    <title>{displayTitle ? `${displayTitle} | ePRaSE` : 'ePRaSE'}</title>
     <meta name="description" content="Electronic Prescribing Risk Assessment Safety Evaluation" />
 </svelte:head>
+
 <div class="app-container">
-<Navigation />
+    <Navigation />
 
-{#if displayTitle}
-    {#key pathKey}
-        <PageHeader title={displayTitle} />
-    {/key}
-{/if}
+    {#if displayTitle}
+        {#key pathKey}
+            <PageHeader title={displayTitle} />
+        {/key}
+    {/if}
 
-<main class="content">
-    {@render children()}
-</main>
+    <main class="content">
+        {@render children()}
+    </main>
 
-<Footer transparent={isHome} />
+    <Footer transparent={isHome} />
 </div>
 
 <style>
