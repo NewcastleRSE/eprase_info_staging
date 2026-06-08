@@ -5,9 +5,10 @@
 <div class="home-banner">
 <PillContainer height="100%" verticalEnergy={0.4} horizontalEnergy={0.6} count={12} speed={1.5} spawnDelay={150}>
     <div class="banner-text">
-        Configuring e-prescribing<br>
-        systems to keep<br>
-        patients safe
+        <p class='main-text'>Configuring ribing
+        systems to keep
+        patients safe</p>
+		<p class='sub-text'><q>Know your risk: An NHS self-assessment for safer ePrescribing.</q></p>
     </div>
 </PillContainer>
 </div>
@@ -23,6 +24,18 @@
 		padding-left: clamp(5%, 10vw, 7%);
 		text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 		animation: fadeUp 0.8s ease-out forwards;
+	}
+
+	.banner-text .main-text {
+		width: 50%;
+		line-height: 1.2;
+	}
+
+	.banner-text .sub-text {
+		font-size: clamp(1.2rem, 3vw, 2rem);
+		margin-top: 0.5em;
+		color: var(--nhs-dark-blue);
+		text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 	}
 
 	.home-banner {

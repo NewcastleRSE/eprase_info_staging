@@ -6,7 +6,7 @@
 
 <div class="subpage-wrapper">
 <header class="subpage-header">
-    <PillContainer height="100%" count={myCount} speed={0.4} spawnDelay={400} leftWallPercent={0.75} verticalEnergy={0.5}>
+    <PillContainer height="100%" minSize={25} maxSize={50} count={myCount} speed={0.4} spawnDelay={400} leftWallPercent={0.75} verticalEnergy={0.5}>
         <div class="header-content">
             <h1>{title}</h1>
         </div>
@@ -19,7 +19,7 @@
         view-transition-name: pill-box;
         display: flex;
         width: 100%;
-        height: clamp(80px, 15vmin, 150px);
+        height: clamp(80px, 12vmin, 150px);
         /*background: linear-gradient(to bottom right, #fff, #eff3fb);*/
         background-color: #eff3fb;
         box-shadow: inset 0 0 20px rgba(34, 61, 152, 0.1);

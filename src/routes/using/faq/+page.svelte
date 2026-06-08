@@ -1,7 +1,7 @@
 <script>
     import { resolve } from '$app/paths';
-</script><div class="subpage">
-<div class="accordion-text">
+</script>
+
    <p class='question'>Q: Can we have access to all the questions and the raw data?</p>
 
     <p class='answer'>A: Users do get more detail test descriptions and direct feedback on mandatory questions.</p>
@@ -88,9 +88,7 @@
 
     <p class='answer'>A: For those completing both paediatric and adult assessments for the same or multiple different adult EP systems please estimate the proportion of staff time committed to each i.e., record estimated WTE per each individual EP system.</p>
 
-    </div>
-</div>
 <style>
-    .question {color: #262d53; font-style: italic;}
+    .question {color: var(--nhs-blue); font-style: italic;}
 </style>
 
