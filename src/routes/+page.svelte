@@ -5,7 +5,7 @@
 <div class="home-banner">
 <PillContainer height="100%" verticalEnergy={0.4} horizontalEnergy={0.6} count={12} speed={1.5} spawnDelay={150}>
     <div class="banner-text">
-        <p class='main-text'>Configuring ribing
+        <p class='main-text'>Configuring ePrescribing
         systems to keep
         patients safe</p>
 		<p class='sub-text'><q>Know your risk: An NHS self-assessment for safer ePrescribing.</q></p>
