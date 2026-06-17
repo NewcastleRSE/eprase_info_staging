@@ -46,8 +46,8 @@
     ];
 
     const uxVideos = [
-        { name: 'User Experience Video 1', path: '/using/ux-video-1' },
-        { name: 'User Experience Video 2', path: '/using/ux-video-2' }
+        { name: 'Newcastle', path: '/using/ux-video-1' },
+        { name: 'Liverpool', path: '/using/ux-video-2' }
     ];
     
     // Route validation checks
@@ -64,7 +64,7 @@
 
     <div class="nav-stack">
         <div class="nav-row top-row desktop-only">
-            {#each topLinks as item}
+            {#each topLinks as item (item.path)}
                 <a 
                     href={item.path.startsWith('mailto') ? item.path : link(item.path)} 
                     class:active={isActive(item.path)}
