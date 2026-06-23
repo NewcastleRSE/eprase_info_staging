@@ -1,10 +1,10 @@
 <script lang="ts">
     import '../app.css'; 
     import { page } from '$app/state'; 
-    import PageHeader from '$lib/components/PageHeader.svelte';
     import Navigation from '$lib/components/Navigation.svelte';
     import Footer from '$lib/components/Footer.svelte';
     import { onNavigate } from '$app/navigation';
+    import { browser } from '$app/environment';
 
     onNavigate((navigation) => {
         if (!document.startViewTransition) return;
@@ -18,39 +18,56 @@
     });
 
     let { children } = $props();
-    let pathKey = $derived(page.url.pathname);
+    
+    $effect(() => {
+        if (browser && window.gtag) {
+            window.gtag('config', 'G-9H952DXLHJ', {
+                page_path: page.url.pathname
+            });
+        }
+    });
 
-    const titles = {
-        '/': null,
-        '/about': 'About ePRaSE',
-        '/using': 'Using ePRaSE',
-        '/results/2024': '2024 Assessment Results',
-        '/results/2025': '2025 Assessment Results',
-        '/lab': 'ePRaSE Learning Lab',
-        '/news': 'Latest News',
-        '/faq': 'Frequently Asked Questions',
-        '/contact': 'Get in Touch'
-    };
-
-    // Safely reads the structure of your routes folder, ignoring subdirectories
-    let displayTitle = $derived(titles[page.route.id || '/'] || null);
     let isHome = $derived(page.route.id === '/');
+
+    const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
+    let displayTitle = $derived.by(() => {
+        const segments = page.url.pathname.split('/').filter(Boolean);
+
+        if (segments.length === 0) {
+            return "ePRaSE | Electronic Prescribing and Safety Evaluation";
+        }
+
+        const categoryMap: Record<string, string> = {
+            'using': 'Using ePRaSE',
+            'about': 'About ePRaSE',
+            'lab': 'ePRaSELearning Lab',
+            'results': 'Assessment Results'
+        };
+
+        if (segments.length >= 2) {
+            const subpage = segments[1] == 'faq' ? 'FAQ' : capitalize(segments[1]);
+            const parent = categoryMap[segments[0]] || capitalize(segments[0]);
+            
+            if (segments[0] === 'results') {
+                return `${segments[1]} ${parent} | ePRaSE`;
+            }
+            
+            return `${subpage} - ${parent}`;
+        }
+
+        const mainTitle = categoryMap[segments[0]] || capitalize(segments[0]);
+        return mainTitle;
+    });
 
 </script>
 
 <svelte:head>
-    <title>{displayTitle ? `${displayTitle} | ePRaSE` : 'ePRaSE'}</title>
+    <title>{displayTitle ? displayTitle : 'ePRaSE'}</title>
     <meta name="description" content="Electronic Prescribing Risk Assessment Safety Evaluation" />
 </svelte:head>
 
 <div class="app-container">
     <Navigation />
-
-    {#if displayTitle}
-        {#key pathKey}
-            <PageHeader title={displayTitle} />
-        {/key}
-    {/if}
 
     <main class="content">
         {@render children()}
@@ -71,5 +88,6 @@
         flex: 1; /* This pushes the footer down and pulls the banner open */
         display: flex;
         flex-direction: column;
+        overflow: visible;
     }
 </style>

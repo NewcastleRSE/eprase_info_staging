@@ -54,10 +54,29 @@
 
 <style>
     /* Retain your existing split-layout, main-body, context-sidebar, and media query styles here */
-    .split-layout { display: grid; grid-template-columns: 1fr 280px; gap: 60px; max-width: 1200px; margin: 2rem auto; padding: 0 20px; width: 100%; box-sizing: border-box; }
+    .split-layout { 
+        display: grid; 
+        grid-template-columns: 1fr 280px; 
+        gap: 60px; 
+        max-width: 1200px; 
+        margin: 2rem auto; 
+        padding: 0 20px; 
+        width: 100%; 
+        box-sizing: border-box;
+        align-items: stretch;
+    }
     .main-body { min-width: 0; }
-    .context-sidebar { border-left: 2px solid #eff3fb; padding-left: 24px; }
-    .sticky-wrapper { position: sticky; top: 40px; }
+    .context-sidebar { 
+        border-left: 2px solid #eff3fb; 
+        padding-left: 24px; 
+        height: 100%;
+    }
+    .sticky-wrapper { 
+        position: sticky; 
+        top: 40px; 
+        align-self: start;
+        height: fit-content; 
+    }
     .context-sidebar h3 { color: #64748b; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 16px 0; }
     .sidebar-nav { display: flex; flex-direction: column; gap: 12px; }
     .sidebar-nav a { text-decoration: none; color: var(--nhs-dark-blue, #003087); font-size: 1rem; font-weight: 500; transition: color 0.2s ease; line-height: 1.4; }

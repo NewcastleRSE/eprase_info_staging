@@ -3,41 +3,40 @@
     import { resolve } from '$app/paths';
     
     let isMenuOpen = $state(false);
-    let mobileUsingOpen = $state(false);
+    
+    // Dynamic dictionary to track which mobile menus are toggled open
+    let mobileSectionsOpen = $state<Record<string, boolean>>({
+        'about': false,
+        'using': false,
+        'results': false,
+        'lab': false
+    });
     let mobileVideosOpen = $state(false);
 
     const toggleMenu = () => isMenuOpen = !isMenuOpen;
     const closeMenu = () => {
         isMenuOpen = false;
-        mobileUsingOpen = false;
         mobileVideosOpen = false;
+        for (let key in mobileSectionsOpen) mobileSectionsOpen[key] = false;
     };
     
     const link = (path: string) => resolve(path);
     
-    // Bottom primary links ('Using ePRaSE' becomes a dropdown container instead of a direct link)
-    const bottomLinks = [
-        { name: 'About', path: '/about' },
-        { name: 'Using ePRaSE', path: '/using', isDropdown: true },
-        { name: 'Results', path: '/results/2025' },
-        { name: 'Learning Lab', path: '/lab' }
+    // Core navigation structure (All items are now uniform dropdowns)
+    const navSections = [
+        { name: 'About', path: '/about', key: 'about' },
+        { name: 'Using ePRaSE', path: '/using', key: 'using' },
+        { name: 'Results', path: '/results/2025', key: 'results' },
+        { name: 'Learning Lab', path: '/lab', key: 'lab' }
     ];
 
-    // FAQ moved into the "Using ePRaSE" structure as requested
-    const topLinks = [
-        { name: 'News', path: '/news' },
-        { name: 'Contact', path: 'mailto:nuth.eprase@nhs.net' }
+    // Subpage hierarchy maps
+    const aboutSubLinks = [
+        { name: 'Project Overview', path: '/about' },
+        { name: 'Project Team', path: '/about/team' },
+        { name: 'Contact', path: '/about/contact' } // Contact cleanly integrated here
     ];
 
-    // Flat mapping list used strictly for simple mobile fallback iteration
-    const mobileLinks = [
-        { name: 'About', path: '/about' },
-        { name: 'Results', path: '/results/2025' },
-        { name: 'Learning Lab', path: '/lab' },
-        ...topLinks
-    ];
-
-    // Sub-navigation hierarchy for the Mega-Menu
     const usingSubLinks = [
         { name: 'FAQ', path: '/using/faq' },
         { name: 'Step-by-step instructions', path: '/using/instructions' },
@@ -49,8 +48,17 @@
         { name: 'Newcastle', path: '/using/ux-video-1' },
         { name: 'Liverpool', path: '/using/ux-video-2' }
     ];
+
+    const labSubLinks = [
+        { name: 'Learning Lab', path: '/lab' },
+        { name: 'Bibliography', path: '/lab/bibliography' }
+    ];
+
+    const resultsSubLinks = [
+        { name: '2025 Results', path: '/results/2025' },
+        { name: '2024 Results', path: '/results/2024' }
+    ];
     
-    // Route validation checks
     const isActive = (path: string) => page.url.pathname.replace(/\/$/, '') === resolve(path).replace(/\/$/, '');
     const isSectionActive = (path: string) => page.url.pathname.split('/')[1] === path.split('/')[1];
 </script>
@@ -62,100 +70,101 @@
         </a>
     </div>
 
-    <div class="nav-stack">
-        <div class="nav-row top-row desktop-only">
-            {#each topLinks as item (item.path)}
-                <a 
-                    href={item.path.startsWith('mailto') ? item.path : link(item.path)} 
-                    class:active={isActive(item.path)}
-                    aria-current={isActive(item.path) ? 'page' : undefined}
-                >
-                    {item.name}
-                </a>
-            {/each}
-        </div>
-
-        <hr class="nav-divider desktop-only">
-
-        <div class="nav-row bottom-row desktop-only">
-            {#each bottomLinks as item (item.path)}
-                {#if item.isDropdown}
-                    <div class="dropdown-trigger">
-                        <button class="nav-btn-link" class:active={isSectionActive(item.path)}>
-                            {item.name} <span class="arrow">▼</span>
-                        </button>
-                        
-                        <div class="mega-menu">
-                            <div class="mega-grid">
-                                <div class="mega-column">
-                                    <h3>Guides & Reference</h3>
-                                    {#each usingSubLinks as sub}
-                                        <a href={link(sub.path)} class:active={isActive(sub.path)}>{sub.name}</a>
-                                    {/each}
-                                </div>
-                                <div class="mega-column highlighted-col">
-                                    <h3>User Experience Videos</h3>
-                                    {#each uxVideos as video}
-                                        <a href={link(video.path)} class:active={isActive(video.path)}>
-                                            <span class="play-icon">▶</span> {video.name}
-                                        </a>
-                                    {/each}
-                                </div>
+    <div class="nav-row desktop-only">
+        {#each navSections as item (item.path)}
+            <div class="dropdown-trigger">
+                <button class="nav-btn-link" class:active={isSectionActive(item.path)}>
+                    {item.name} <span class="arrow">▼</span>
+                </button>
+                
+                <div class="mega-menu" class:standard-width={item.key !== 'using'}>
+                    {#if item.key === 'using'}
+                        <div class="mega-grid">
+                            <div class="mega-column">
+                                <h3>Guides & Reference</h3>
+                                {#each usingSubLinks as sub (sub.path)}
+                                    <a href={link(sub.path)} class:active={isActive(sub.path)}>{sub.name}</a>
+                                {/each}
+                            </div>
+                            <div class="mega-column highlighted-col">
+                                <h3>User Experience Videos</h3>
+                                {#each uxVideos as video (video.path)}
+                                    <a href={link(video.path)} class:active={isActive(video.path)}>
+                                        <span class="play-icon">▶</span> {video.name}
+                                    </a>
+                                {/each}
                             </div>
                         </div>
-                    </div>
-                {:else}
-                    <a 
-                        href={link(item.path)} 
-                        class:active={isSectionActive(item.path)}
-                        aria-current={isSectionActive(item.path) ? 'page' : undefined}
-                    >
-                        {item.name}
-                    </a>
-                {/if}
-            {/each}
-        </div>
-
-        <button class="burger mobile-only" onclick={toggleMenu} aria-label="Toggle Menu">
-            <span class:open={isMenuOpen}></span>
-            <span class:open={isMenuOpen}></span>
-            <span class:open={isMenuOpen}></span>
-        </button>
-    </div>
-
-    <div class="mobile-menu" class:open={isMenuOpen}>
-        <div class="mobile-accordion">
-            <button class="accordion-toggle" onclick={() => mobileUsingOpen = !mobileUsingOpen}>
-                Using ePRaSE <span class="arrow-indicator" class:rotated={mobileUsingOpen}>▼</span>
-            </button>
-            {#if mobileUsingOpen}
-                <div class="accordion-content">
-                    {#each usingSubLinks as sub}
-                        <a href={link(sub.path)} onclick={closeMenu} class:active={isActive(sub.path)}>{sub.name}</a>
-                    {/each}
-                    
-                    <button class="accordion-sub-toggle" onclick={() => mobileVideosOpen = !mobileVideosOpen}>
-                        User Experience Videos <span class="arrow-indicator" class:rotated={mobileVideosOpen}>▼</span>
-                    </button>
-                    {#if mobileVideosOpen}
-                        <div class="accordion-sub-content">
-                            {#each uxVideos as video}
-                                <a href={link(video.path)} onclick={closeMenu} class:active={isActive(video.path)}>▶ {video.name}</a>
-                            {/each}
+                    {:else}
+                        <div class="standard-column">
+                            {#if item.key === 'about'}
+                                {#each aboutSubLinks as sub (sub.path)}
+                                    <a href={link(sub.path)} class:active={isActive(sub.path)}>{sub.name}</a>
+                                {/each}
+                            {:else if item.key === 'lab'}
+                                {#each labSubLinks as sub (sub.path)}
+                                    <a href={link(sub.path)} class:active={isActive(sub.path)}>{sub.name}</a>
+                                {/each}
+                            {:else if item.key === 'results'}
+                                {#each resultsSubLinks as sub (sub.path)}
+                                    <a href={link(sub.path)} class:active={isActive(sub.path)}>{sub.name}</a>
+                                {/each}
+                            {/if}
                         </div>
                     {/if}
                 </div>
-            {/if}
-        </div>
+            </div>
+        {/each}
+    </div>
 
-        {#each mobileLinks as item}
-            <a 
-                href={item.path.startsWith('mailto') ? item.path : link(item.path)} 
-                onclick={closeMenu} 
-                class:active={isActive(item.path)}
-            >
-                {item.name}
-            </a>
+    <button class="burger mobile-only" onclick={toggleMenu} aria-label="Toggle Menu">
+        <span class:open={isMenuOpen}></span>
+        <span class:open={isMenuOpen}></span>
+        <span class:open={isMenuOpen}></span>
+    </button>
+
+    <div class="mobile-menu" class:open={isMenuOpen}>
+        {#each navSections as section (section.key)}
+            <div class="mobile-accordion">
+                <button class="accordion-toggle" onclick={() => mobileSectionsOpen[section.key] = !mobileSectionsOpen[section.key]}>
+                    {section.name} <span class="arrow-indicator" class:rotated={mobileSectionsOpen[section.key]}>▼</span>
+                </button>
+                
+                {#if mobileSectionsOpen[section.key]}
+                    <div class="accordion-content">
+                        {#if section.key === 'using'}
+                            {#each usingSubLinks as sub (sub.path)}
+                                <a href={link(sub.path)} onclick={closeMenu} class:active={isActive(sub.path)}>{sub.name}</a>
+                            {/each}
+                            
+                            <button class="accordion-sub-toggle" onclick={() => mobileVideosOpen = !mobileVideosOpen}>
+                                User Experience Videos <span class="arrow-indicator" class:rotated={mobileVideosOpen}>▼</span>
+                            </button>
+                            {#if mobileVideosOpen}
+                                <div class="accordion-sub-content">
+                                    {#each uxVideos as video (video.path)}
+                                        <a href={link(video.path)} onclick={closeMenu} class:active={isActive(video.path)}>▶ {video.name}</a>
+                                    {/each}
+                                </div>
+                            {/if}
+                        {:else}
+                            {#if section.key === 'about'}
+                                {#each aboutSubLinks as sub (sub.path)}
+                                    <a href={link(sub.path)} onclick={closeMenu} class:active={isActive(sub.path)}>{sub.name}</a>
+                                {/each}
+                            {:else if section.key === 'lab'}
+                                {#each labSubLinks as sub (sub.path)}
+                                    <a href={link(sub.path)} onclick={closeMenu} class:active={isActive(sub.path)}>{sub.name}</a>
+                                {/each}
+                            {:else if section.key === 'results'}
+                                {#each resultsSubLinks as sub (sub.path)}
+                                    <a href={link(sub.path)} onclick={closeMenu} class:active={isActive(sub.path)}>{sub.name}</a>
+                                {/each}
+                            {/if}
+                        {/if}
+                    </div>
+                {/if}
+            </div>
         {/each}
     </div>
 </nav>
@@ -165,8 +174,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: clamp(80px, 20vmin, 250px);
-        padding: clamp(10px, 4vh, 40px) clamp(20px, 5%, 60px);
+        height: clamp(80px, 15vmin, 160px); /* Lowered maximum scale down since layout is single-row */
+        padding: 0 clamp(20px, 5%, 60px);
         font-family: "Raleway", sans-serif;
         position: relative;
         background: linear-gradient(to bottom right, var(--nhs-blue), var(--nhs-dark-blue));
@@ -176,18 +185,9 @@
         box-shadow: inset 0 0 20px rgba(34, 61, 152, 0.2);
     }
 
-    .nav-stack {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        justify-content: center;
-        gap: 8px;
-        color: #FFFFFF;
-    }
-
     .nav-row {
         display: flex;
-        gap: 4px;
+        gap: 8px;
         align-items: center;
     }
 
@@ -198,8 +198,8 @@
         text-decoration: none;
         color: #FFFFFF;
         font-weight: 600;
-        font-size: 1.5rem;
-        padding: 6px 16px; 
+        font-size: 1.4rem;
+        padding: 8px 18px; 
         border: 1px solid transparent; 
         border-radius: 20px;
         transition: all 0.3s ease; 
@@ -209,40 +209,22 @@
         cursor: pointer;
     }
 
-    .nav-row a:hover, .bottom-row a.active, .nav-btn-link:hover, .nav-btn-link.active {
+    .nav-row a:hover, .nav-btn-link:hover, .nav-btn-link.active {
         color: #add2eb; 
         border-color: #3498DB;
     }
 
-    .top-row a.active, .top-row a:hover {
-        background: #3498DB;
-        border-color: #3498DB;
-        color: #fff;
-    }
-
-    .top-row a {
-        font-size: 1.3rem;
-        opacity: 0.9;
-    }
-
-    .nav-divider {
-        width: 100%;
-        border: 0;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        margin: 4px 0;
-    }
-
     .logo-area img {
-        height: clamp(60px, 5vw, 90px);
+        height: clamp(55px, 4.5vw, 80px);
         width: auto;
     }
 
     .arrow {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         transition: transform 0.2s ease;
     }
 
-    /* DESKTOP MEGA DROP-DOWN BEHAVIOR */
+    /* DESKTOP DROPDOWN CONFIGURATIONS */
     .dropdown-trigger {
         position: relative;
     }
@@ -258,13 +240,17 @@
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         padding: 20px;
-        margin-top: 10px;
+        margin-top: 14px;
         transform: translateY(10px);
         transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 3000;
     }
 
-    /* Reveal mega menu cleanly when hovering anywhere near the parent link zone */
+    .mega-menu.standard-width {
+        width: 240px;
+        padding: 12px;
+    }
+
     .dropdown-trigger:hover .mega-menu {
         visibility: visible;
         opacity: 1;
@@ -281,6 +267,12 @@
         gap: 20px;
     }
 
+    .standard-column {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
     .mega-column h3 {
         color: #212b32;
         font-size: 0.95rem;
@@ -289,21 +281,24 @@
         margin-bottom: 12px;
         border-bottom: 2px solid #eff3fb;
         padding-bottom: 6px;
+        margin-top: 0;
     }
 
-    .mega-column a {
+    .mega-column a, .standard-column a {
         color: var(--nhs-dark-blue, #003087);
         font-size: 1.05rem;
         font-weight: 500;
-        padding: 8px 10px;
+        padding: 8px 12px;
         border-radius: 6px;
         display: flex;
         align-items: center;
         width: 100%;
         box-sizing: border-box;
+        text-decoration: none;
+        transition: background-color 0.2s;
     }
 
-    .mega-column a:hover, .mega-column a.active {
+    .mega-column a:hover, .mega-column a.active, .standard-column a:hover, .standard-column a.active {
         background-color: #f0f4f8;
         color: #3498DB;
         border-color: transparent;
@@ -324,7 +319,7 @@
     .mobile-only { display: none; }
     .mobile-menu { display: none; }
 
-    /* MOBILE LAYOUT CORRECTIONS */
+    /* MOBILE ACCORDION ADJUSTMENTS */
     @media (max-width: 1024px) {
         .desktop-only { display: none; }
         .mobile-only { display: flex; }
@@ -363,7 +358,7 @@
         }
         .mobile-menu.open { transform: translateY(0); }
         
-        .mobile-menu a, .accordion-toggle, .accordion-sub-toggle {
+        .mobile-menu :global(a), .accordion-toggle, .accordion-sub-toggle {
             padding: 14px 24px;
             text-align: left;
             text-decoration: none;
@@ -381,9 +376,6 @@
             cursor: pointer;
         }
 
-        .mobile-menu a.active { color: #3498DB; }
-
-        /* NESTED MOBILE ACCORDION GRAPHICS */
         .mobile-accordion {
             display: flex;
             flex-direction: column;
@@ -416,7 +408,7 @@
             padding-left: 16px;
         }
 
-        .accordion-sub-content a {
+        .accordion-sub-content :global(a) {
             font-size: 1.05rem;
             color: #64748b;
         }

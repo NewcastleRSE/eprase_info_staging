@@ -30,7 +30,7 @@ body, html {
     background: #fff; 
     width: 100%;
     font-family: Raleway, sans-serif;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 .content {
@@ -55,8 +55,8 @@ body, html {
 }
 
 .subpage {
-    width: 70%;
-    max-width: 700px;
+    width: 75%;
+    max-width: 1200px;
     margin: auto;
     font-size: 1.4rem;
     line-height: 1.6;
