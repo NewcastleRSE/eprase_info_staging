@@ -38,8 +38,8 @@
     ];
 
     const usingSubLinks = [
+        { name: 'Step-by-step instructions', path: '/using' },
         { name: 'FAQ', path: '/using/faq' },
-        { name: 'Step-by-step instructions', path: '/using/instructions' },
         { name: 'Video walk-through', path: '/using/walk-through' },
         { name: 'Masterclass presentation', path: '/using/masterclass' },
     ];

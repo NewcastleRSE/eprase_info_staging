@@ -40,7 +40,7 @@
         const categoryMap: Record<string, string> = {
             'using': 'Using ePRaSE',
             'about': 'About ePRaSE',
-            'lab': 'ePRaSELearning Lab',
+            'lab': 'ePRaSE Learning Lab',
             'results': 'Assessment Results'
         };
 
