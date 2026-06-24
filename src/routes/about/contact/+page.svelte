@@ -4,7 +4,7 @@
     
     <div class="contact-grid">
         <div class="contact-card">
-            <div class="card-icon font-icon">✉</div>
+            <div class="card-icon font-icon email-icon">✉</div>
             <div class="card-content">
                 <h2>General Enquiries</h2>
                 <p>For project information, feedback, or general support.</p>
@@ -86,6 +86,11 @@
         border-radius: 50%;
         color: #005EB8;
         flex-shrink: 0;
+    }
+
+    .email-icon {
+        font-size: 3rem; 
+        padding-bottom: 5px; /* Optional: nudges it slightly if it sits too low */
     }
 
     .card-content {
