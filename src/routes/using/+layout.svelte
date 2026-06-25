@@ -7,14 +7,16 @@
         { name: 'Step-by-step instructions', path: '/using' },
         { name: 'FAQ', path: '/using/faq' },
         { name: 'Video walk-through', path: '/using/walk-through' },
-        { name: 'User Experience Video: Newcastle', path: '/using/ux-video-1' },
-        { name: 'User Experience Video: Liverpool', path: '/using/ux-video-2' }
+        { name: 'Masterclass presentation', path: '/using/masterclass' },
+        { name: 'User experience video: Newcastle', path: '/using/ux-video-1' },
+        { name: 'User experience video: Liverpool', path: '/using/ux-video-2' }
     ];
 
     const subtitles = {
         '/using': ': Step-by-Step Instructions',
         '/using/faq': ': Frequently Asked Questions',
         '/using/walk-through': ': Video Walk-Through',
+        '/using/masterclass': ': Masterclass Presentation',
         '/using/ux-video-1': ': User Experience Video: Newcastle',
         '/using/ux-video-2': ': User Experience Video: Liverpool'
     };
