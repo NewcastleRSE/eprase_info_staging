@@ -9,7 +9,7 @@
     <img src={link("/img/logos/northumbria.png")} alt="Northumbria Hospitals Logo">
     <img src={link("/img/logos/nppg_logo.png")} alt="NPPG Logo">
     <img src={link("/img/logos/ncl_logo.png")} alt="NCL Logo">
-    <img src={link("/img/logos/nhs_logo.png")} alt="NHS Logo">
+    <img src={link("/img/logos/nhs_england.png")} alt="NHS EnglandLogo">
 </footer>
 
 <style>
