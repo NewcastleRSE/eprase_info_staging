@@ -19,8 +19,8 @@
             <div class="card-content">
                 <h2>Media & Press</h2>
                 <p class="contact-person"><strong>Laura Keen</strong></p>
-                <a class="linelink" href="mailto:laura.keen2@northumbria-healthcare.nhs.uk">
-                    laura.keen2@northumbria-healthcare.nhs.uk
+                <a class="linelink" href="mailto:nuth.eprase@nhs.net">
+                    nuth.eprase@nhs.net
                 </a>
             </div>
         </div>

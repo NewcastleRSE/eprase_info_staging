@@ -39,6 +39,7 @@
 
     const usingSubLinks = [
         { name: 'Step-by-step instructions', path: '/using' },
+        { name: 'How the tool works', path: '/using/how' },
         { name: 'FAQ', path: '/using/faq' },
         { name: 'Video walk-through', path: '/using/walk-through' },
         { name: 'Masterclass presentation', path: '/using/masterclass' },
@@ -87,7 +88,7 @@
                                 {/each}
                             </div>
                             <div class="mega-column highlighted-col">
-                                <h3>User Experience Videos</h3>
+                                <h3>Responding to ePRaSE</h3>
                                 {#each uxVideos as video (video.path)}
                                     <a href={link(video.path)} class:active={isActive(video.path)}>
                                         <span class="play-icon">▶</span> {video.name}
@@ -138,7 +139,7 @@
                             {/each}
                             
                             <button class="accordion-sub-toggle" onclick={() => mobileVideosOpen = !mobileVideosOpen}>
-                                User Experience Videos <span class="arrow-indicator" class:rotated={mobileVideosOpen}>▼</span>
+                                Responding to ePRaSE <span class="arrow-indicator" class:rotated={mobileVideosOpen}>▼</span>
                             </button>
                             {#if mobileVideosOpen}
                                 <div class="accordion-sub-content">

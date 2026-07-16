@@ -5,20 +5,22 @@
 
     const links = [
         { name: 'Step-by-step instructions', path: '/using' },
+        { name: 'How the tool works', path: '/using/how' },
         { name: 'FAQ', path: '/using/faq' },
         { name: 'Video walk-through', path: '/using/walk-through' },
         { name: 'Masterclass presentation', path: '/using/masterclass' },
-        { name: 'User experience video: Newcastle', path: '/using/ux-video-1' },
-        { name: 'User experience video: Liverpool', path: '/using/ux-video-2' }
+        { name: 'Responding to ePRaSE: Newcastle', path: '/using/ux-video-1' },
+        { name: 'Responding to ePRaSE: Liverpool', path: '/using/ux-video-2' }
     ];
 
     const subtitles = {
         '/using': ': Step-by-Step Instructions',
+        '/using/how': ': How the Tool Works',
         '/using/faq': ': Frequently Asked Questions',
         '/using/walk-through': ': Video Walk-Through',
         '/using/masterclass': ': Masterclass Presentation',
-        '/using/ux-video-1': ': User Experience Video: Newcastle',
-        '/using/ux-video-2': ': User Experience Video: Liverpool'
+        '/using/ux-video-1': ': Response from Newcastle',
+        '/using/ux-video-2': ': Response from Liverpool'
     };
 </script>
 
