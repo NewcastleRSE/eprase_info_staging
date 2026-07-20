@@ -9,6 +9,8 @@
             <a href="#ann" class="jump-btn">Ann Slee</a>
             <a href="#stephen" class="jump-btn">Stephen Tomlin</a>
             <a href="#neil" class="jump-btn">Neil Watson</a>
+            <a href="#stephanie" class="jump-btn">Stephanie Klein</a>
+            <a href="#becky" class="jump-btn">Rebecca Osselton</a>
         </div>
     </nav>
     <div class="team-container">
@@ -54,6 +56,28 @@
                 <h2>Neil W Watson</h2>
                 <span class="role-badge">Director of Innovation, NUTH</span>
                 <p>Neil is Director of Innovation at The Newcastle upon Tyne Hospitals NHS Foundation Trust and former Director of Pharmacy. He led the North East and North Cumbria COVID-19 Vaccination Programme, driving innovative approaches to address health inequalities. His interests include advanced therapies, genomics, population health, and clinical informatics to support healthcare transformation. Since 2018, he has been Co-Director of the Northern Alliance Advanced Therapies Treatment Centre, helping integrate advanced therapies into the NHS. He is also a member of the Rare Disease Research UK Hub, contributing NHS expertise to advance research and innovation.</p>
+            </div>
+        </div>
+
+        <div id="stephanie" class="bio-card">
+            <div class="image-wrapper">
+                <img src={resolve("/img/team/stephanie.webp")} alt="Stephanie Klein" class="bio-image" />
+            </div>
+            <div class="bio-content">
+                <h2>Stephanie Klein</h2>
+                <span class="role-badge">ePRaSE Programme Manager</span>
+                <p>Stephanie Klein is a senior NHS pharmacy leader and Programme Manager for ePRaSE, specialising in medicines safety, digital transformation, and large-scale healthcare change. She leads work to improve prescribing safety and governance through digital innovation across NHS organisations. With over 30 years' experience spanning clinical pharmacy, aseptic and production services, operational leadership, and system-wide transformation, she has held senior roles in oncology, paediatrics, pharmacy production and emergency healthcare programmes, including the NHS COVID-19 Vaccination Programme and Nightingale Hospital North East. Her special interests include medicines safety, patient safety, clinical governance, digital health and quality improvement. </p>
+            </div>
+        </div>
+
+        <div id="becky" class="bio-card">
+            <div class="image-wrapper">
+                <img src={resolve("/img/team/becky.webp")} alt="Becky Osselton" class="bio-image" />
+            </div>
+            <div class="bio-content">
+                <h2>Rebecca Osselton</h2>
+                <span class="role-badge">ePRaSE Technical Lead</span>
+                <p>Rebecca Osselton is a Senior Research Software Engineer in Newcastle University's RSE team and helps direct the technical development of the tool. She became involved in the ePRaSE project six years ago when the application was at an early prototype stage. She took over the main development work for a few years, before taking a more management-focused role in the project. She attends board meetings and works closely with the team at Newcastle University to deliver the application successfully.</p>
             </div>
         </div>
     </div>
