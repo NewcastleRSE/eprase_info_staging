@@ -18,7 +18,7 @@
 <p>ePRaSE allows organisations to view their own results immediately to identify potential areas of prescribing risk, and at the end of each annual campaign to benchmark performance against national data.</p>
 
 <h2>The ePRaSE Cycle</h2>
-<p>From year to year, ePRaSE itself is continually evaluated and improved to ensure it remains effective in supporting trusts with their ePrescribing risk management.</p>
+<p>The ePRaSE assessment process is cyclical, allowing for continuous evaluation, interpretation, and improvement in ePrescribing practices.</p>
 
 <section class="cycle-container">
     <p class="section-lead">An annual 4-stage process driving continuous system assessment and national benchmarking.</p>
