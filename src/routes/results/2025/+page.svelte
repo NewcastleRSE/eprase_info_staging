@@ -175,14 +175,6 @@
         gap: 1rem;
     }
 
-    .jump-title {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: #4c6272;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
     .jump-links {
         display: flex;
         gap: 0.5rem;
