@@ -31,6 +31,7 @@ body, html {
     width: 100%;
     font-family: Raleway, sans-serif;
     overflow: visible;
+    scroll-behavior: smooth;
 }
 
 .content {
