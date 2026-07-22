@@ -20,7 +20,6 @@
         display: flex;
         width: 100%;
         height: clamp(80px, 12vmin, 150px);
-        /*background: linear-gradient(to bottom right, #fff, #eff3fb);*/
         background-color: #eff3fb;
         box-shadow: inset 0 0 20px rgba(34, 61, 152, 0.1);
     }
@@ -45,8 +44,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* This sits on top of the pills */
-        pointer-events: none; /* Crucial: clicks pass through to the content */
+        pointer-events: none; 
         z-index: 6; 
     }
 

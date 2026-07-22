@@ -8,7 +8,6 @@
         path: string;
     }
 
-    // Svelte 5 syntax for accepting props and snippet children
     let { 
         sectionTitle, 
         subtitles = {}, 
@@ -53,7 +52,6 @@
 </div>
 
 <style>
-    /* Retain your existing split-layout, main-body, context-sidebar, and media query styles here */
     .split-layout { 
         display: grid; 
         grid-template-columns: 1fr 280px; 

@@ -113,7 +113,7 @@
     }
 	
 	.home-banner :global(.pill-stage) {
-		position: absolute; /* Changed from flex: 1 */
+		position: absolute; 
         top: 0;
         left: 0;
         height: 100%;
@@ -130,13 +130,13 @@
         /* This sits on top of the pills */
         box-shadow: inset 0 60px 60px -60px rgba(34, 61, 152, 0.15),
 					inset 0 -60px 60px -60px rgba(34, 61, 152, 0.15); 
-        pointer-events: none; /* Crucial: clicks pass through to the content */
+        pointer-events: none;
         z-index: 2; 
     }
 
 
 	.news-section {
-        background-color: #f8fafc; /* Subtle, cool grey-blue background to separate from white hero */
+        background-color: #f8fafc; 
         padding: 5rem 2rem;
         border-top: 1px solid #e2e8f0;
     }
@@ -170,7 +170,6 @@
     }
 
 	/** News Grid Layout */
-    /* Cards Layout Structure */
     .news-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -179,7 +178,7 @@
 
     @media (min-width: 850px) {
         .news-grid {
-            grid-template-columns: 3fr 2fr; /* Asymmetric grid splits visual weight beautifully */
+            grid-template-columns: 3fr 2fr; 
         }
     }
 
@@ -206,7 +205,6 @@
         font-weight: 500;
     }
 
-    /* Modern Badges styling */
     .news-badge {
         font-size: 0.75rem;
         font-weight: 600;
@@ -258,7 +256,6 @@
         color: #003087;
     }
 
-    /* Split column card style for Version 5 / QR section */
     .card-body-split {
         display: flex;
         flex-direction: column;
@@ -314,13 +311,12 @@
         gap: 0.15rem;
         z-index: 10;
         
-        /* Removed pointer-events: none so it's clickable */
         text-decoration: none; 
         padding: 0.5rem 1.25rem;
         border-radius: 2rem;
-        background: rgba(255, 255, 255, 0.7); /* Soft translucent pill background */
-        backdrop-filter: blur(4px); /* Frosts the background behind it */
-        box-shadow: 0 4px 12px rgba(0, 48, 135, 0.08); /* Very subtle NHS blue shadow */
+        background: rgba(255, 255, 255, 0.7); 
+        backdrop-filter: blur(4px); 
+        box-shadow: 0 4px 12px rgba(0, 48, 135, 0.08); 
         border: 1px solid rgba(0, 94, 184, 0.1);
         
         animation: bounceBreathe 2.5s ease-in-out infinite;
@@ -330,17 +326,17 @@
     .scroll-indicator:hover {
         background: rgba(255, 255, 255, 0.95);
         transform: translateX(-50%) translateY(-2px);
-        animation-play-state: paused; /* Stops bouncing on hover */
+        animation-play-state: paused; 
         box-shadow: 0 6px 16px rgba(0, 48, 135, 0.12);
     }
 
     .scroll-label {
-        font-size: 0.85rem; /* Bumped up from 0.75rem */
+        font-size: 0.85rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em; /* Slightly tighter so it doesn't spread too wide */
-        font-weight: 600; /* Bolder font weight for readability */
+        letter-spacing: 0.1em; 
+        font-weight: 600;
         color: var(--nhs-blue);
-        opacity: 0.9; /* Much higher contrast than 0.5 */
+        opacity: 0.9;
     }
 
     .scroll-arrow {
@@ -348,22 +344,20 @@
         font-weight: bold;
         color: var(--nhs-blue);
         opacity: 0.9;
-        margin-top: -4px; /* Pulls the arrow slightly closer to the text */
+        margin-top: -4px;
     }
 
-    /* A smooth, non-distracting animation that loops infinitely */
     @keyframes bounceBreathe {
         0%, 100% {
             transform: translate(-50__, 0);
             opacity: 0.6;
         }
         50% {
-            transform: translate(-50__, 8px); /* Gently nudges downward */
+            transform: translate(-50__, 8px); 
             opacity: 1;
         }
     }
 
-    /* Hide it if the screen gets too short or cramped vertically */
     @media (max-height: 550px) {
         .scroll-indicator {
             display: none;

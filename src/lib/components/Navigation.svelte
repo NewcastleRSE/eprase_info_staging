@@ -4,7 +4,7 @@
     
     let isMenuOpen = $state(false);
     
-    // Dynamic dictionary to track which mobile menus are toggled open
+    // track which mobile menus are toggled open
     let mobileSectionsOpen = $state<Record<string, boolean>>({
         'about': false,
         'using': false,
@@ -22,7 +22,7 @@
     
     const link = (path: string) => resolve(path);
     
-    // Core navigation structure (All items are now uniform dropdowns)
+    // Core navigation structure
     const navSections = [
         { name: 'About', path: '/about', key: 'about' },
         { name: 'Using ePRaSE', path: '/using', key: 'using' },
@@ -177,7 +177,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        height: clamp(80px, 15vmin, 160px); /* Lowered maximum scale down since layout is single-row */
+        height: clamp(80px, 15vmin, 160px);
         padding: 0 clamp(20px, 5%, 60px);
         font-family: "Raleway", sans-serif;
         position: relative;

@@ -16,13 +16,9 @@
 <div class="subpage">
     <h2>Governance & Clinical Assurance</h2>
 
-    <p>
-        ePRaSE is governed through a formal programme structure, with Programme Board oversight, defined workstreams, and clear accountability across NHS organisations.
-    </p>
+    <p>ePRaSE is governed through a formal programme structure, with Programme Board oversight, defined workstreams, and clear accountability across NHS organisations.</p>
 
-    <p>
-        Clinical content is developed and assured through Clinical Reference Groups (CRGs), comprising senior multidisciplinary experts who ensure clinical validity, safety relevance, and alignment to national priorities.
-    </p>
+    <p>Clinical content is developed and assured through Clinical Reference Groups (CRGs), comprising senior multidisciplinary experts who ensure clinical validity, safety relevance, and alignment to national priorities.</p>
 
     <!-- SECTION 1: VISUAL PROCESS SEQUENCE -->
     <h2>The Development & Assurance Process</h2>
@@ -77,35 +73,34 @@
         </li>
     </ol>
 
-    <!-- SECTION 2: GOVERNANCE STRUCTURE DIAGRAM -->
     <!-- SECTION 2: PROGRAMME STRUCTURE & CYCLE DIAGRAMS -->
-<h2>Programme Structure & Workflow</h2>
+    <h2>Programme Structure & Workflow</h2>
 
-<div class="diagram-grid">
-    <!-- Diagram 1: Governance Chart -->
-    <figure class="diagram-card">
-        <button type="button" class="image-zoom-trigger" onclick={() => openZoom('governance')} aria-label="Expand ePRaSE Governance Structure diagram">
-            <img src="{resolve('/img/governance.png')}" alt="Diagram showing the ePRaSE governance structure" />
-            <span class="zoom-badge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                Click to expand
-            </span>
-        </button>
-        <figcaption>ePRaSE Organisational Governance Structure</figcaption>
-    </figure>
+    <div class="diagram-grid">
+        <!-- Diagram 1: Governance Chart -->
+        <figure class="diagram-card">
+            <button type="button" class="image-zoom-trigger" onclick={() => openZoom('governance')} aria-label="Expand ePRaSE Governance Structure diagram">
+                <img src="{resolve('/img/governance.png')}" alt="Diagram showing the ePRaSE governance structure" />
+                <span class="zoom-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    Click to expand
+                </span>
+            </button>
+            <figcaption>ePRaSE Organisational Governance Structure</figcaption>
+        </figure>
 
-    <!-- Diagram 2: Cycle Graphic (Restored) -->
-    <figure class="diagram-card">
-        <button type="button" class="image-zoom-trigger" onclick={() => openZoom('cycle')} aria-label="Expand ePRaSE Workflow Cycle diagram">
-            <img src="{resolve('/img/eprase_cycle.webp')}" alt="Diagram showing the ePRaSE workflow cycle" />
-            <span class="zoom-badge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                Click to expand
-            </span>
-        </button>
-        <figcaption>The Annual ePRaSE Evaluation Cycle</figcaption>
-    </figure>
-</div>
+        <!-- Diagram 2: Cycle Graphic -->
+        <figure class="diagram-card">
+            <button type="button" class="image-zoom-trigger" onclick={() => openZoom('cycle')} aria-label="Expand ePRaSE Workflow Cycle diagram">
+                <img src="{resolve('/img/eprase_cycle.webp')}" alt="Diagram showing the ePRaSE workflow cycle" />
+                <span class="zoom-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    Click to expand
+                </span>
+            </button>
+            <figcaption>The Annual ePRaSE Evaluation Cycle</figcaption>
+        </figure>
+    </div>
 
     <!-- LIGHTBOX MODAL OVERLAY -->
     {#if activeZoomImage}
@@ -195,52 +190,52 @@
 
     /* Diagram Section Cards */
     /* Responsive side-by-side grid for client diagrams */
-.diagram-grid {
-    margin: 1.5rem 0 2.5rem 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    align-items: stretch;
-}
+    .diagram-grid {
+        margin: 1.5rem 0 2.5rem 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+        align-items: stretch;
+    }
 
-.diagram-card {
-    margin: 0;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    padding: 1.25rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
+    .diagram-card {
+        margin: 0;
+        background: #ffffff;
+        border: 1px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 1.25rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.image-zoom-trigger {
-    position: relative;
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 6px;
-    overflow: hidden;
-    display: block;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .image-zoom-trigger {
+        position: relative;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 6px;
+        overflow: hidden;
+        display: block;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.image-zoom-trigger img {
-    width: 100%;
-    height: 180px; /* Constrains image height in card view so both cards match */
-    object-fit: contain;
-    display: block;
-}
+    .image-zoom-trigger img {
+        width: 100%;
+        height: 180px; /* Constrains image height in card view so both cards match */
+        object-fit: contain;
+        display: block;
+    }
 
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 80vh;
-    object-fit: contain; /* Full scale when expanded in lightbox */
-}
+    .lightbox-content img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain; /* Full scale when expanded in lightbox */
+    }
 
     .image-zoom-trigger:hover {
         transform: translateY(-2px);

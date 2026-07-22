@@ -93,7 +93,6 @@
         padding: 1rem 0;
     }
 
-    /* Elegant, Split-Layout Box */
     .bio-card {
         background: #ffffff;
         border: 1px solid #d8dde2;
@@ -107,7 +106,6 @@
         scroll-margin-top: 5rem; 
     }
 
-    /* Centered alignment control for image on mobile scaling */
     .image-wrapper {
         flex-shrink: 0;
         display: flex;
@@ -120,7 +118,6 @@
         border-radius: 50%;
         object-fit: cover;
         border: 4px solid #ffffff;
-        /* Sleek dual-ring border design using box shadow tokens */
         box-shadow: 0 0 0 2px var(--nhs-blue), 0 6px 16px rgba(0, 94, 184, 0.1);
     }
 
@@ -137,7 +134,6 @@
         font-weight: 700;
     }
 
-    /* Subtle descriptor label below name */
     .role-badge {
         display: inline-block;
         font-size: 0.9rem;
@@ -154,11 +150,6 @@
         color: #4c6272;
     }
 
-    /* Enable smooth scrolling for jump targets */
-    :global(html) {
-        scroll-behavior: smooth;
-    }
-
     /* Sticky Jump Menu Container */
     .jump-menu {
         position: sticky;
@@ -173,14 +164,6 @@
         align-items: center;
         justify-content: center;
         gap: 1rem;
-    }
-
-    .jump-title {
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: #4c6272;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
     }
 
     .jump-links {

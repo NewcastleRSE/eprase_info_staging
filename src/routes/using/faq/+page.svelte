@@ -248,7 +248,7 @@
         font-weight: 600;
         color: #003087;
         cursor: pointer;
-        list-style: none; /* Hides default small black arrow on some browsers */
+        list-style: none; 
         display: flex;
         align-items: flex-start;
         gap: 0.5rem;
@@ -278,7 +278,7 @@
     /* The Hidden Answer Panel wrapper */
     .answer-content {
         padding: 0 1.5rem 1.5rem 1.5rem;
-        background-color: #f8fafc; /* Subtle tint background for the open answer */
+        background-color: #f8fafc; 
         border-top: 1px solid #eef2f6;
         animation: slideDown 0.2s ease-out forwards;
     }
@@ -287,16 +287,11 @@
         margin: 1rem 0 0 0;
         font-size: 1.05rem;
         line-height: 1.6;
-        color: #4c6272;
-        
-        /* Clear the flex behavior to allow regular paragraph wrapping */
+        color: #4c6272; 
         display: block; 
-        
-        /* Create a uniform gutter on the left side of ALL paragraphs */
         padding-left: 1.75rem; 
     }
 
-    /* --- ADD THIS NEW RULE TO PULL THE "A:" PREFIX BACK INTO THE GUTTER --- */
     .answer-content p .a-prefix {
         /* Absolute positioning pops the prefix out of the text flow */
         position: absolute;

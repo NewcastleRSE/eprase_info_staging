@@ -20,8 +20,8 @@
         justify-content: center; 
         align-items: center;  
         
-        flex-wrap: wrap;         /* Allows logos to drop to the next line on small screens */
-        gap: clamp(1.5rem, 4vw, 4rem); /* Dynamic spacing that shrinks on smaller screens */
+        flex-wrap: wrap;        
+        gap: clamp(1.5rem, 4vw, 4rem);
         padding: 20px 1.5rem; 
         
         width: 100%;
@@ -57,11 +57,11 @@
     @media (max-width: 600px) {
         footer {
             padding: 25px 1rem;
-            gap: 1.5rem 2rem; /* Tight row gap, comfortable column gap when stacked */
+            gap: 1.5rem 2rem;
         }
         
         footer img {
-            height: 32px; /* Fixed concise height on small phones so they grid up tightly */
+            height: 32px; 
         }
     }
 </style>

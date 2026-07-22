@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <!-- EXPLANATORY NOTES ACCORDION (2024) -->
+  <!-- EXPLANATORY NOTES ACCORDION -->
   <details class="faq-item notes-accordion">
     <summary class="notes-trigger">
       <span class="trigger-text">Explanatory Notes</span>
@@ -238,7 +238,6 @@
         color: #4c6272;
     }
 
-    /* Existing Page Containers */
     .report-container, .eprase-video {
         width: 100%;
         max-width: 1024px;

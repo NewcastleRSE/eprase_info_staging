@@ -39,7 +39,6 @@
 </div>
 
 <style>
-    /* Global design tokens aligned with NHS Digital guidelines */
     :thin {
         --nhs-blue: #005EB8;
         --nhs-dark-blue: #003087;
@@ -90,7 +89,7 @@
 
     .email-icon {
         font-size: 3rem; 
-        padding-bottom: 5px; /* Optional: nudges it slightly if it sits too low */
+        padding-bottom: 5px;
     }
 
     .card-content {
@@ -113,37 +112,6 @@
 
     .contact-person {
         color: #212b32 !important;
-    }
-
-    /* Premium Link Interactions */
-    .contact-link {
-        display: inline-flex;
-        align-items: center;
-        font-weight: 600;
-        color: #005EB8;
-        text-decoration: none;
-        border-bottom: 2px solid transparent;
-        padding-bottom: 2px;
-        transition: color 0.2s, border-color 0.2s;
-        word-break: break-all;
-    }
-
-    .contact-link:hover {
-        color: #003087;
-        border-color: #003087;
-    }
-
-    /* Optional link specific decorations */
-    .mail-link::before {
-        content: "✉ ";
-        margin-right: 4px;
-        font-weight: normal;
-    }
-    
-    .external-link::after {
-        content: " ↗";
-        font-weight: normal;
-        margin-left: 4px;
     }
 
     /* Responsive Grid Tweak */

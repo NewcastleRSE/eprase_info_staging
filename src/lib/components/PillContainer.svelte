@@ -86,8 +86,7 @@
         let spawned = 0;
         let interval: ReturnType<typeof setInterval>;
 
-        // CRITICAL FIX: The Waiting Room
-        // We don't start the 'spawnDelay' interval until w and h are real numbers
+        // don't start the 'spawnDelay' interval until w and h are real numbers
         const checkDims = setInterval(() => {
             if (w > 0 && h > 0) {
                 clearInterval(checkDims);
@@ -100,7 +99,6 @@
 
                     const progress = count > 1 ? spawned / (count - 1) : 0;
                     
-                    // We now use the 'real' w and h which are guaranteed to be > 0
                     const startX = leftWall + (progress * (w - leftWall - safeWidth)); 
                     const startY = (h * 0.1) + (progress * (h * 0.6)); 
                     
@@ -186,7 +184,7 @@
         background: transparent;
     }
     .content-overlay {
-        position: absolute; /* Absolute so it sits precisely over the animation */
+        position: absolute; 
         top: 0; left: 0;
         z-index: 10;
         pointer-events: none;
@@ -220,7 +218,6 @@
         position: absolute;
         top: 0; left: 0;
         height: 100%;
-        /* The cap color (Left Side) */
         width: 50%; 
         background-color: var(--color1);
         transition: width 2s cubic-bezier(0.4, 0, 0.2, 1), background-color 2s ease;
@@ -241,7 +238,7 @@
     .ball.tablet { border-radius: 50%; width: var(--size); background-color: var(--color1);}
     .ball:not(.tablet) { border-radius: 100px; }
     .ball.tablet .cap {
-        width: 100%; /* Cap expands to fill the circle */
+        width: 100%; 
     }
     
 </style>

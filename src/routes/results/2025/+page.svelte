@@ -260,7 +260,6 @@
         color: #ffffff;
     }
 
-    /* Inner text rendering with hanging margins (reusing your style fixes) */
     .answer-content {
         position: relative;
         padding: 0.5rem 1.5rem 1.5rem 1.5rem;
