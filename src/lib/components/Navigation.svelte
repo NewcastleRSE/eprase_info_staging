@@ -33,9 +33,10 @@
     // Subpage hierarchy maps
     const aboutSubLinks = [
         { name: 'About ePRaSE', path: '/about' },
-        { name: 'About the Team', path: '/about/team' },
+        { name: 'The Team', path: '/about/team' },
         { name: 'Governance', path: '/about/governance' },
-        { name: 'Contact', path: '/about/contact' } // Contact cleanly integrated here
+        { name: 'The Users', path: '/about/users' },
+        { name: 'Contact Us', path: '/about/contact'}
     ];
 
     const usingSubLinks = [

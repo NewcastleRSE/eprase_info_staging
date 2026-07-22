@@ -16,7 +16,7 @@
 <div class="subpage">
     <h2>Governance & Clinical Assurance</h2>
 
-    <p class="lead-text">
+    <p>
         ePRaSE is governed through a formal programme structure, with Programme Board oversight, defined workstreams, and clear accountability across NHS organisations.
     </p>
 
@@ -63,7 +63,7 @@
                 <p>Applied across organisations to identify variation, benchmark safety, and drive optimisation.</p>
             </div>
         </li>
-        <li class="step-card highlight">
+        <li class="step-card">
             <span class="step-num">06</span>
             <div class="step-body">
                 <h3>Ongoing Expert Review</h3>
@@ -123,12 +123,6 @@
 </div>
 
 <style>
-    .lead-text {
-        font-size: 1.15rem;
-        line-height: 1.6;
-        color: #003087;
-        font-weight: 500;
-    }
 
     /* Process Step Cards */
     .process-steps {
@@ -156,9 +150,6 @@
         transform: translateX(4px);
         background: #ffffff;
         box-shadow: 0 4px 12px rgba(0, 94, 184, 0.08);
-    }
-
-    .step-card.highlight {
         border-left-color: #003087;
         background: #f0f4f8;
     }

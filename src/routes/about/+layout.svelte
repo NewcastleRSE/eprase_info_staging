@@ -5,8 +5,9 @@
 
     const links = [
         { name: 'About ePRaSE', path: '/about' },
-        { name: 'About the Team', path: '/about/team' },
+        { name: 'The Team', path: '/about/team' },
         { name: 'Governance', path: '/about/governance' },
+        { name: 'The Users', path: '/about/users' },
         { name: 'Contact Us', path: '/about/contact' }
     ];
 
@@ -14,6 +15,7 @@
         '/about': '',
         '/about/team': ': Project Team',
         '/about/governance': ': Governance Structure',
+        '/about/users': ': Participating Trusts',
         '/about/contact': ': Contact Us'
     };
 </script>
