@@ -12,13 +12,13 @@
 			<p class='sub-text'><q>Know your risk: An NHS self-assessment for safer ePrescribing.</q></p>
 		</div>
 	</PillContainer>
-	<div class="scroll-indicator" aria-hidden="true">
+	<a href="#news" class="scroll-indicator" aria-label="Scroll to Latest Updates">
         <span class="scroll-label">Latest Updates</span>
         <span class="scroll-arrow">↓</span>
-    </div>
+    </a>
 </div>
 
-<section class="news-section">
+<section id="news" class="news-section">
     <div class="container">
         <div class="section-header">
             <span class="section-tag">Updates</span>
@@ -303,7 +303,7 @@
     }
 
 	/** Scroll Indicator */
-	.scroll-indicator {
+    .scroll-indicator {
         position: absolute;
         bottom: 2rem;
         left: 50%;
@@ -311,27 +311,44 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 0.25rem;
-        z-index: 10;                /* Floats above the shadow layer */
-        pointer-events: none;       /* Clicks pass right through it into the canvas */
+        gap: 0.15rem;
+        z-index: 10;
+        
+        /* Removed pointer-events: none so it's clickable */
+        text-decoration: none; 
+        padding: 0.5rem 1.25rem;
+        border-radius: 2rem;
+        background: rgba(255, 255, 255, 0.7); /* Soft translucent pill background */
+        backdrop-filter: blur(4px); /* Frosts the background behind it */
+        box-shadow: 0 4px 12px rgba(0, 48, 135, 0.08); /* Very subtle NHS blue shadow */
+        border: 1px solid rgba(0, 94, 184, 0.1);
+        
         animation: bounceBreathe 2.5s ease-in-out infinite;
-        font-family: sans-serif;
+        transition: all 0.2s ease;
+    }
+
+    .scroll-indicator:hover {
+        background: rgba(255, 255, 255, 0.95);
+        transform: translateX(-50%) translateY(-2px);
+        animation-play-state: paused; /* Stops bouncing on hover */
+        box-shadow: 0 6px 16px rgba(0, 48, 135, 0.12);
     }
 
     .scroll-label {
-        font-size: 0.75rem;
+        font-size: 0.85rem; /* Bumped up from 0.75rem */
         text-transform: uppercase;
-        letter-spacing: 0.15em;
-        font-weight: 400;
+        letter-spacing: 0.1em; /* Slightly tighter so it doesn't spread too wide */
+        font-weight: 600; /* Bolder font weight for readability */
         color: var(--nhs-blue);
-        opacity: 0.5;
+        opacity: 0.9; /* Much higher contrast than 0.5 */
     }
 
     .scroll-arrow {
         font-size: 1.25rem;
         font-weight: bold;
         color: var(--nhs-blue);
-        opacity: 0.5;
+        opacity: 0.9;
+        margin-top: -4px; /* Pulls the arrow slightly closer to the text */
     }
 
     /* A smooth, non-distracting animation that loops infinitely */
