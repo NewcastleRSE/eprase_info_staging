@@ -70,7 +70,7 @@
                 <p>Reviewed annually by a national network of clinical, academic, and patient safety experts to ensure:</p>
                 <ul>
                     <li>Alignment with emerging risks and real-world practice</li>
-                    <li>Incorporation of national safety alerts and evolving medicine uses</li>
+                    <li>Incorporation of new safety issues, e.g., national safety alerts and evolving medicine uses</li>
                     <li>Reflection of current NHS priorities and clinical experience</li>
                 </ul>
             </div>
