@@ -67,7 +67,7 @@ body, html {
     flex-direction: column;
 }
 
-.subpage p {
+.subpage p, .subpage .faq-item {
     animation: fadeUp 1s ease-out both;
     animation-delay: 0.4s; /* The paragraphs arrive last */
 }
