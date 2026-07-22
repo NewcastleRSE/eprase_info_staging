@@ -34,6 +34,7 @@
     const aboutSubLinks = [
         { name: 'About ePRaSE', path: '/about' },
         { name: 'About the Team', path: '/about/team' },
+        { name: 'Governance', path: '/about/governance' },
         { name: 'Contact', path: '/about/contact' } // Contact cleanly integrated here
     ];
 

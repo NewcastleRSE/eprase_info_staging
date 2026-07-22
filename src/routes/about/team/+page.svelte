@@ -5,26 +5,15 @@
 <div class="subpage">
     <nav class="jump-menu" aria-label="Team member quick links">
         <div class="jump-links">
-            <a href="#jamie" class="jump-btn">Jamie Coleman</a>
             <a href="#ann" class="jump-btn">Ann Slee</a>
-            <a href="#stephen" class="jump-btn">Stephen Tomlin</a>
             <a href="#neil" class="jump-btn">Neil Watson</a>
+            <a href="#jamie" class="jump-btn">Jamie Coleman</a>
+            <a href="#stephen" class="jump-btn">Stephen Tomlin</a>
             <a href="#stephanie" class="jump-btn">Stephanie Klein</a>
             <a href="#becky" class="jump-btn">Rebecca Osselton</a>
         </div>
     </nav>
     <div class="team-container">
-
-        <div id="jamie" class="bio-card">
-            <div class="image-wrapper">
-                <img src={resolve("/img/team/jamie.webp")} alt="Jamie J Coleman" class="bio-image" />
-            </div>
-            <div class="bio-content">
-                <h2>Jamie J Coleman</h2>
-                <span class="role-badge">Consultant Physician & Professor</span>
-                <p>Jamie is a Consultant Physician at University Hospitals Birmingham, Honorary Professor in Clinical Pharmacology at the University of Birmingham, and Associate Medical Director with responsibility for Medicines Management and safer medicines practice. He leads Hypertension Services at Queen Elizabeth Hospital, directs the West Midlands Yellow Card Centre, and chairs the MHRA Pharmacovigilance Expert Advisory Group as a Commissioner on Human Medicines. A recognised expert in medicines safety and electronic prescribing, Jamie has published over 150 peer-reviewed papers, authored the <em>Oxford Handbook of Practical Drug Therapy</em>, and chairs the adult Clinical Reference Group for the ePRaSE programme.</p>
-            </div>
-        </div>
 
         <div id="ann" class="bio-card">
             <div class="image-wrapper">
@@ -32,19 +21,8 @@
             </div>
             <div class="bio-content">
                 <h2>Ann Slee</h2>
-                <span class="role-badge">Clinical Informatics Leader & Pharmacist</span>
+                <span class="role-badge">ePRaSE Programme Chair</span>
                 <p>Ann is a highly experienced clinical informatics leader, pharmacist, and former Director of Hospital Pharmacy. She has led national and international digital medicines and ePrescribing programmes, including the development of interoperability standards, the expansion of the Electronic Prescription Service (EPS), and the use of ePMA data for research. Ann has championed the implementation of ePMA systems across the NHS and led the development of the ePrescribing Toolkit, ePRaSE, and the Learning Lab. A Fellow of the Royal Pharmaceutical Society and the British Computer Society, she received the UKCPA Outstanding Achievement Award in 2022.</p>
-            </div>
-        </div>
-
-        <div id="stephen" class="bio-card">
-            <div class="image-wrapper">
-                <img src={resolve("/img/team/stephen.webp")} alt="Stephen Tomlin" class="bio-image" />
-            </div>
-            <div class="bio-content">
-                <h2>Stephen Tomlin</h2>
-                <span class="role-badge">Paediatric Consultant Pharmacist</span>
-                <p>Stephen has over 30 years' experience in children's medicines and became the UK's first Paediatric Consultant Pharmacist in 2007. He is now Director of the Children's Medicines Research & Innovation Centre at Great Ormond Street Hospital, following three years as Chief Pharmacist. As Professional Lead of the Neonatal and Paediatric Pharmacists Group and Chair of the Joint Medicines Committee at the Royal College of Paediatrics and Child Health, he represents paediatric pharmacy nationally, including at government and media level. Passionate about advancing paediatric medicines, he also leads the paediatric clinical reference group within ePRaSE.</p>
             </div>
         </div>
 
@@ -54,8 +32,30 @@
             </div>
             <div class="bio-content">
                 <h2>Neil W Watson</h2>
-                <span class="role-badge">Director of Innovation, NUTH</span>
+                <span class="role-badge">Programme SRO</span>
                 <p>Neil is Director of Innovation at The Newcastle upon Tyne Hospitals NHS Foundation Trust and former Director of Pharmacy. He led the North East and North Cumbria COVID-19 Vaccination Programme, driving innovative approaches to address health inequalities. His interests include advanced therapies, genomics, population health, and clinical informatics to support healthcare transformation. Since 2018, he has been Co-Director of the Northern Alliance Advanced Therapies Treatment Centre, helping integrate advanced therapies into the NHS. He is also a member of the Rare Disease Research UK Hub, contributing NHS expertise to advance research and innovation.</p>
+            </div>
+        </div>
+
+        <div id="jamie" class="bio-card">
+            <div class="image-wrapper">
+                <img src={resolve("/img/team/jamie.webp")} alt="Jamie J Coleman" class="bio-image" />
+            </div>
+            <div class="bio-content">
+                <h2>Jamie J Coleman</h2>
+                <span class="role-badge">Clinical Leadership</span>
+                <p>Jamie is a Consultant Physician at University Hospitals Birmingham, Honorary Professor in Clinical Pharmacology at the University of Birmingham, and Associate Medical Director with responsibility for Medicines Management and safer medicines practice. He leads Hypertension Services at Queen Elizabeth Hospital, directs the West Midlands Yellow Card Centre, and chairs the MHRA Pharmacovigilance Expert Advisory Group as a Commissioner on Human Medicines. A recognised expert in medicines safety and electronic prescribing, Jamie has published over 150 peer-reviewed papers, authored the <em>Oxford Handbook of Practical Drug Therapy</em>, and chairs the adult Clinical Reference Group for the ePRaSE programme.</p>
+            </div>
+        </div>
+
+        <div id="stephen" class="bio-card">
+            <div class="image-wrapper">
+                <img src={resolve("/img/team/stephen.webp")} alt="Stephen Tomlin" class="bio-image" />
+            </div>
+            <div class="bio-content">
+                <h2>Stephen Tomlin</h2>
+                <span class="role-badge">Clinical and Safety Advisor</span>
+                <p>Stephen has over 30 years' experience in children's medicines and became the UK's first Paediatric Consultant Pharmacist in 2007. He is now Director of the Children's Medicines Research & Innovation Centre at Great Ormond Street Hospital, following three years as Chief Pharmacist. As Professional Lead of the Neonatal and Paediatric Pharmacists Group and Chair of the Joint Medicines Committee at the Royal College of Paediatrics and Child Health, he represents paediatric pharmacy nationally, including at government and media level. Passionate about advancing paediatric medicines, he also leads the paediatric clinical reference group within ePRaSE.</p>
             </div>
         </div>
 

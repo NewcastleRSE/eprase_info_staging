@@ -6,12 +6,14 @@
     const links = [
         { name: 'About ePRaSE', path: '/about' },
         { name: 'About the Team', path: '/about/team' },
+        { name: 'Governance', path: '/about/governance' },
         { name: 'Contact Us', path: '/about/contact' }
     ];
 
     const subtitles = {
         '/about': '',
         '/about/team': ': Project Team',
+        '/about/governance': ': Governance Structure',
         '/about/contact': ': Contact Us'
     };
 </script>
