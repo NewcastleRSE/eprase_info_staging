@@ -1,7 +1,8 @@
 
 
 <div class="subpage">
-    <p>A video walk-through of the ePRaSE system is available here:</p>
+    <p>A video walk-through of the 2026 ePRaSE system will be available here shortly.</p>
+	<!--
     <div class="eprase-video">
         <div class="iframe-aspect-wrapper">
             <iframe 
@@ -14,4 +15,5 @@
 			</iframe>
 		</div>
 	</div>
+	-->
 </div>

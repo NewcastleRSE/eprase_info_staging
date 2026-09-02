@@ -11,6 +11,14 @@
 
 <div class="subpage">
 
+<blockquote class="endorsement-quote">
+    <p>“Repeat measurement drives quality improvement, so participation in ePRaSE must become routine practice.”</p>
+    <cite>
+        <strong>Alec Price-Forbes</strong>
+        <span>National Chief Clinical Information Officer (CCIO), NHS England</span>
+    </cite>
+</blockquote>
+
 <h2>What is ePRaSE?</h2>
 
 <p>The Electronic Prescribing Risk and Safety Evaluation (ePRaSE) is an NHS-led web-based self-assessment tool that helps trusts understand how well their ePrescribing (EP) systems are configured and maintained to mitigate known prescribing risks.</p>
@@ -37,9 +45,25 @@
 
 <!-- LIGHTBOX MODAL OVERLAY -->
 {#if isEnlarged}
-<div class="lightbox-overlay" onclick={toggleZoom} onkeydown={(e) => e.key === 'Escape' && toggleZoom()} role="button" tabindex="0">
-    <div class="lightbox-content" onclick={(e) => e.stopPropagation()}>
-        <button class="close-btn" onclick={toggleZoom} aria-label="Close modal">✕</button>
+<div 
+    class="lightbox-overlay" 
+    onclick={toggleZoom}
+    onkeydown={(e) => e.key === 'Escape' && toggleZoom()}
+    role="button"
+    tabindex="0"
+    aria-label="Close modal overlay"
+>
+    <!-- Inner dialog box (div stops propagation so clicking the image doesn't close modal) -->
+    <div 
+        class="lightbox-content" 
+        onclick={(e) => e.stopPropagation()} 
+        onkeydown={(e) => e.stopPropagation()}
+        role="dialog" 
+        aria-modal="true" 
+        aria-label="Enlarged diagram view"
+        tabindex="-1"
+    >
+        <button type="button" class="close-btn" onclick={toggleZoom} aria-label="Close modal">✕</button>
         <img src="{resolve('/img/cycle.webp')}" alt="ePRaSE cycle diagram detailed view" />
     </div>
 </div>
@@ -63,11 +87,6 @@
         border: 1px solid #e2e8f0;
         border-radius: 12px;
         padding: 1.75rem;
-    }
-
-    .cycle-container h2 {
-        margin-top: 0;
-        color: #003087;
     }
 
     .section-lead {
@@ -193,5 +212,40 @@
     .feature-list li {
         margin-bottom: 0.75rem;
         color: #334155;
+    }
+
+    /* Endorsement quote styling */
+    .endorsement-quote {
+        margin: 1.5rem 0 2.5rem 0;
+        padding: 1.75rem 2rem;
+        background: #f0f4f8;
+        border-left: 6px solid #005EB8; /* NHS Blue accent */
+        border-radius: 0 8px 8px 0;
+    }
+
+    .endorsement-quote p {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #003087;
+        line-height: 1.5;
+        margin: 0 0 1rem 0;
+        max-width: 100%; /* Overrides 68ch so the quote fills the banner nicely */
+        font-style: italic;
+    }
+
+    .endorsement-quote cite {
+        display: flex;
+        flex-direction: column;
+        font-style: normal;
+    }
+
+    .endorsement-quote cite strong {
+        color: #111827;
+        font-size: 1rem;
+    }
+
+    .endorsement-quote cite span {
+        color: #5c6f84;
+        font-size: 0.9rem;
     }
 </style>
